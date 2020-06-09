@@ -1,16 +1,16 @@
 # RRBE by Altrp
 
 Редактор шаблонов на react redux bootstrap.
+https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/1.png
+[![RRBE](./docs/1.png)](https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/1.png)
 
-[![RRBE](./docs/1.png)](./docs/1.png)
+[![RRBE](./docs/2.png)](https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/2.png)
 
-[![RRBE](./docs/2.png)](./docs/2.png)
+[![RRBE](./docs/3.png)](https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/3.png)
 
-[![RRBE](./docs/3.png)](./docs/3.png)
+[![RRBE](./docs/4.png)](https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/4.png)
 
-[![RRBE](./docs/4.png)](./docs/4.png)
-
-[![RRBE](./docs/5.png)](./docs/5.png)
+[![RRBE](./docs/5.png)](https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/5.png)
 
 ### `npm start`
 
