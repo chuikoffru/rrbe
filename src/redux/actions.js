@@ -10,11 +10,12 @@ export function addText(sectionIndex, columnIndex) {
   };
 }
 
-export function selectWidget(sectionIndex, rowIndex) {
+export function selectWidget(sectionIndex, columnIndex, rowIndex) {
   return {
     type: SELECT_WIDGET,
     payload: {
       sectionIndex,
+      columnIndex,
       rowIndex,
     },
   };

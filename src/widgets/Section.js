@@ -9,10 +9,9 @@ import { selectWidget } from "../redux/actions";
 const Section = (props) => {
   const dispatch = useDispatch();
 
-  const selectWidget = (event, sectionIndex, rowIndex) => {
-    event.stopPropagation();
-    dispatch(selectWidget(sectionIndex, rowIndex));
-    console.log("sectionIndex, rowIndex", sectionIndex, rowIndex);
+  const setSelectedWidget = (event, columnIndex, rowIndex) => {
+    console.log("event", event);
+    dispatch(selectWidget(props.sectionIndex, columnIndex, rowIndex));
   };
 
   const selectSection = (sectionIndex) => {
@@ -25,15 +24,17 @@ const Section = (props) => {
       style={props.section.settings.styles}
       onClick={(event) => selectSection(props.sectionIndex)}
     >
-      {props.section.columns.map((rows, sectionIndex) => (
-        <Col key={sectionIndex} className="colDrop">
+      {props.section.columns.map((rows, columnIndex) => (
+        <Col key={columnIndex} className="colDrop">
           {rows.map((row, rowIndex) => {
             const Widget = loadable(() => import(`./${row.widgetName}`));
             return (
               <Widget
                 key={rowIndex}
                 {...row.props}
-                onClick={(event) => selectWidget(event, sectionIndex, rowIndex)}
+                onClick={(event) =>
+                  setSelectedWidget(event, columnIndex, rowIndex)
+                }
               />
             );
           })}

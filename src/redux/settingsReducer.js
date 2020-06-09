@@ -8,6 +8,7 @@ const initialState = {
 export const settingsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SELECT_WIDGET:
+      console.log("action.payload", action.payload);
       return { ...state, selectedWidget: action.payload };
     case SELECT_SECTION:
       return { ...state, selectedSection: action.payload };
