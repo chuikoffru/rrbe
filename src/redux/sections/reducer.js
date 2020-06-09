@@ -1,6 +1,6 @@
 import update from "dot-prop-immutable";
 
-import { ADD_SECTION, ADD_TEXT } from "./types";
+import { ADD_SECTION, ADD_WIDGET, CHANGE_WIDGET } from "../types";
 
 const initialState = {
   sections: [
@@ -52,18 +52,30 @@ export const sectionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_SECTION:
       return { ...state, sections: [...state.sections, action.payload] };
-    case ADD_TEXT:
-      const section = {
-        widgetName: "Text",
-        props: {
-          text: "Динамически добавили текст",
-        },
-      };
+    case ADD_WIDGET:
+      console.log("addWidget", action);
       return update.set(
         state,
         `sections.${action.payload.sectionIndex}.columns.${action.payload.columnIndex}`,
-        (column) => [...column, section]
+        (column) => [...column, action.payload.data]
       );
+    case CHANGE_WIDGET:
+      console.log("changeWidget", action);
+      const { sectionIndex, columnIndex, rowIndex } = action.payload;
+      console.log(
+        "update.set()",
+        update.set(
+          state,
+          `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}.props`,
+          (props) => action.payload
+        )
+      );
+      /* return update.set(
+        state,
+        `sections.${action.payload.sectionIndex}.columns.${action.payload.columnIndex}.props`,
+        (props) => {...props, action.payload.data}
+      ); */
+      return state;
     default:
       return state;
   }

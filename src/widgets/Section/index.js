@@ -1,10 +1,11 @@
 import React from "react";
-import { Row, Col } from "react-bootstrap";
 import loadable from "@loadable/component";
-
-import "./Section.scss";
+import { Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { selectWidget } from "../redux/actions";
+
+import { selectWidget } from "../../redux/settings/actions";
+
+import "./section.scss";
 
 const Section = (props) => {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ const Section = (props) => {
       {props.section.columns.map((rows, columnIndex) => (
         <Col key={columnIndex} className="colDrop">
           {rows.map((row, rowIndex) => {
-            const Widget = loadable(() => import(`./${row.widgetName}`));
+            const Widget = loadable(() => import(`../${row.widgetName}`));
             return (
               <Widget
                 key={rowIndex}

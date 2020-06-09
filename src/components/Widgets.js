@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 
 import { Row, Col } from "react-bootstrap";
 
-import { addText } from "../redux/actions";
+import { addWidget } from "../redux/sections/actions";
 
 import { ReactComponent as SharePost } from "../icons/share-post.svg";
 import { ReactComponent as TextEditor } from "../icons/text-editor.svg";
@@ -13,7 +13,13 @@ const Widgets = (props) => {
   const dispatch = useDispatch();
 
   const addNewText = (e) => {
-    dispatch(addText(0, 1));
+    const data = {
+      widgetName: "Text",
+      props: {
+        text: "Динамически добавили текст",
+      },
+    };
+    dispatch(addWidget(0, 1, data));
   };
 
   return (
