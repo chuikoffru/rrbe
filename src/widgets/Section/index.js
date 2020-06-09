@@ -3,7 +3,7 @@ import loadable from "@loadable/component";
 import { Row, Col } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
-import { selectWidget } from "../../redux/settings/actions";
+import { selectWidget } from "../../redux/sections/actions";
 
 import "./section.scss";
 

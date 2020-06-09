@@ -1,8 +1,16 @@
 import update from "dot-prop-immutable";
 
-import { ADD_SECTION, ADD_WIDGET, CHANGE_WIDGET } from "../types";
+import {
+  ADD_SECTION,
+  ADD_WIDGET,
+  CHANGE_WIDGET,
+  SELECT_WIDGET,
+  SELECT_SECTION,
+} from "../types";
 
 const initialState = {
+  selectedWidget: null,
+  selectedSection: null,
   sections: [
     {
       id: 1,
@@ -76,6 +84,10 @@ export const sectionsReducer = (state = initialState, action) => {
         (props) => {...props, action.payload.data}
       ); */
       return state;
+    case SELECT_WIDGET:
+      return { ...state, selectedWidget: action.payload };
+    case SELECT_SECTION:
+      return { ...state, selectedSection: action.payload };
     default:
       return state;
   }
