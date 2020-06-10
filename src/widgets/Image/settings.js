@@ -3,13 +3,20 @@ import { Col, Row, Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { changeWidget } from "../../redux/sections/actions";
 
+export const defaultParams = {
+  widgetName: "Image",
+  props: {
+    src: "./favicon.ico",
+    alt: "Подпись к изображению",
+  },
+};
+
 const ImageSettings = (props) => {
   const dispatch = useDispatch();
   const [settings, setSettings] = useState(props);
 
   const handleInput = (e) => {
-    setSettings({ [e.target.name]: e.target.value });
-    dispatch(changeWidget(settings));
+    setSettings({ ...settings, [e.target.name]: e.target.value });
   };
 
   // Сохраняем изменение настроек
@@ -19,18 +26,28 @@ const ImageSettings = (props) => {
 
   // Следим за изменениями настроек
   useEffect(() => {
-    // Обновляем в реальном времени
-    //dispatch(changeWidget(settings));
-  }, [dispatch, settings]);
+    console.log("settings", settings);
+    return () => dispatch(changeWidget(settings));
+  }, [settings, dispatch]);
 
   return (
     <Col>
       <Row>
-        <Form.Group controlId="imageUrl">
+        <Form.Group>
           <Form.Label>URL изображения</Form.Label>
           <Form.Control
+            type="text"
             name="src"
             value={settings.src}
+            onChange={handleInput}
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label>Подпись к изображению</Form.Label>
+          <Form.Control
+            name="alt"
+            type="text"
+            value={settings.alt}
             onChange={handleInput}
           />
         </Form.Group>

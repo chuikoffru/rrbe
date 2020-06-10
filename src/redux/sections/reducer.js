@@ -9,7 +9,12 @@ import {
 } from "../types";
 
 const initialState = {
-  selectedWidget: null,
+  selectedWidget: {
+    sectionIndex: null,
+    columnIndex: null,
+    rowIndex: null,
+    widgetName: null,
+  },
   selectedSection: null,
   sections: [
     {
@@ -63,6 +68,8 @@ const initialState = {
 };
 
 export const sectionsReducer = (state = initialState, action) => {
+  const { sectionIndex, columnIndex, rowIndex } = state.selectedWidget;
+
   switch (action.type) {
     case ADD_SECTION:
       // Добавляем новую секцию
@@ -79,7 +86,6 @@ export const sectionsReducer = (state = initialState, action) => {
     case CHANGE_WIDGET:
       // Изменяем настройки виджета
       console.log("changeWidget", action);
-      const { sectionIndex, columnIndex, rowIndex } = state.selectedWidget;
       return update.set(
         state,
         `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}.props`,

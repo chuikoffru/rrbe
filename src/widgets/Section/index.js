@@ -11,9 +11,11 @@ const Section = (props) => {
   const dispatch = useDispatch();
 
   // Выбираем виджета
-  const setSelectedWidget = (event, columnIndex, rowIndex) => {
+  const setSelectedWidget = (event, columnIndex, rowIndex, widgetName) => {
     event.stopPropagation();
-    dispatch(selectWidget(props.sectionIndex, columnIndex, rowIndex));
+    dispatch(
+      selectWidget(props.sectionIndex, columnIndex, rowIndex, widgetName)
+    );
   };
 
   // Выбираем секцию
@@ -35,7 +37,12 @@ const Section = (props) => {
               <div
                 key={rowIndex}
                 onClickCapture={(event) =>
-                  setSelectedWidget(event, columnIndex, rowIndex)
+                  setSelectedWidget(
+                    event,
+                    columnIndex,
+                    rowIndex,
+                    row.widgetName
+                  )
                 }
               >
                 <Widget {...row.props} />

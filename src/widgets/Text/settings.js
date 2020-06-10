@@ -1,28 +1,43 @@
 import React, { useState } from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeWidget } from "../../redux/sections/actions";
 
 const TextSettings = (props) => {
-  console.log("props", props);
   const dispatch = useDispatch();
-  const [data, setData] = useState(props);
+
+  // Получаем данные выбранного виджета
+  const selectedWidget = useSelector((state) => state.sections.selectedWidget);
+
+  // Получаем настройки виджета
+  const { sectionIndex, columnIndex, rowIndex } = selectedWidget;
+  const params = useSelector(
+    (state) =>
+      state.sections.sections[sectionIndex].columns[columnIndex][rowIndex].props
+  );
+
+  const [settings, setSettings] = useState(params);
 
   const handleInput = (e) => {
-    console.log("e", e);
-    setData({ [e.target.name]: e.target.value });
+    setSettings({ ...settings, [e.target.name]: e.target.value });
+    dispatch(changeWidget(settings));
   };
 
+  // Сохраняем изменение настроек
   const saveChanges = (e) => {
-    dispatch(changeWidget({ ...props, ...data }));
+    dispatch(changeWidget(settings));
   };
 
   return (
     <Col>
       <Row>
-        <Form.Group controlId="imageUrl">
-          <Form.Label>URL изображения</Form.Label>
-          <Form.Control name="src" value={data.src} onChange={handleInput} />
+        <Form.Group>
+          <Form.Label>Текст</Form.Label>
+          <Form.Control
+            name="text"
+            defaultValue={settings.text}
+            onChange={handleInput}
+          />
         </Form.Group>
       </Row>
       <Row>
