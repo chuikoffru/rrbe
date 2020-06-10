@@ -1,26 +1,15 @@
 import React, { useState } from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { changeWidget } from "../../redux/sections/actions";
 
 const TextSettings = (props) => {
   const dispatch = useDispatch();
 
-  // Получаем данные выбранного виджета
-  const selectedWidget = useSelector((state) => state.sections.selectedWidget);
-
-  // Получаем настройки виджета
-  const { sectionIndex, columnIndex, rowIndex } = selectedWidget;
-  const params = useSelector(
-    (state) =>
-      state.sections.sections[sectionIndex].columns[columnIndex][rowIndex].props
-  );
-
-  const [settings, setSettings] = useState(params);
+  const [settings, setSettings] = useState(props);
 
   const handleInput = (e) => {
     setSettings({ ...settings, [e.target.name]: e.target.value });
-    dispatch(changeWidget(settings));
   };
 
   // Сохраняем изменение настроек
@@ -36,7 +25,7 @@ const TextSettings = (props) => {
           <Form.Control
             name="text"
             defaultValue={settings.text}
-            onChange={handleInput}
+            onInput={handleInput}
           />
         </Form.Group>
       </Row>

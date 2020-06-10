@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { changeWidget } from "../../redux/sections/actions";
@@ -23,12 +23,6 @@ const ImageSettings = (props) => {
   const saveChanges = (e) => {
     dispatch(changeWidget(settings));
   };
-
-  // Следим за изменениями настроек
-  useEffect(() => {
-    console.log("settings", settings);
-    return () => dispatch(changeWidget(settings));
-  }, [settings, dispatch]);
 
   return (
     <Col>

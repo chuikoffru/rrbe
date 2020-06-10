@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { changeWidget } from "../../redux/sections/actions";
@@ -8,20 +8,13 @@ const ButtonSettings = (props) => {
   const [settings, setSettings] = useState(props);
 
   const handleInput = (e) => {
-    setSettings({ [e.target.name]: e.target.value });
-    dispatch(changeWidget(settings));
+    setSettings({ ...settings, [e.target.name]: e.target.value });
   };
 
   // Сохраняем изменение настроек
   const saveChanges = (e) => {
     dispatch(changeWidget(settings));
   };
-
-  // Следим за изменениями настроек
-  useEffect(() => {
-    // Обновляем в реальном времени
-    //dispatch(changeWidget(settings));
-  }, [dispatch, settings]);
 
   return (
     <Col>
