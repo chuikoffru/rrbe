@@ -10,12 +10,14 @@ import "./section.scss";
 const Section = (props) => {
   const dispatch = useDispatch();
 
+  // Выбираем виджета
   const setSelectedWidget = (event, columnIndex, rowIndex) => {
-    console.log("event", event);
+    event.stopPropagation();
     dispatch(selectWidget(props.sectionIndex, columnIndex, rowIndex));
   };
 
-  const selectSection = (sectionIndex) => {
+  // Выбираем секцию
+  const selectSection = (event, sectionIndex) => {
     console.log("section id", sectionIndex);
   };
 
@@ -23,20 +25,21 @@ const Section = (props) => {
     <Row
       id={props.section.id}
       style={props.section.settings.styles}
-      onClick={(event) => selectSection(props.sectionIndex)}
+      onClick={(event) => selectSection(event, props.sectionIndex)}
     >
       {props.section.columns.map((rows, columnIndex) => (
         <Col key={columnIndex} className="colDrop">
           {rows.map((row, rowIndex) => {
             const Widget = loadable(() => import(`../${row.widgetName}`));
             return (
-              <Widget
+              <div
                 key={rowIndex}
-                {...row.props}
-                onClick={(event) =>
+                onClickCapture={(event) =>
                   setSelectedWidget(event, columnIndex, rowIndex)
                 }
-              />
+              >
+                <Widget {...row.props} />
+              </div>
             );
           })}
         </Col>

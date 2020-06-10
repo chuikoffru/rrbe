@@ -3,7 +3,7 @@ import { Col, Row, Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { changeWidget } from "../../redux/sections/actions";
 
-const ImageSettings = (props) => {
+const ButtonSettings = (props) => {
   const dispatch = useDispatch();
   const [settings, setSettings] = useState(props);
 
@@ -27,10 +27,10 @@ const ImageSettings = (props) => {
     <Col>
       <Row>
         <Form.Group controlId="imageUrl">
-          <Form.Label>URL изображения</Form.Label>
+          <Form.Label>Текст на кнопке</Form.Label>
           <Form.Control
-            name="src"
-            value={settings.src}
+            name="text"
+            value={settings.text}
             onChange={handleInput}
           />
         </Form.Group>
@@ -44,4 +44,4 @@ const ImageSettings = (props) => {
   );
 };
 
-export default ImageSettings;
+export default ButtonSettings;

@@ -2,6 +2,7 @@
 
 Редактор шаблонов на react redux bootstrap.
 https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/1.png
+
 [![RRBE](./docs/1.png)](https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/1.png)
 
 [![RRBE](./docs/2.png)](https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/2.png)

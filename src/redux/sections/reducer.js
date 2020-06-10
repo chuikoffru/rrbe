@@ -36,6 +36,12 @@ const initialState = {
               text: "Привет еще раз",
             },
           },
+          {
+            widgetName: "Button",
+            props: {
+              text: "Нажми меня",
+            },
+          },
         ],
         [
           {
@@ -59,35 +65,35 @@ const initialState = {
 export const sectionsReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_SECTION:
+      // Добавляем новую секцию
       return { ...state, sections: [...state.sections, action.payload] };
+
     case ADD_WIDGET:
-      console.log("addWidget", action);
+      // Добавляем новый виджет
       return update.set(
         state,
         `sections.${action.payload.sectionIndex}.columns.${action.payload.columnIndex}`,
         (column) => [...column, action.payload.data]
       );
+
     case CHANGE_WIDGET:
+      // Изменяем настройки виджета
       console.log("changeWidget", action);
-      const { sectionIndex, columnIndex, rowIndex } = action.payload;
-      console.log(
-        "update.set()",
-        update.set(
-          state,
-          `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}.props`,
-          (props) => action.payload
-        )
-      );
-      /* return update.set(
+      const { sectionIndex, columnIndex, rowIndex } = state.selectedWidget;
+      return update.set(
         state,
-        `sections.${action.payload.sectionIndex}.columns.${action.payload.columnIndex}.props`,
-        (props) => {...props, action.payload.data}
-      ); */
-      return state;
+        `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}.props`,
+        action.payload.settings
+      );
+
     case SELECT_WIDGET:
+      // Сделать виджет активным (выбранным)
       return { ...state, selectedWidget: action.payload };
+
     case SELECT_SECTION:
+      // Сделать секцию активной (выбранной)
       return { ...state, selectedSection: action.payload };
+
     default:
       return state;
   }
