@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { DropTarget } from "react-dnd";
 import { useDispatch } from "react-redux";
 import loadable from "@loadable/component";
@@ -15,8 +15,6 @@ const Column = ({
   connectDropTarget,
   lastDroppedItem,
 }) => {
-  const colRef = useRef({});
-
   const dispatch = useDispatch();
 
   // Выбираем виджет
@@ -26,7 +24,7 @@ const Column = ({
   };
 
   return connectDropTarget(
-    <div className="col" key={columnIndex} ref={colRef}>
+    <div className="col" key={columnIndex}>
       {rows.map((row, rowIndex) => {
         const Widget = loadable(() => import(`../widgets/${row.widgetName}`));
         return (

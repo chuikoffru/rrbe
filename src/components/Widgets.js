@@ -6,20 +6,27 @@ import Widget from "./Widget";
 import { ReactComponent as SharePost } from "../icons/share-post.svg";
 import { ReactComponent as TextEditor } from "../icons/text-editor.svg";
 import { ReactComponent as VideoClip } from "../icons/video-clip.svg";
+import { ReactComponent as News } from "../icons/news.svg";
 
 import "./scss/widgets.scss";
 
 const Widgets = (props) => {
   const widgets = [
-    { id: 1, name: "Text", icon: <TextEditor /> },
-    { id: 2, name: "Image", icon: <SharePost /> },
-    { id: 3, name: "Video", icon: <VideoClip /> },
+    { id: 1, name: "Text", type: "element", icon: <TextEditor /> },
+    { id: 2, name: "Image", type: "element", icon: <SharePost /> },
+    { id: 3, name: "Video", type: "element", icon: <VideoClip /> },
+    { id: 4, name: "News", type: "component", icon: <News /> },
   ];
 
   return (
     <Row className="widgets">
       {widgets.map((widget, index) => (
-        <Widget key={index} widget={widget} />
+        <Widget
+          key={index}
+          widget={widget}
+          name={widget.name}
+          type={widget.type}
+        />
       ))}
     </Row>
   );
