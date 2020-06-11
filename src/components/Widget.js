@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { Card } from "react-bootstrap";
 import { DragSource } from "react-dnd";
+import classNames from "classnames";
 //import { useDispatch } from "react-redux";
 //import { addWidget } from "../redux/sections/actions";
 //import { generateId } from "../helpers/string";
@@ -21,7 +22,13 @@ const Widget = ({ widget, isDropped, isDragging, connectDragSource }) => {
   }; */
 
   return connectDragSource(
-    <div ref={widgetRef} className="widgets__item">
+    <div
+      ref={widgetRef}
+      className={classNames({
+        widgets__item: true,
+        isDragging,
+      })}
+    >
       <Card>
         <Card.Body>{widget.icon}</Card.Body>
       </Card>

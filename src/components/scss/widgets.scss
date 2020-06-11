@@ -5,5 +5,8 @@
       max-width: 40px;
       max-height: 40px;
     }
+    &.isDragging {
+      opacity: 0.4;
+    }
   }
 }
