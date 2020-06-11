@@ -3,14 +3,19 @@ import { Col, Row, Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { changeWidget } from "../../redux/sections/actions";
 
-const TextSettings = (props) => {
-  const dispatch = useDispatch();
+export const defaultParams = {
+  widgetName: "News",
+  props: {
+    category: "",
+  },
+};
 
+const NewsSettings = (props) => {
+  const dispatch = useDispatch();
   const [settings, setSettings] = useState(props);
 
   const handleInput = (e) => {
     setSettings({ ...settings, [e.target.name]: e.target.value });
-    //dispatch(changeWidget({ ...props, [e.target.name]: e.target.value }));
   };
 
   // Сохраняем изменение настроек
@@ -22,21 +27,19 @@ const TextSettings = (props) => {
     <Col>
       <Row>
         <Form.Group>
-          <Form.Label>Текст</Form.Label>
+          <Form.Label>Категории новостей</Form.Label>
           <Form.Control
-            name="text"
-            value={settings.text}
+            as="select"
+            name="category"
+            value={settings.category}
             onChange={handleInput}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Размер текста</Form.Label>
-          <Form.Control
-            type="range"
-            name="fontSize"
-            value={props.style && props.style.fontSize}
-            onChange={handleInput}
-          />
+          >
+            <option>Политика</option>
+            <option>Религия</option>
+            <option>Экономика</option>
+            <option>Общество</option>
+            <option>Право</option>
+          </Form.Control>
         </Form.Group>
       </Row>
       <Row>
@@ -48,4 +51,4 @@ const TextSettings = (props) => {
   );
 };
 
-export default TextSettings;
+export default NewsSettings;

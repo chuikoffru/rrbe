@@ -1,0 +1,9 @@
+.widgets {
+  &__item {
+    margin: 10px;
+    svg {
+      max-width: 40px;
+      max-height: 40px;
+    }
+  }
+}

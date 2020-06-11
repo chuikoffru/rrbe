@@ -1,7 +1,6 @@
 # RRBE by Altrp
 
 Редактор шаблонов на react redux bootstrap.
-https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/1.png
 
 [![RRBE](./docs/1.png)](https://raw.githubusercontent.com/chuikoffru/rrbe/master/docs/1.png)
 
@@ -30,7 +29,6 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
 
 ## Learn More
 

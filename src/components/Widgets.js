@@ -1,46 +1,27 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { Row } from "react-bootstrap";
 
-import { Row, Col } from "react-bootstrap";
-
-import { addWidget } from "../redux/sections/actions";
+import Widget from "./Widget";
 
 import { ReactComponent as SharePost } from "../icons/share-post.svg";
 import { ReactComponent as TextEditor } from "../icons/text-editor.svg";
 import { ReactComponent as VideoClip } from "../icons/video-clip.svg";
 
-const Widgets = (props) => {
-  const dispatch = useDispatch();
+import "./scss/widgets.scss";
 
-  const addNewText = (e) => {
-    const data = {
-      widgetName: "Text",
-      props: {
-        text: "Динамически добавили текст",
-      },
-    };
-    dispatch(addWidget(0, 1, data));
-  };
+const Widgets = (props) => {
+  const widgets = [
+    { id: 1, name: "Text", icon: <TextEditor /> },
+    { id: 2, name: "Image", icon: <SharePost /> },
+    { id: 3, name: "Video", icon: <VideoClip /> },
+  ];
 
   return (
-    <>
-      <Row>
-        <Col>
-          <SharePost width="60" height="60" />
-        </Col>
-        <Col>
-          <TextEditor width="60" height="60" onClick={addNewText} />
-        </Col>
-        <Col>
-          <VideoClip width="60" height="60" />
-        </Col>
-      </Row>
-      <Row>
-        <Col></Col>
-        <Col></Col>
-        <Col></Col>
-      </Row>
-    </>
+    <Row className="widgets">
+      {widgets.map((widget, index) => (
+        <Widget key={index} widget={widget} />
+      ))}
+    </Row>
   );
 };
 

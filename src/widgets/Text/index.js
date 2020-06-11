@@ -14,6 +14,7 @@ const Text = (props) => {
       suppressContentEditableWarning={true}
       contentEditable={true}
       onBlur={saveText}
+      style={props.style}
     >
       {props.text}
     </div>
