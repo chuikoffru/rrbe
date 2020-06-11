@@ -22,7 +22,7 @@ const Sections = ({ section, sectionIndex }) => {
           rows={rows}
           sectionIndex={sectionIndex}
           columnIndex={columnIndex}
-          accepts={["widget"]}
+          accepts={["elements"]}
           onDrop={(item) => handleDrop(item, columnIndex, sectionIndex)}
         />
       ))}

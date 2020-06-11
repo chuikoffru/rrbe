@@ -2,6 +2,7 @@ import React from "react";
 import { DropTarget } from "react-dnd";
 import { useDispatch } from "react-redux";
 import loadable from "@loadable/component";
+import classNames from "classnames";
 
 import { selectWidget } from "../redux/sections/actions";
 
@@ -24,7 +25,10 @@ const Column = ({
   };
 
   return connectDropTarget(
-    <div className="col" key={columnIndex}>
+    <div
+      key={columnIndex}
+      className={classNames({ col: true, isActive: isOver && canDrop })}
+    >
       {rows.map((row, rowIndex) => {
         const Widget = loadable(() => import(`../widgets/${row.widgetName}`));
         return (

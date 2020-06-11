@@ -37,9 +37,9 @@ const Widget = ({ widget, isDropped, isDragging, connectDragSource }) => {
 };
 
 export default DragSource(
-  (props) => props.type,
+  (props) => props.widget.type,
   {
-    beginDrag: (props) => ({ name: props.name }),
+    beginDrag: (props) => ({ name: props.widget.name }),
   },
   (connect, monitor) => ({
     connectDragSource: connect.dragSource(),

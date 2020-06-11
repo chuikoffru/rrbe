@@ -21,12 +21,7 @@ const Widgets = (props) => {
   return (
     <Row className="widgets">
       {widgets.map((widget, index) => (
-        <Widget
-          key={index}
-          widget={widget}
-          name={widget.name}
-          type={widget.type}
-        />
+        <Widget key={index} widget={widget} />
       ))}
     </Row>
   );
