@@ -6,10 +6,10 @@ import loadWidget from "../helpers/loadWidget";
 const Settings = (props) => {
   // Получаем данные выбранного виджета
   const { sectionIndex, columnIndex, rowIndex, widgetName } = useSelector(
-    (state) => state.sections.selectedWidget
+    (state) => state.sections.present.selectedWidget
   );
 
-  const sections = useSelector((state) => state.sections.sections);
+  const sections = useSelector((state) => state.sections.present.sections);
 
   // Если виджет не выбран то показываем сообщение
   if (!widgetName) return <p>Выберите виджет для настройки</p>;
