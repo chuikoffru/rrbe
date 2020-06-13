@@ -101,7 +101,7 @@ export const sectionsReducer = (state = initialState, action) => {
       console.log("changeWidget", action);
       return update.set(
         state,
-        `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}.props`,
+        `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}.params`,
         action.payload.settings
       );
 

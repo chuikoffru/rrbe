@@ -14,7 +14,7 @@ const Settings = (props) => {
   // Если виджет не выбран то показываем сообщение
   if (!widgetName) return <p>Выберите виджет для настройки</p>;
 
-  const settings = sections[sectionIndex].columns[columnIndex][rowIndex].props;
+  const settings = sections[sectionIndex].columns[columnIndex][rowIndex].params;
 
   // Загрузаем страницу настроек виджета
   const WidgetSettings = loadable(() => loadWidget(widgetName, true));
