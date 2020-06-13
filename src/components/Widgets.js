@@ -2,6 +2,7 @@ import React from "react";
 import { Row } from "react-bootstrap";
 
 import Widget from "./Widget";
+import { ItemTypes } from "../helpers/itemTypes";
 
 import { ReactComponent as SharePost } from "../icons/share-post.svg";
 import { ReactComponent as TextEditor } from "../icons/text-editor.svg";
@@ -12,10 +13,10 @@ import "./scss/widgets.scss";
 
 const Widgets = (props) => {
   const widgets = [
-    { id: 1, name: "Text", type: "element", icon: <TextEditor /> },
-    { id: 2, name: "Image", type: "element", icon: <SharePost /> },
-    { id: 3, name: "Video", type: "element", icon: <VideoClip /> },
-    { id: 4, name: "News", type: "component", icon: <News /> },
+    { id: 1, name: "Text", type: ItemTypes.ELEMENTS, icon: <TextEditor /> },
+    { id: 2, name: "Image", type: ItemTypes.ELEMENTS, icon: <SharePost /> },
+    { id: 3, name: "Video", type: ItemTypes.ELEMENTS, icon: <VideoClip /> },
+    { id: 4, name: "News", type: ItemTypes.COMPONENTS, icon: <News /> },
   ];
 
   return (

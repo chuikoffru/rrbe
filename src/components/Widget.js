@@ -1,14 +1,21 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Card } from "react-bootstrap";
-import { DragSource } from "react-dnd";
+import { useDrag } from "react-dnd";
 import classNames from "classnames";
 //import { useDispatch } from "react-redux";
 //import { addWidget } from "../redux/sections/actions";
 //import { generateId } from "../helpers/string";
 
-const Widget = ({ widget, isDropped, isDragging, connectDragSource }) => {
+const Widget = ({ widget }) => {
   //const dispatch = useDispatch();
-  const widgetRef = useRef({});
+
+  const [{ isDragging }, drag] = useDrag({
+    item: { ...widget },
+    collect: (monitor) => ({
+      isDragging: monitor.isDragging(),
+    }),
+    //end: (item, monitor) => console.log("item", item, monitor),
+  });
 
   /* const addNewWidget = (e) => {
     const data = {
@@ -21,9 +28,9 @@ const Widget = ({ widget, isDropped, isDragging, connectDragSource }) => {
     dispatch(addWidget(0, 1, data));
   }; */
 
-  return connectDragSource(
+  return (
     <div
-      ref={widgetRef}
+      ref={drag}
       className={classNames({
         widgets__item: true,
         isDragging,
@@ -36,13 +43,4 @@ const Widget = ({ widget, isDropped, isDragging, connectDragSource }) => {
   );
 };
 
-export default DragSource(
-  (props) => props.widget.type,
-  {
-    beginDrag: (props) => ({ name: props.widget.name }),
-  },
-  (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
-  })
-)(Widget);
+export default Widget;

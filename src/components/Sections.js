@@ -4,6 +4,8 @@ import { Row } from "react-bootstrap";
 
 import Column from "./Column";
 
+import { ItemTypes } from "../helpers/itemTypes";
+
 const Sections = ({ section, sectionIndex }) => {
   const handleDrop = useCallback((item, columnIndex, sectionIndex) => {
     console.log(
@@ -22,7 +24,7 @@ const Sections = ({ section, sectionIndex }) => {
           rows={rows}
           sectionIndex={sectionIndex}
           columnIndex={columnIndex}
-          accepts={["elements"]}
+          accept={[ItemTypes.ELEMENTS]}
           onDrop={(item) => handleDrop(item, columnIndex, sectionIndex)}
         />
       ))}

@@ -1,22 +1,22 @@
 import React from "react";
-import { DropTarget } from "react-dnd";
+import { useDrop } from "react-dnd";
 import { useDispatch } from "react-redux";
 import loadable from "@loadable/component";
 import classNames from "classnames";
 
 import { selectWidget } from "../redux/sections/actions";
 
-const Column = ({
-  rows,
-  columnIndex,
-  sectionIndex,
-  accepts,
-  isOver,
-  canDrop,
-  connectDropTarget,
-  lastDroppedItem,
-}) => {
+const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
   const dispatch = useDispatch();
+
+  const [{ isOver, canDrop }, drop] = useDrop({
+    accept,
+    drop: onDrop,
+    collect: (monitor) => ({
+      isOver: monitor.isOver(),
+      canDrop: monitor.canDrop(),
+    }),
+  });
 
   // Выбираем виджет
   const setSelectedWidget = (event, columnIndex, rowIndex, widgetName) => {
@@ -24,11 +24,13 @@ const Column = ({
     dispatch(selectWidget(sectionIndex, columnIndex, rowIndex, widgetName));
   };
 
-  return connectDropTarget(
+  return (
     <div
       key={columnIndex}
+      ref={drop}
       className={classNames({ col: true, isActive: isOver && canDrop })}
     >
+      {isOver && canDrop ? "Кидай сюда" : `Принимаем: ${accept.join(", ")}`}
       {rows.map((row, rowIndex) => {
         const Widget = loadable(() => import(`../widgets/${row.widgetName}`));
         return (
@@ -46,16 +48,4 @@ const Column = ({
   );
 };
 
-export default DropTarget(
-  (props) => props.accepts,
-  {
-    drop(props, monitor) {
-      props.onDrop(monitor.getItem());
-    },
-  },
-  (connect, monitor) => ({
-    connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver(),
-    canDrop: monitor.canDrop(),
-  })
-)(Column);
+export default Column;
