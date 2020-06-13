@@ -1,5 +1,10 @@
 .col {
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  &.canDrop {
+    border: 1px dotted #cccccc;
+  }
   &.isActive {
-    border: 1px solid #cccccc;
+    background-color: #ff6f3b69;
   }
 }

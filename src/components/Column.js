@@ -6,6 +6,8 @@ import classNames from "classnames";
 
 import { selectWidget } from "../redux/sections/actions";
 
+import "./scss/columns.scss";
+
 const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
   const dispatch = useDispatch();
 
@@ -28,19 +30,24 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
     <div
       key={columnIndex}
       ref={drop}
-      className={classNames({ col: true, isActive: isOver && canDrop })}
+      className={classNames({
+        col: true,
+        canDrop,
+        isActive: isOver && canDrop,
+      })}
     >
-      {isOver && canDrop ? "Кидай сюда" : `Принимаем: ${accept.join(", ")}`}
-      {rows.map((row, rowIndex) => {
-        const Widget = loadable(() => import(`../widgets/${row.widgetName}`));
+      {rows.map((widget, rowIndex) => {
+        const WidgetComponent = loadable(() =>
+          import(`../widgets/${widget.name}`)
+        );
         return (
           <div
             key={rowIndex}
             onClickCapture={(event) =>
-              setSelectedWidget(event, columnIndex, rowIndex, row.widgetName)
+              setSelectedWidget(event, columnIndex, rowIndex, widget.name)
             }
           >
-            <Widget {...row.props} />
+            <WidgetComponent {...widget.params} />
           </div>
         );
       })}

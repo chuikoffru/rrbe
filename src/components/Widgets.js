@@ -13,10 +13,40 @@ import "./scss/widgets.scss";
 
 const Widgets = (props) => {
   const widgets = [
-    { id: 1, name: "Text", type: ItemTypes.ELEMENTS, icon: <TextEditor /> },
-    { id: 2, name: "Image", type: ItemTypes.ELEMENTS, icon: <SharePost /> },
-    { id: 3, name: "Video", type: ItemTypes.ELEMENTS, icon: <VideoClip /> },
-    { id: 4, name: "News", type: ItemTypes.COMPONENTS, icon: <News /> },
+    {
+      id: 1,
+      name: "Text",
+      type: ItemTypes.ELEMENTS,
+      icon: <TextEditor />,
+      params: {
+        text: "Привет",
+      },
+    },
+    {
+      id: 2,
+      name: "Image",
+      type: ItemTypes.ELEMENTS,
+      icon: <SharePost />,
+      params: {
+        src: "./favicon.ico",
+      },
+    },
+    {
+      id: 3,
+      name: "Video",
+      type: ItemTypes.ELEMENTS,
+      icon: <VideoClip />,
+      params: {
+        url: "https://www.youtube.com/embed/Ti2Q4sQkNdU",
+      },
+    },
+    {
+      id: 4,
+      name: "News",
+      type: ItemTypes.COMPONENTS,
+      icon: <News />,
+      params: {},
+    },
   ];
 
   return (

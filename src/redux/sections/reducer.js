@@ -8,12 +8,15 @@ import {
   SELECT_SECTION,
 } from "../types";
 
+import { ItemTypes } from "../../helpers/itemTypes";
+import { generateId } from "../../helpers/string";
+
 const initialState = {
   selectedWidget: {
     sectionIndex: null,
     columnIndex: null,
     rowIndex: null,
-    widgetName: null,
+    name: null,
   },
   selectedSection: null,
   sections: [
@@ -30,34 +33,44 @@ const initialState = {
       columns: [
         [
           {
-            widgetName: "Text",
-            props: {
+            id: generateId(),
+            name: "Text",
+            type: ItemTypes.ELEMENTS,
+            params: {
               text: "Привет",
             },
           },
           {
-            widgetName: "Text",
-            props: {
+            id: generateId(),
+            name: "Text",
+            type: ItemTypes.ELEMENTS,
+            params: {
               text: "Привет еще раз",
             },
           },
           {
-            widgetName: "Button",
-            props: {
+            id: generateId(),
+            name: "Button",
+            type: ItemTypes.ELEMENTS,
+            params: {
               text: "Нажми меня",
             },
           },
         ],
         [
           {
-            widgetName: "Text",
-            props: {
+            id: generateId(),
+            name: "Text",
+            type: ItemTypes.ELEMENTS,
+            params: {
               text: "Текст сверху картинки",
             },
           },
           {
-            widgetName: "Image",
-            props: {
+            id: generateId(),
+            name: "Image",
+            type: ItemTypes.ELEMENTS,
+            params: {
               src: "./favicon.ico",
             },
           },
