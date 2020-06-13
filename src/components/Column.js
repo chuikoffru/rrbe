@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { useDrop } from "react-dnd";
 import { useDispatch } from "react-redux";
 import loadable from "@loadable/component";
 import classNames from "classnames";
 
 import { selectWidget } from "../redux/sections/actions";
+import loadWidget from "../helpers/loadWidget";
 
 import "./scss/columns.scss";
 
@@ -37,9 +38,8 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
       })}
     >
       {rows.map((widget, rowIndex) => {
-        const WidgetComponent = loadable(() =>
-          import(`../widgets/${widget.name}`)
-        );
+        const WidgetComponent = loadable(() => loadWidget(widget.name));
+
         return (
           <div
             key={rowIndex}
@@ -47,7 +47,9 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
               setSelectedWidget(event, columnIndex, rowIndex, widget.name)
             }
           >
-            <WidgetComponent {...widget.params} />
+            <Suspense fallback={<div>Loading...</div>}>
+              <WidgetComponent {...widget.params} />
+            </Suspense>
           </div>
         );
       })}

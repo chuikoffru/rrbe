@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import loadable from "@loadable/component";
+import loadWidget from "../helpers/loadWidget";
 
 const Settings = (props) => {
   // Получаем данные выбранного виджета
@@ -16,11 +17,9 @@ const Settings = (props) => {
   const settings = sections[sectionIndex].columns[columnIndex][rowIndex].props;
 
   // Загрузаем страницу настроек виджета
-  const WidgetSettings = loadable(() =>
-    import(`../widgets/${widgetName}/settings`)
-  );
+  const WidgetSettings = loadable(() => loadWidget(widgetName, true));
 
-  return WidgetSettings && <WidgetSettings {...settings} />;
+  return <WidgetSettings {...settings} />;
 };
 
 export default Settings;
