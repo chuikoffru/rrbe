@@ -1,0 +1,9 @@
+.rrbe {
+  display: flex;
+  &__left {
+    flex-basis: 30%;
+  }
+  &__right {
+    flex-basis: 70%;
+  }
+}
