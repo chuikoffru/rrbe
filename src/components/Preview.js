@@ -16,8 +16,25 @@ const Preview = () => {
     (item) => {
       delete item.icon;
       item.id = generateId();
-      // Устанавливаем дефолтное количество колонок
-      item.columns = new Array(item.params.columns).fill([]);
+      // Проверяем тип секции
+      if (item.type === ItemTypes.COMPONENTS) {
+        item.type = ItemTypes.ELEMENTS;
+        item.columns = [
+          [
+            {
+              id: generateId(),
+              name: item.name,
+              type: ItemTypes.ELEMENTS,
+              params: { ...item.params },
+            },
+          ],
+        ];
+      } else {
+        // Устанавливаем дефолтное количество колонок
+        item.columns = new Array(item.params.columns).fill([]);
+      }
+      console.log("item", item);
+
       dispatch(addSection({ ...item }));
     },
     [dispatch]
@@ -33,7 +50,7 @@ const Preview = () => {
         />
       ))}
       <DropSectionContainer
-        accept={[ItemTypes.COMPONENTS]}
+        accept={[ItemTypes.COMPONENTS, ItemTypes.SECTIONS]}
         onDrop={(item) => addNewSection(item)}
       />
     </>
