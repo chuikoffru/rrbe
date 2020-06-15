@@ -4,10 +4,11 @@ import { Row } from "react-bootstrap";
 import Widget from "./Widget";
 import { ItemTypes } from "../helpers/itemTypes";
 
-import { ReactComponent as SharePost } from "../icons/share-post.svg";
-import { ReactComponent as TextEditor } from "../icons/text-editor.svg";
-import { ReactComponent as VideoClip } from "../icons/video-clip.svg";
-import { ReactComponent as News } from "../icons/news.svg";
+import { ReactComponent as SharePostIcon } from "../icons/share-post.svg";
+import { ReactComponent as TextEditorIcon } from "../icons/text-editor.svg";
+import { ReactComponent as VideoClipIcon } from "../icons/video-clip.svg";
+import { ReactComponent as NewsIcon } from "../icons/news.svg";
+import { ReactComponent as SectionIcon } from "../icons/columns.svg";
 
 import "./scss/widgets.scss";
 
@@ -17,7 +18,7 @@ const Widgets = (props) => {
       id: 1,
       name: "Text",
       type: ItemTypes.ELEMENTS,
-      icon: <TextEditor />,
+      icon: <TextEditorIcon />,
       params: {
         text: "Привет",
       },
@@ -26,7 +27,7 @@ const Widgets = (props) => {
       id: 2,
       name: "Image",
       type: ItemTypes.ELEMENTS,
-      icon: <SharePost />,
+      icon: <SharePostIcon />,
       params: {
         src: "./favicon.ico",
       },
@@ -35,7 +36,7 @@ const Widgets = (props) => {
       id: 3,
       name: "Video",
       type: ItemTypes.ELEMENTS,
-      icon: <VideoClip />,
+      icon: <VideoClipIcon />,
       params: {
         url: "https://www.youtube.com/embed/Ti2Q4sQkNdU",
       },
@@ -44,8 +45,18 @@ const Widgets = (props) => {
       id: 4,
       name: "News",
       type: ItemTypes.COMPONENTS,
-      icon: <News />,
+      icon: <NewsIcon />,
       params: {},
+    },
+    {
+      id: 5,
+      name: "Section",
+      type: ItemTypes.COMPONENTS,
+      icon: <SectionIcon />,
+      params: {
+        columns: 2,
+        styles: {},
+      },
     },
   ];
 

@@ -18,7 +18,7 @@ const UndoRedo = (props) => {
   return (
     <>
       <Button
-        variant="dark"
+        variant="light"
         size="sm"
         className="mr-2"
         disabled={isUndoable}
@@ -26,7 +26,7 @@ const UndoRedo = (props) => {
       >
         Отменить
       </Button>
-      <Button variant="dark" size="sm" disabled={isRedoble} onClick={redo}>
+      <Button variant="light" size="sm" disabled={isRedoble} onClick={redo}>
         Вернуть
       </Button>
     </>

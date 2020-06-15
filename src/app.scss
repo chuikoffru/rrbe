@@ -1,9 +1,14 @@
 .rrbe {
   display: flex;
   &__left {
+    height: 100vh;
+    padding: 20px;
     flex-basis: 30%;
+    color: #ffffff;
+    background-color: #333333;
   }
   &__right {
     flex-basis: 70%;
+    padding: 20px;
   }
 }

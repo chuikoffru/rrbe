@@ -14,14 +14,13 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className="rrbe">
         <div className="rrbe__left">
+          <UndoRedo />
           <h2>Виджеты</h2>
           <Widgets />
           <h2>Настройки</h2>
           <Settings />
         </div>
         <div className="rrbe__right">
-          <UndoRedo />
-          <h2>Предпросмотр</h2>
           <Preview />
         </div>
       </div>

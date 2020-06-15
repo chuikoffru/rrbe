@@ -8,9 +8,6 @@ import {
   SELECT_SECTION,
 } from "../types";
 
-import { ItemTypes } from "../../helpers/itemTypes";
-import { generateId } from "../../helpers/string";
-
 const initialState = {
   selectedWidget: {
     sectionIndex: null,
@@ -19,65 +16,7 @@ const initialState = {
     name: null,
   },
   selectedSection: null,
-  sections: [
-    {
-      id: 1,
-      name: "hero",
-      settings: {
-        columns: 2,
-        styles: {
-          padding: 10,
-          margin: 10,
-        },
-      },
-      columns: [
-        [
-          {
-            id: generateId(),
-            name: "Text",
-            type: ItemTypes.ELEMENTS,
-            params: {
-              text: "Привет",
-            },
-          },
-          {
-            id: generateId(),
-            name: "Text",
-            type: ItemTypes.ELEMENTS,
-            params: {
-              text: "Привет еще раз",
-            },
-          },
-          {
-            id: generateId(),
-            name: "Button",
-            type: ItemTypes.ELEMENTS,
-            params: {
-              text: "Нажми меня",
-            },
-          },
-        ],
-        [
-          {
-            id: generateId(),
-            name: "Text",
-            type: ItemTypes.ELEMENTS,
-            params: {
-              text: "Текст сверху картинки",
-            },
-          },
-          {
-            id: generateId(),
-            name: "Image",
-            type: ItemTypes.ELEMENTS,
-            params: {
-              src: "./favicon.ico",
-            },
-          },
-        ],
-      ],
-    },
-  ],
+  sections: [],
 };
 
 export const sectionsReducer = (state = initialState, action) => {

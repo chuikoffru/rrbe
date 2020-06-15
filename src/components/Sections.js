@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { Row } from "react-bootstrap";
+import { Row, Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { addWidget } from "../redux/sections/actions";
 import { generateId } from "../helpers/string";
@@ -10,7 +10,8 @@ import { ItemTypes } from "../helpers/itemTypes";
 
 const Sections = ({ section, sectionIndex }) => {
   const dispatch = useDispatch();
-  const handleDrop = useCallback(
+
+  const addNewWidget = useCallback(
     (item, columnIndex) => {
       delete item.icon;
       dispatch(
@@ -21,18 +22,22 @@ const Sections = ({ section, sectionIndex }) => {
   );
 
   return (
-    <Row id={section.id} style={section.settings.styles}>
-      {section.columns.map((rows, columnIndex) => (
-        <Column
-          key={columnIndex}
-          rows={rows}
-          sectionIndex={sectionIndex}
-          columnIndex={columnIndex}
-          accept={[ItemTypes.ELEMENTS]}
-          onDrop={(item) => handleDrop(item, columnIndex)}
-        />
-      ))}
-    </Row>
+    <div id={section.id} style={section.params && section.params.styles}>
+      <Container>
+        <Row>
+          {section.columns.map((rows, columnIndex) => (
+            <Column
+              key={columnIndex}
+              rows={rows}
+              sectionIndex={sectionIndex}
+              columnIndex={columnIndex}
+              accept={[ItemTypes.ELEMENTS]}
+              onDrop={(item) => addNewWidget(item, columnIndex)}
+            />
+          ))}
+        </Row>
+      </Container>
+    </div>
   );
 };
 

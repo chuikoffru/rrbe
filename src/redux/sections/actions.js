@@ -1,4 +1,9 @@
-import { ADD_WIDGET, CHANGE_WIDGET, SELECT_WIDGET } from "../types";
+import {
+  ADD_WIDGET,
+  CHANGE_WIDGET,
+  SELECT_WIDGET,
+  ADD_SECTION,
+} from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
   return {
@@ -28,6 +33,15 @@ export function changeWidget(settings) {
     type: CHANGE_WIDGET,
     payload: {
       settings,
+    },
+  };
+}
+
+export function addSection(section) {
+  return {
+    type: ADD_SECTION,
+    payload: {
+      ...section,
     },
   };
 }
