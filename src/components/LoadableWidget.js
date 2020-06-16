@@ -8,7 +8,7 @@ const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex }) => {
   const dispatch = useDispatch();
   const WidgetComponent = useMemo(
     () => loadable(() => loadWidget(widget.name)),
-    [widget.name]
+    [widget]
   );
 
   // Выбираем виджет
