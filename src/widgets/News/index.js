@@ -3,6 +3,7 @@ import React from "react";
 import "./news.scss";
 
 const News = (props) => {
+  console.log("News init");
   //const news = await axios.get(`/api/posts/${props.category}`).data;
   const news = [
     {

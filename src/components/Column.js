@@ -1,16 +1,12 @@
-import React, { Suspense } from "react";
+import React from "react";
 import { useDrop } from "react-dnd";
-import { useDispatch } from "react-redux";
-import loadable from "@loadable/component";
 import classNames from "classnames";
 
-import { selectWidget } from "../redux/sections/actions";
-import loadWidget from "../helpers/loadWidget";
-
 import "./scss/columns.scss";
+import LoadableWidget from "./LoadableWidget";
 
 const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
-  const dispatch = useDispatch();
+  console.log("Column init");
 
   const [{ isOver, canDrop }, drop] = useDrop({
     accept,
@@ -20,12 +16,6 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
       canDrop: monitor.canDrop(),
     }),
   });
-
-  // Выбираем виджет
-  const setSelectedWidget = (event, columnIndex, rowIndex, widgetName) => {
-    event.stopPropagation();
-    dispatch(selectWidget(sectionIndex, columnIndex, rowIndex, widgetName));
-  };
 
   return (
     <div
@@ -37,22 +27,15 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
         isActive: isOver && canDrop,
       })}
     >
-      {rows.map((widget, rowIndex) => {
-        const WidgetComponent = loadable(() => loadWidget(widget.name));
-
-        return (
-          <div
-            key={rowIndex}
-            onClickCapture={(event) =>
-              setSelectedWidget(event, columnIndex, rowIndex, widget.name)
-            }
-          >
-            <Suspense fallback={<div>Loading...</div>}>
-              <WidgetComponent {...widget.params} />
-            </Suspense>
-          </div>
-        );
-      })}
+      {rows.map((widget, rowIndex) => (
+        <LoadableWidget
+          key={widget.id}
+          widget={widget}
+          sectionIndex={sectionIndex}
+          rowIndex={rowIndex}
+          columnIndex={columnIndex}
+        />
+      ))}
     </div>
   );
 };

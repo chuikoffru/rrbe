@@ -1,0 +1,37 @@
+import React, { Suspense, useCallback, useMemo } from "react";
+import loadable from "@loadable/component";
+import loadWidget from "../helpers/loadWidget";
+import { selectWidget } from "../redux/sections/actions";
+import { useDispatch } from "react-redux";
+
+const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex }) => {
+  const dispatch = useDispatch();
+  const WidgetComponent = useMemo(
+    () => loadable(() => loadWidget(widget.name)),
+    [widget.name]
+  );
+
+  // Выбираем виджет
+  const setSelectedWidget = useCallback(
+    (event, columnIndex, rowIndex) => {
+      event.stopPropagation();
+      dispatch(selectWidget(sectionIndex, columnIndex, rowIndex, widget.name));
+    },
+    [dispatch, sectionIndex, widget.name]
+  );
+
+  return (
+    <div
+      key={rowIndex}
+      onClickCapture={(event) =>
+        setSelectedWidget(event, columnIndex, rowIndex, widget.name)
+      }
+    >
+      <Suspense fallback={<div>Loading...</div>}>
+        <WidgetComponent {...widget.params} />
+      </Suspense>
+    </div>
+  );
+};
+
+export default LoadableWidget;

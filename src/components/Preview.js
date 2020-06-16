@@ -9,6 +9,7 @@ import DropSectionContainer from "./DropSectionContainer";
 import Sections from "./Sections";
 
 const Preview = () => {
+  console.log("Preview init");
   const dispatch = useDispatch();
   const sections = useSelector((state) => state.sections.present.sections);
 
@@ -33,7 +34,6 @@ const Preview = () => {
         // Устанавливаем дефолтное количество колонок
         item.columns = new Array(item.params.columns).fill([]);
       }
-      console.log("item", item);
 
       dispatch(addSection({ ...item }));
     },
