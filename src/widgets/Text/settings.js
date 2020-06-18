@@ -28,7 +28,7 @@ const TextSettings = () => {
         <Form.Label>Размер текста</Form.Label>
         <Form.Control
           type="range"
-          name="fontSize"
+          name="style.fontSize"
           value={settings.style && settings.style.fontSize}
           onChange={onChange}
         />

@@ -9,8 +9,8 @@ const useSectionSettings = () => {
   const dispatch = useDispatch();
   // Получаем данные о секции
   const section = useSelector(
-    (state) =>
-      state.sections.present.sections[state.sections.present.selectedSection]
+    ({ sections }) =>
+      sections.present.sections[sections.present.selectedSection]
   );
 
   // Записываем новые настройки
@@ -33,7 +33,9 @@ const useSectionSettings = () => {
     }
   };
 
-  return { settings: section.params, setSettings };
+  const settings = section ? section.params : {};
+
+  return { settings, setSettings };
 };
 
 export default useSectionSettings;

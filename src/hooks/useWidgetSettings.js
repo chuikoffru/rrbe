@@ -4,15 +4,18 @@ import { changeWidget } from "../redux/sections/actions";
 const useWidgetSettings = () => {
   const dispatch = useDispatch();
   // Получаем секции
-  const sections = useSelector((state) => state.sections.present.sections);
+  const sections = useSelector(({ sections }) => sections.present.sections);
 
-  // Получаем данные выбранного виджета
+  // Получаем позицию выбранного виджета в массиве
   const { sectionIndex, columnIndex, rowIndex } = useSelector(
-    (state) => state.sections.present.selectedWidget
+    ({ sections }) => sections.present.selectedWidget
   );
 
-  // Получаем сами настройки
-  const settings = sections[sectionIndex].columns[columnIndex][rowIndex].params;
+  // Получаем данные виджета
+  const widget = sections[sectionIndex].columns[columnIndex][rowIndex];
+
+  // Получаем сами настройки если виджет выбран
+  const settings = widget ? widget.params : {};
 
   // Записываем новые настройки
   const setSettings = (params) => {

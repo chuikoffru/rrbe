@@ -4,6 +4,7 @@ import loadable from "@loadable/component";
 import loadWidget from "../helpers/loadWidget";
 import { Tabs, Tab } from "react-bootstrap";
 import { isNumber } from "../helpers/number";
+import Painter from "./Painter";
 
 const Settings = () => {
   const [showTab, setShowTab] = useState("widget");
@@ -38,11 +39,21 @@ const Settings = () => {
   return (
     <Tabs variant="pills" activeKey={showTab} onSelect={(k) => setShowTab(k)}>
       <Tab eventKey="widget" title="Виджет">
-        {widgetName ? <WidgetSettings /> : <p>Выберите виджет</p>}
+        {widgetName ? (
+          <>
+            <WidgetSettings />
+            <Painter type={showTab} />
+          </>
+        ) : (
+          <p>Выберите виджет</p>
+        )}
       </Tab>
       <Tab eventKey="section" title="Секция">
         {isNumber(selectedSectionIndex) ? (
-          <SectionSettings />
+          <>
+            <SectionSettings />
+            <Painter type={showTab} />
+          </>
         ) : (
           <p>Выберите секцию</p>
         )}
