@@ -12,8 +12,6 @@ const SectionSettings = () => {
     },
     [setSettings, settings]
   );
-
-  console.log("params", settings);
   return (
     <Form>
       <Form.Group>

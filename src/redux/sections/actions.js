@@ -5,6 +5,8 @@ import {
   ADD_SECTION,
   SELECT_SECTION,
   CHANGE_SECTION,
+  ADD_COLUMNS,
+  REMOVE_COLUMNS,
 } from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
@@ -61,5 +63,19 @@ export function changeSection(settings) {
     payload: {
       settings,
     },
+  };
+}
+
+export function addColumns(len) {
+  return {
+    type: ADD_COLUMNS,
+    payload: len,
+  };
+}
+
+export function removeColumns(len) {
+  return {
+    type: REMOVE_COLUMNS,
+    payload: len,
   };
 }

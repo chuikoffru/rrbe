@@ -54,7 +54,7 @@ const Widgets = (props) => {
       type: ItemTypes.SECTIONS,
       icon: <SectionIcon />,
       params: {
-        columns: 2,
+        columns: 3,
         styles: {},
       },
     },

@@ -7,6 +7,8 @@ import {
   SELECT_WIDGET,
   SELECT_SECTION,
   CHANGE_SECTION,
+  ADD_COLUMNS,
+  REMOVE_COLUMNS,
 } from "../types";
 
 const initialState = {
@@ -59,7 +61,18 @@ export const sectionsReducer = (state = initialState, action) => {
         `sections.${state.selectedSection}.params`,
         action.payload.settings
       );
-
+    case ADD_COLUMNS:
+      return update.set(
+        state,
+        `sections.${state.selectedSection}.columns`,
+        (columns) => [...columns, ...Array(action.payload).fill([])]
+      );
+    case REMOVE_COLUMNS:
+      return update.set(
+        state,
+        `sections.${state.selectedSection}.columns`,
+        (columns) => columns.slice(0, action.payload)
+      );
     default:
       return state;
   }
