@@ -1,6 +1,8 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { changeWidget } from "../redux/sections/actions";
 
-const useWidgetSettings = (props) => {
+const useWidgetSettings = () => {
+  const dispatch = useDispatch();
   // Получаем секции
   const sections = useSelector((state) => state.sections.present.sections);
 
@@ -12,7 +14,12 @@ const useWidgetSettings = (props) => {
   // Получаем сами настройки
   const settings = sections[sectionIndex].columns[columnIndex][rowIndex].params;
 
-  return settings;
+  // Записываем новые настройки
+  const setSettings = (params) => {
+    dispatch(changeWidget(params));
+  };
+
+  return { settings, setSettings };
 };
 
 export default useWidgetSettings;

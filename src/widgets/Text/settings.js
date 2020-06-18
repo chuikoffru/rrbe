@@ -1,50 +1,39 @@
-import React, { useState } from "react";
-import { Col, Row, Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { changeWidget } from "../../redux/sections/actions";
+import React, { useCallback } from "react";
+import { Form } from "react-bootstrap";
+import useWidgetSettings from "../../hooks/useWidgetSettings";
 
-const TextSettings = (props) => {
-  const dispatch = useDispatch();
+const TextSettings = () => {
+  const { settings, setSettings } = useWidgetSettings();
 
-  const [settings, setSettings] = useState(props);
-
-  const handleInput = (e) => {
-    setSettings({ ...settings, [e.target.name]: e.target.value });
-    //dispatch(changeWidget({ ...props, [e.target.name]: e.target.value }));
-  };
-
-  // Сохраняем изменение настроек
-  const saveChanges = (e) => {
-    dispatch(changeWidget(settings));
-  };
+  const onChange = useCallback(
+    (e) => {
+      setSettings({ ...settings, [e.target.name]: e.target.value });
+    },
+    [setSettings, settings]
+  );
 
   return (
-    <Col>
-      <Row>
-        <Form.Group>
-          <Form.Label>Текст</Form.Label>
-          <Form.Control
-            name="text"
-            value={settings.text}
-            onChange={handleInput}
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Label>Размер текста</Form.Label>
-          <Form.Control
-            type="range"
-            name="fontSize"
-            value={props.style && props.style.fontSize}
-            onChange={handleInput}
-          />
-        </Form.Group>
-      </Row>
-      <Row>
-        <Button type="button" onClick={saveChanges}>
-          Сохранить
-        </Button>
-      </Row>
-    </Col>
+    <Form>
+      <Form.Group>
+        <Form.Label>Текст</Form.Label>
+        <Form.Control
+          name="text"
+          as="textarea"
+          rows="3"
+          value={settings.text}
+          onChange={onChange}
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Размер текста</Form.Label>
+        <Form.Control
+          type="range"
+          name="fontSize"
+          value={settings.style && settings.style.fontSize}
+          onChange={onChange}
+        />
+      </Form.Group>
+    </Form>
   );
 };
 
