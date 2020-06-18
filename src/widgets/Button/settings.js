@@ -1,39 +1,36 @@
-import React, { useState } from "react";
-import { Col, Row, Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { changeWidget } from "../../redux/sections/actions";
+import React, { useCallback } from "react";
+import { Form } from "react-bootstrap";
+import useWidgetSettings from "hooks/useWidgetSettings";
 
-const ButtonSettings = (props) => {
-  const dispatch = useDispatch();
-  const [settings, setSettings] = useState(props);
+export const defaultParams = {
+  widgetName: "Image",
+  props: {
+    title: "Кнопка",
+  },
+};
 
-  const handleInput = (e) => {
-    setSettings({ ...settings, [e.target.name]: e.target.value });
-  };
+const ButtonSettings = () => {
+  const { settings, setSettings } = useWidgetSettings();
 
-  // Сохраняем изменение настроек
-  const saveChanges = (e) => {
-    dispatch(changeWidget(settings));
-  };
+  const onChange = useCallback(
+    (e) => {
+      setSettings({ ...settings, [e.target.name]: e.target.value });
+    },
+    [setSettings, settings]
+  );
 
   return (
-    <Col>
-      <Row>
-        <Form.Group controlId="imageUrl">
-          <Form.Label>Текст на кнопке</Form.Label>
-          <Form.Control
-            name="text"
-            value={settings.text}
-            onChange={handleInput}
-          />
-        </Form.Group>
-      </Row>
-      <Row>
-        <Button type="button" onClick={saveChanges}>
-          Сохранить
-        </Button>
-      </Row>
-    </Col>
+    <Form>
+      <Form.Group>
+        <Form.Label>Надпись на кнопке</Form.Label>
+        <Form.Control
+          name="alt"
+          type="text"
+          value={settings.title}
+          onChange={onChange}
+        />
+      </Form.Group>
+    </Form>
   );
 };
 

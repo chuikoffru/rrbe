@@ -1,7 +1,7 @@
 import React, { Suspense, useCallback, useMemo } from "react";
 import loadable from "@loadable/component";
-import loadWidget from "../helpers/loadWidget";
-import { selectWidget } from "../redux/sections/actions";
+import loadWidget from "helpers/loadWidget";
+import { selectWidget } from "redux/sections/actions";
 import { useDispatch } from "react-redux";
 
 const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex }) => {

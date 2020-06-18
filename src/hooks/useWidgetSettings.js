@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { changeWidget } from "../redux/sections/actions";
+import { changeWidget } from "redux/sections/actions";
 
 const useWidgetSettings = () => {
   const dispatch = useDispatch();

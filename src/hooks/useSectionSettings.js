@@ -3,7 +3,7 @@ import {
   changeSection,
   addColumns,
   removeColumns,
-} from "../redux/sections/actions";
+} from "redux/sections/actions";
 
 const useSectionSettings = () => {
   const dispatch = useDispatch();

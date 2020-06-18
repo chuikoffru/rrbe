@@ -1,9 +1,11 @@
 import React, { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import loadable from "@loadable/component";
-import loadWidget from "../helpers/loadWidget";
 import { Tabs, Tab } from "react-bootstrap";
-import { isNumber } from "../helpers/number";
+
+import loadWidget from "helpers/loadWidget";
+import { isNumber } from "helpers/number";
+
 import Painter from "./Painter";
 
 const Settings = () => {

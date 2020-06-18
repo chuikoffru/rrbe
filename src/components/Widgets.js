@@ -2,15 +2,15 @@ import React from "react";
 import { Row } from "react-bootstrap";
 
 import Widget from "./Widget";
-import { ItemTypes } from "../helpers/itemTypes";
+import { ItemTypes } from "helpers/itemTypes";
 
-import { ReactComponent as SharePostIcon } from "../icons/share-post.svg";
-import { ReactComponent as TextEditorIcon } from "../icons/text-editor.svg";
-import { ReactComponent as VideoClipIcon } from "../icons/video-clip.svg";
-import { ReactComponent as NewsIcon } from "../icons/news.svg";
-import { ReactComponent as SectionIcon } from "../icons/columns.svg";
+import { ReactComponent as SharePostIcon } from "icons/share-post.svg";
+import { ReactComponent as TextEditorIcon } from "icons/text-editor.svg";
+import { ReactComponent as VideoClipIcon } from "icons/video-clip.svg";
+import { ReactComponent as NewsIcon } from "icons/news.svg";
+import { ReactComponent as SectionIcon } from "icons/columns.svg";
 
-import "./scss/widgets.scss";
+import "scss/widgets.scss";
 
 const Widgets = (props) => {
   const widgets = [

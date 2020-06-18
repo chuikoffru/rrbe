@@ -2,10 +2,10 @@ import React from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
-import Preview from "./components/Preview";
-import Widgets from "./components/Widgets";
-import Settings from "./components/Settings";
-import UndoRedo from "./components/UndoRedo";
+import Preview from "components/Preview";
+import Widgets from "components/Widgets";
+import Settings from "components/Settings";
+import UndoRedo from "components/UndoRedo";
 
 import "./app.scss";
 

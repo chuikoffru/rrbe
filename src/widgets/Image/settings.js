@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
-import useWidgetSettings from "../../hooks/useWidgetSettings";
+import useWidgetSettings from "hooks/useWidgetSettings";
 
 export const defaultParams = {
   widgetName: "Image",

@@ -7,9 +7,33 @@
     max-width: 400px;
     color: #ffffff;
     background-color: #333333;
+    .accordion {
+      border-radius: 0.25rem;
+      .card {
+        border: 0;
+        &-header {
+          padding: 0.5rem 1.25rem;
+          color: #333333;
+          cursor: pointer;
+        }
+        &-body {
+          color: #333333;
+        }
+      }
+    }
   }
   &__right {
     flex-basis: 70%;
     padding: 20px;
+  }
+  &__section {
+    &:hover {
+      background-color: #fafafa;
+    }
+  }
+  &__column {
+    &:hover {
+      background-color: #eeeeee;
+    }
   }
 }

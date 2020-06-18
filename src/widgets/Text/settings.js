@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
-import useWidgetSettings from "../../hooks/useWidgetSettings";
+import useWidgetSettings from "hooks/useWidgetSettings";
 
 const TextSettings = () => {
   const { settings, setSettings } = useWidgetSettings();

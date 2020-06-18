@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { changeWidget } from "../../redux/sections/actions";
+import { changeWidget } from "redux/sections/actions";
 
 const Text = (props) => {
   const dispatch = useDispatch();

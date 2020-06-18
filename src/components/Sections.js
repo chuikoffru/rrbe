@@ -1,12 +1,12 @@
 import React, { useCallback } from "react";
 import { Row, Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addWidget, selectSection } from "../redux/sections/actions";
-import { generateId } from "../helpers/string";
+import { addWidget, selectSection } from "redux/sections/actions";
+import { generateId } from "helpers/string";
 
 import Column from "./Column";
 
-import { ItemTypes } from "../helpers/itemTypes";
+import { ItemTypes } from "helpers/itemTypes";
 
 const Sections = ({ section, sectionIndex }) => {
   const dispatch = useDispatch();
@@ -27,6 +27,7 @@ const Sections = ({ section, sectionIndex }) => {
 
   return (
     <div
+      className="rrbe__section"
       id={section.id}
       style={section.params && section.params.styles}
       onClick={setCurrentSection}

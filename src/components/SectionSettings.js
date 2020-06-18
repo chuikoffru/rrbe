@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
-import useSectionSettings from "../hooks/useSectionSettings";
+import useSectionSettings from "hooks/useSectionSettings";
 
 const SectionSettings = () => {
   // Получаем данные выбранной секции

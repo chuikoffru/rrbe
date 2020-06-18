@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { addSection } from "../redux/sections/actions";
-import { generateId } from "../helpers/string";
-import { ItemTypes } from "../helpers/itemTypes";
+import { addSection } from "redux/sections/actions";
+import { generateId } from "helpers/string";
+import { ItemTypes } from "helpers/itemTypes";
 
 import DropSectionContainer from "./DropSectionContainer";
 import Sections from "./Sections";

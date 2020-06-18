@@ -2,8 +2,9 @@ import React from "react";
 import { useDrop } from "react-dnd";
 import classNames from "classnames";
 
-import "./scss/columns.scss";
 import LoadableWidget from "./LoadableWidget";
+
+import "scss/columns.scss";
 
 const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
   console.log("Column init");
@@ -22,6 +23,7 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
       key={columnIndex}
       ref={drop}
       className={classNames({
+        rrbe__column: true,
         col: true,
         canDrop,
         isActive: isOver && canDrop,
