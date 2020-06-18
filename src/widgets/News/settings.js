@@ -1,7 +1,6 @@
-import React, { useState } from "react";
-import { Col, Row, Form, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { changeWidget } from "../../redux/sections/actions";
+import React, { useCallback } from "react";
+import { Form } from "react-bootstrap";
+import useWidgetSettings from "../../hooks/useWidgetSettings";
 
 export const defaultParams = {
   widgetName: "News",
@@ -10,44 +9,34 @@ export const defaultParams = {
   },
 };
 
-const NewsSettings = (props) => {
-  const dispatch = useDispatch();
-  const [settings, setSettings] = useState(props);
+const NewsSettings = () => {
+  const { settings, setSettings } = useWidgetSettings();
 
-  const handleInput = (e) => {
-    setSettings({ ...settings, [e.target.name]: e.target.value });
-  };
-
-  // Сохраняем изменение настроек
-  const saveChanges = (e) => {
-    dispatch(changeWidget(settings));
-  };
+  const onChange = useCallback(
+    (e) => {
+      setSettings({ ...settings, [e.target.name]: e.target.value });
+    },
+    [setSettings, settings]
+  );
 
   return (
-    <Col>
-      <Row>
-        <Form.Group>
-          <Form.Label>Категории новостей</Form.Label>
-          <Form.Control
-            as="select"
-            name="category"
-            value={settings.category}
-            onChange={handleInput}
-          >
-            <option>Политика</option>
-            <option>Религия</option>
-            <option>Экономика</option>
-            <option>Общество</option>
-            <option>Право</option>
-          </Form.Control>
-        </Form.Group>
-      </Row>
-      <Row>
-        <Button type="button" onClick={saveChanges}>
-          Сохранить
-        </Button>
-      </Row>
-    </Col>
+    <Form>
+      <Form.Group>
+        <Form.Label>Категории новостей</Form.Label>
+        <Form.Control
+          as="select"
+          name="category"
+          value={settings.category}
+          onChange={onChange}
+        >
+          <option>Политика</option>
+          <option>Религия</option>
+          <option>Экономика</option>
+          <option>Общество</option>
+          <option>Право</option>
+        </Form.Control>
+      </Form.Group>
+    </Form>
   );
 };
 
