@@ -1,6 +1,6 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import useSectionSettings from "../../hooks/useSectionSettings";
+import useSectionSettings from "../hooks/useSectionSettings";
 
 const SectionSettings = (props) => {
   // Получаем данные выбранной секции

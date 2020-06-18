@@ -29,7 +29,7 @@ const Settings = () => {
     () =>
       loadable(() =>
         isNumber(selectedSectionIndex)
-          ? loadWidget("Section", true)
+          ? import("../components/SectionSettings")
           : new Promise(() => null)
       ),
     [selectedSectionIndex]
