@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
 import useSectionSettings from "../hooks/useSectionSettings";
 
-const SectionSettings = (props) => {
+const SectionSettings = () => {
   // Получаем данные выбранной секции
-  const params = useSectionSettings();
-  // if (sectionIndex) return <p>Выберите секцию для настройки</p>;
+  const { settings, setSettings } = useSectionSettings();
 
-  console.log("params", params);
+  const onChange = useCallback(
+    (e) => {
+      setSettings({ ...settings, [e.target.name]: e.target.value });
+    },
+    [setSettings, settings]
+  );
+
+  console.log("params", settings);
   return (
     <Form>
       <Form.Group>
         <Form.Label>Количество колонок</Form.Label>
-        <Form.Control as="select" value={props.columns}>
+        <Form.Control
+          as="select"
+          name="columns"
+          value={settings.columns}
+          onChange={onChange}
+        >
           {Array(11)
             .fill([])
             .map((v, i) => (

@@ -6,6 +6,7 @@ import {
   CHANGE_WIDGET,
   SELECT_WIDGET,
   SELECT_SECTION,
+  CHANGE_SECTION,
 } from "../types";
 
 const initialState = {
@@ -51,6 +52,13 @@ export const sectionsReducer = (state = initialState, action) => {
     case SELECT_SECTION:
       // Сделать секцию активной (выбранной)
       return { ...state, selectedSection: action.payload };
+
+    case CHANGE_SECTION:
+      return update.set(
+        state,
+        `sections.${state.selectedSection}.params`,
+        action.payload.settings
+      );
 
     default:
       return state;

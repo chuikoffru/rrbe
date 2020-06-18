@@ -1,12 +1,22 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { changeSection } from "../redux/sections/actions";
 
 const useSectionSettings = () => {
-  const sectionParams = useSelector(
+  const dispatch = useDispatch();
+  // Получаем данные о секции
+  const section = useSelector(
     (state) =>
       state.sections.present.sections[state.sections.present.selectedSection]
   );
 
-  return sectionParams;
+  // Записываем новые настройки
+  const setSettings = (params) => {
+    //console.log("params", params);
+    //const countColumns = +params.columns;
+    dispatch(changeSection(params));
+  };
+
+  return { settings: section.params, setSettings };
 };
 
 export default useSectionSettings;
