@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { Row, Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addWidget } from "../redux/sections/actions";
+import { addWidget, selectSection } from "../redux/sections/actions";
 import { generateId } from "../helpers/string";
 
 import Column from "./Column";
@@ -9,7 +9,6 @@ import Column from "./Column";
 import { ItemTypes } from "../helpers/itemTypes";
 
 const Sections = ({ section, sectionIndex }) => {
-  console.log("Sections init");
   const dispatch = useDispatch();
 
   const addNewWidget = useCallback(
@@ -22,8 +21,16 @@ const Sections = ({ section, sectionIndex }) => {
     [dispatch, sectionIndex]
   );
 
+  const setCurrentSection = useCallback(() => {
+    dispatch(selectSection(sectionIndex));
+  }, [dispatch, sectionIndex]);
+
   return (
-    <div id={section.id} style={section.params && section.params.styles}>
+    <div
+      id={section.id}
+      style={section.params && section.params.styles}
+      onClick={setCurrentSection}
+    >
       <Container>
         <Row>
           {section.columns.map((rows, columnIndex) => {

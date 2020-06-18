@@ -1,25 +1,54 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import { useSelector } from "react-redux";
 import loadable from "@loadable/component";
 import loadWidget from "../helpers/loadWidget";
+import { Tabs, Tab } from "react-bootstrap";
+import { isNumber } from "../helpers/number";
 
-const Settings = (props) => {
-  // Получаем данные выбранного виджета
-  const { sectionIndex, columnIndex, rowIndex, widgetName } = useSelector(
-    (state) => state.sections.present.selectedWidget
+const Settings = () => {
+  const [showTab, setShowTab] = useState("widget");
+
+  const widgetName = useSelector(
+    (state) => state.sections.present.selectedWidget.widgetName
   );
 
-  const sections = useSelector((state) => state.sections.present.sections);
-
-  // Если виджет не выбран то показываем сообщение
-  if (!widgetName) return <p>Выберите виджет для настройки</p>;
-
-  const settings = sections[sectionIndex].columns[columnIndex][rowIndex].params;
+  const selectedSectionIndex = useSelector(
+    (state) => state.sections.present.selectedSection
+  );
 
   // Загрузаем страницу настроек виджета
-  const WidgetSettings = loadable(() => loadWidget(widgetName, true));
+  const WidgetSettings = useMemo(
+    () =>
+      loadable(() =>
+        widgetName ? loadWidget(widgetName, true) : new Promise(() => null)
+      ),
+    [widgetName]
+  );
 
-  return <WidgetSettings {...settings} />;
+  const SectionSettings = useMemo(
+    () =>
+      loadable(() =>
+        isNumber(selectedSectionIndex)
+          ? loadWidget("Section", true)
+          : new Promise(() => null)
+      ),
+    [selectedSectionIndex]
+  );
+
+  return (
+    <Tabs variant="pills" activeKey={showTab} onSelect={(k) => setShowTab(k)}>
+      <Tab eventKey="widget" title="Виджет">
+        {widgetName ? <WidgetSettings /> : <p>Выберите виджет</p>}
+      </Tab>
+      <Tab eventKey="section" title="Секция">
+        {isNumber(selectedSectionIndex) ? (
+          <SectionSettings />
+        ) : (
+          <p>Выберите секцию</p>
+        )}
+      </Tab>
+    </Tabs>
+  );
 };
 
 export default Settings;

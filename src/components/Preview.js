@@ -9,7 +9,6 @@ import DropSectionContainer from "./DropSectionContainer";
 import Sections from "./Sections";
 
 const Preview = () => {
-  console.log("Preview init");
   const dispatch = useDispatch();
   const sections = useSelector((state) => state.sections.present.sections);
 

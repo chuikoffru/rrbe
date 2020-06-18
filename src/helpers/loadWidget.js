@@ -4,8 +4,6 @@ export default (widgetName = null, isSettings = false) => {
       .then((module) => {
         resolve(module.default);
       })
-      .catch((e) => {
-        console.log("e", e);
-      });
+      .catch((e) => {});
   });
 };

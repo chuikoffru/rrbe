@@ -3,6 +3,7 @@ import {
   CHANGE_WIDGET,
   SELECT_WIDGET,
   ADD_SECTION,
+  SELECT_SECTION,
 } from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
@@ -14,6 +15,13 @@ export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
       columnIndex,
       rowIndex,
     },
+  };
+}
+
+export function selectSection(sectionIndex) {
+  return {
+    type: SELECT_SECTION,
+    payload: sectionIndex,
   };
 }
 
