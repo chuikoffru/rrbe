@@ -1,7 +1,8 @@
+import mutate from "dot-prop-immutable";
 import { useSelector, useDispatch } from "react-redux";
 import { changeWidget } from "redux/sections/actions";
 
-const useWidgetSettings = () => {
+const useWidgetSettings = (property, defaultValue) => {
   const dispatch = useDispatch();
   // Получаем секции
   const sections = useSelector(({ sections }) => sections.present.sections);
@@ -14,15 +15,28 @@ const useWidgetSettings = () => {
   // Получаем данные виджета
   const widget = sections[sectionIndex].columns[columnIndex][rowIndex];
 
-  // Получаем сами настройки если виджет выбран
-  const settings = widget ? widget.params : {};
+  // Если указано конкретное свойство возвращаем именно его
+  let settings = {};
+
+  // Если указано конкретное свойство, возвращаем только его
+  if (widget && property) {
+    settings = mutate.get(widget.params, property) || defaultValue;
+  } else if (widget) {
+    settings = widget.params;
+  }
 
   // Записываем новые настройки
   const setSettings = (params) => {
-    dispatch(changeWidget(params));
+    console.log("params", widget.params, params);
+    if (property) {
+      const newSettings = mutate.set(widget.params, property, params);
+      dispatch(changeWidget(newSettings));
+    } else {
+      dispatch(changeWidget(params));
+    }
   };
 
-  return { settings, setSettings };
+  return [settings, setSettings];
 };
 
 export default useWidgetSettings;

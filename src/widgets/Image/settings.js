@@ -11,7 +11,7 @@ export const defaultParams = {
 };
 
 const ImageSettings = () => {
-  const { settings, setSettings } = useWidgetSettings();
+  const [settings, setSettings] = useWidgetSettings();
 
   const onChange = useCallback(
     (e) => {

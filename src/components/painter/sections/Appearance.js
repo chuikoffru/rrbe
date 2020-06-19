@@ -2,8 +2,8 @@ import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
 import mutate from "dot-prop-immutable";
 
-import RangeInput from "./RangeInput";
-import ColorPicker from "./ColorPicker";
+import RangeInput from "../controls/RangeInput";
+import ColorPicker from "../controls/ColorPicker";
 
 import st from "helpers/styles";
 

@@ -1,32 +1,24 @@
-import React, { memo } from "react";
+import React from "react";
 import { Card, Accordion } from "react-bootstrap";
+import loadable from "@loadable/component";
 
-import Appearance from "./Painter/Appearance";
-import Indentation from "./Painter/Indentation";
-import Alignments from "./Painter/Alignments";
-
-import useSectionSettings from "hooks/useSectionSettings";
-
-const SectionPainter = () => {
-  console.log("Section Painters init");
-
-  const section = useSectionSettings();
-
+const Painter = ({ type }) => {
+  console.log("Painters init");
   const categories = [
     {
       name: "Оформление",
       icon: null,
-      cmp: memo(<Appearance {...section} />),
+      cmp: loadable(() => import(`components/painter/${type}/Appearance`)),
     },
     {
       name: "Позиционирование",
       icon: null,
-      cmp: memo(<Alignments {...section} />),
+      cmp: loadable(() => import(`components/painter/${type}/Alignments`)),
     },
     {
       name: "Отступы",
       icon: null,
-      cmp: memo(<Indentation {...section} />),
+      cmp: loadable(() => import(`components/painter/${type}/Indentation`)),
     },
   ];
 
@@ -38,7 +30,7 @@ const SectionPainter = () => {
             {category.name}
           </Accordion.Toggle>
           <Accordion.Collapse eventKey={index}>
-            <Card.Body>{category.cmp}</Card.Body>
+            <Card.Body>{category.cmp.render()}</Card.Body>
           </Accordion.Collapse>
         </Card>
       ))}
@@ -46,4 +38,4 @@ const SectionPainter = () => {
   );
 };
 
-export default SectionPainter;
+export default Painter;

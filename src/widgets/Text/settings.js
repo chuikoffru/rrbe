@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import useWidgetSettings from "hooks/useWidgetSettings";
 
 const TextSettings = () => {
-  const { settings, setSettings } = useWidgetSettings();
+  const [settings, setSettings] = useWidgetSettings();
 
   const onChange = useCallback(
     (e) => {
