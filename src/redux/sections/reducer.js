@@ -40,7 +40,6 @@ export const sectionsReducer = (state = initialState, action) => {
 
     case CHANGE_WIDGET:
       // Изменяем настройки виджета
-      console.log("changeWidget", action);
       return update.set(
         state,
         `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}.params`,

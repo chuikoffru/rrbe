@@ -7,7 +7,7 @@ import LoadableWidget from "./LoadableWidget";
 import "scss/columns.scss";
 
 const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
-  console.log("Column init");
+  //console.log("Column init");
 
   const [{ isOver, canDrop }, drop] = useDrop({
     accept,
