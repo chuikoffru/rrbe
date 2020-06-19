@@ -7,10 +7,11 @@ import loadWidget from "helpers/loadWidget";
 import { isNumber } from "helpers/number";
 import { ItemTypes } from "helpers/itemTypes";
 
-import Painter from "./Painter";
-
 const Settings = () => {
+  console.log("Settings init");
   const [showTab, setShowTab] = useState(ItemTypes.ELEMENTS);
+
+  const Painter = loadable(() => import("./Painter"));
 
   const widgetName = useSelector(
     (state) => state.sections.present.selectedWidget.widgetName
@@ -33,7 +34,7 @@ const Settings = () => {
     () =>
       loadable(() =>
         isNumber(selectedSectionIndex)
-          ? import("../components/SectionSettings")
+          ? import("components/SectionSettings")
           : new Promise(() => null)
       ),
     [selectedSectionIndex]

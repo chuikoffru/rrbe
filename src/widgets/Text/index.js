@@ -5,7 +5,7 @@ import { changeWidget } from "redux/sections/actions";
 const Text = (props) => {
   const dispatch = useDispatch();
 
-  console.log("props", props);
+  console.log("text props", props);
 
   const saveText = (e) => {
     dispatch(changeWidget({ ...props, text: e.currentTarget.innerHTML }));

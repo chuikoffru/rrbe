@@ -5,6 +5,8 @@ import Indentation from "./Painter/Indentation";
 import Alignments from "./Painter/Alignments";
 
 const Painter = ({ type }) => {
+  console.log("Painters init");
+
   const categories = [
     { name: "Оформление", icon: null, cmp: <Appearance type={type} /> },
     { name: "Позиционирование", icon: null, cmp: <Alignments type={type} /> },
