@@ -6,15 +6,15 @@ import Alignments from "./Painter/Alignments";
 
 const Painter = ({ type }) => {
   const categories = [
-    { name: "Оформление", icon: null, cmp: <Appearance /> },
-    { name: "Позиционирование", icon: null, cmp: <Alignments /> },
-    { name: "Отступы", icon: null, cmp: <Indentation /> },
+    { name: "Оформление", icon: null, cmp: <Appearance type={type} /> },
+    { name: "Позиционирование", icon: null, cmp: <Alignments type={type} /> },
+    { name: "Отступы", icon: null, cmp: <Indentation type={type} /> },
   ];
 
   return (
     <Accordion defaultActiveKey={0}>
       {categories.map((category, index) => (
-        <Card>
+        <Card key={index}>
           <Accordion.Toggle as={Card.Header} eventKey={index}>
             {category.name}
           </Accordion.Toggle>

@@ -21,6 +21,7 @@ const Widgets = (props) => {
       icon: <TextEditorIcon />,
       params: {
         text: "Привет",
+        styles: {},
       },
     },
     {
@@ -30,6 +31,7 @@ const Widgets = (props) => {
       icon: <SharePostIcon />,
       params: {
         src: "./favicon.ico",
+        styles: {},
       },
     },
     {
@@ -39,6 +41,7 @@ const Widgets = (props) => {
       icon: <VideoClipIcon />,
       params: {
         url: "https://www.youtube.com/embed/Ti2Q4sQkNdU",
+        styles: {},
       },
     },
     {
@@ -46,7 +49,10 @@ const Widgets = (props) => {
       name: "News",
       type: ItemTypes.COMPONENTS,
       icon: <NewsIcon />,
-      params: {},
+      params: {
+        category: "",
+        styles: {},
+      },
     },
     {
       id: 5,

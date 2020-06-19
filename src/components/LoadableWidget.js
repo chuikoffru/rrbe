@@ -22,6 +22,8 @@ const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex }) => {
 
   return (
     <div
+      className="rrbe__widget"
+      id={widget.id}
       key={rowIndex}
       onClickCapture={(event) =>
         setSelectedWidget(event, columnIndex, rowIndex, widget.name)

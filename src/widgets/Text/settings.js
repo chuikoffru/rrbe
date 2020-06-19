@@ -24,15 +24,6 @@ const TextSettings = () => {
           onChange={onChange}
         />
       </Form.Group>
-      <Form.Group>
-        <Form.Label>Размер текста</Form.Label>
-        <Form.Control
-          type="range"
-          name="style.fontSize"
-          value={settings.style && settings.style.fontSize}
-          onChange={onChange}
-        />
-      </Form.Group>
     </Form>
   );
 };

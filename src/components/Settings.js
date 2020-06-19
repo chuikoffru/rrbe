@@ -5,11 +5,12 @@ import { Tabs, Tab } from "react-bootstrap";
 
 import loadWidget from "helpers/loadWidget";
 import { isNumber } from "helpers/number";
+import { ItemTypes } from "helpers/itemTypes";
 
 import Painter from "./Painter";
 
 const Settings = () => {
-  const [showTab, setShowTab] = useState("widget");
+  const [showTab, setShowTab] = useState(ItemTypes.ELEMENTS);
 
   const widgetName = useSelector(
     (state) => state.sections.present.selectedWidget.widgetName
@@ -40,7 +41,7 @@ const Settings = () => {
 
   return (
     <Tabs variant="pills" activeKey={showTab} onSelect={(k) => setShowTab(k)}>
-      <Tab eventKey="widget" title="Виджет">
+      <Tab eventKey={ItemTypes.ELEMENTS} title="Виджет">
         {widgetName ? (
           <>
             <WidgetSettings />
@@ -50,7 +51,7 @@ const Settings = () => {
           <p>Выберите виджет</p>
         )}
       </Tab>
-      <Tab eventKey="section" title="Секция">
+      <Tab eventKey={ItemTypes.SECTIONS} title="Секция">
         {isNumber(selectedSectionIndex) ? (
           <>
             <SectionSettings />
