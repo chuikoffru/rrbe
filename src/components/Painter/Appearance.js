@@ -1,35 +1,26 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
 
 import useWidgetSettings from "hooks/useWidgetSettings";
 import useSectionSettings from "hooks/useSectionSettings";
+import useSettingsByType from "hooks/useSettingsByType";
 
-import { ItemTypes } from "helpers/itemTypes";
-import st from "helpers/styles";
 import RangeInput from "./RangeInput";
+
+import st from "helpers/styles";
 
 const Appearance = ({ type }) => {
   console.log("Appearance init");
   // Получаем настройки виджета и секции
   const widget = useWidgetSettings();
   const section = useSectionSettings();
+  const { settings, setSettings, updateSettings } = useSettingsByType(
+    type,
+    widget,
+    section
+  );
 
-  // Задаем пустой блок хранения настроек в зависимости от текущего типа элемента
-  let block = {};
-  // Заполняем блок настроек в зависимости от типа выбранного элемента
-  switch (type) {
-    case ItemTypes.ELEMENTS:
-      block = widget.settings;
-      break;
-    case ItemTypes.SECTIONS:
-      block = section.settings;
-      break;
-    default:
-      break;
-  }
-
-  // Создаем состояние из блока настроек
-  const [settings, setSettings] = useState(block);
+  console.log("appearance data", settings);
 
   // Изменяем настройки в зависимости от типа
   const onChange = useCallback(
@@ -45,18 +36,9 @@ const Appearance = ({ type }) => {
       });
 
       // В зависимости от типа элемента меняем настройки
-      switch (type) {
-        case ItemTypes.ELEMENTS:
-          widget.setSettings(settings);
-          break;
-        case ItemTypes.SECTIONS:
-          section.setSettings(settings);
-          break;
-        default:
-          break;
-      }
+      updateSettings();
     },
-    [section, settings, type, widget]
+    [setSettings, settings, updateSettings]
   );
 
   return (
