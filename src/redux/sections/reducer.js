@@ -1,4 +1,4 @@
-import update from "dot-prop-immutable";
+import mutate from "dot-prop-immutable";
 
 import {
   ADD_SECTION,
@@ -32,7 +32,7 @@ export const sectionsReducer = (state = initialState, action) => {
 
     case ADD_WIDGET:
       // Добавляем новый виджет
-      return update.set(
+      return mutate.set(
         state,
         `sections.${action.payload.sectionIndex}.columns.${action.payload.columnIndex}`,
         (column) => [...column, action.payload.data]
@@ -40,7 +40,7 @@ export const sectionsReducer = (state = initialState, action) => {
 
     case CHANGE_WIDGET:
       // Изменяем настройки виджета
-      return update.set(
+      return mutate.set(
         state,
         `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}.params`,
         action.payload.settings
@@ -55,19 +55,19 @@ export const sectionsReducer = (state = initialState, action) => {
       return { ...state, selectedSection: action.payload };
 
     case CHANGE_SECTION:
-      return update.set(
+      return mutate.set(
         state,
         `sections.${state.selectedSection}.params`,
         action.payload.settings
       );
     case ADD_COLUMNS:
-      return update.set(
+      return mutate.set(
         state,
         `sections.${state.selectedSection}.columns`,
         (columns) => [...columns, ...Array(action.payload).fill([])]
       );
     case REMOVE_COLUMNS:
-      return update.set(
+      return mutate.set(
         state,
         `sections.${state.selectedSection}.columns`,
         (columns) => columns.slice(0, action.payload)

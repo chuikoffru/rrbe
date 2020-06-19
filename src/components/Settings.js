@@ -6,13 +6,12 @@ import { Tabs, Tab } from "react-bootstrap";
 import loadWidget from "helpers/loadWidget";
 import { isNumber } from "helpers/number";
 import { ItemTypes } from "helpers/itemTypes";
+import SectionPainter from "./SectionPainter";
+import WidgetPainter from "./WidgetPainter";
 
 const Settings = () => {
   console.log("Settings init");
   const [showTab, setShowTab] = useState(ItemTypes.ELEMENTS);
-
-  const Painter = loadable(() => import("./Painter"));
-
   const widgetName = useSelector(
     (state) => state.sections.present.selectedWidget.widgetName
   );
@@ -46,7 +45,7 @@ const Settings = () => {
         {widgetName ? (
           <>
             <WidgetSettings />
-            <Painter type={showTab} />
+            <WidgetPainter />
           </>
         ) : (
           <p>Выберите виджет</p>
@@ -56,7 +55,7 @@ const Settings = () => {
         {isNumber(selectedSectionIndex) ? (
           <>
             <SectionSettings />
-            <Painter type={showTab} />
+            <SectionPainter />
           </>
         ) : (
           <p>Выберите секцию</p>

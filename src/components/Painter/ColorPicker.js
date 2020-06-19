@@ -14,6 +14,7 @@ const ColorPicker = ({
 
   const onChangeColor = useCallback(
     (color) => {
+      console.log("color.hex", color.hex);
       onChange({ target: { name: property, value: color.hex } });
       setShowColorPicker(false);
     },

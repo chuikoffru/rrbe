@@ -1,16 +1,33 @@
-import React from "react";
+import React, { memo } from "react";
 import { Card, Accordion } from "react-bootstrap";
+
 import Appearance from "./Painter/Appearance";
 import Indentation from "./Painter/Indentation";
 import Alignments from "./Painter/Alignments";
 
+import useSectionSettings from "hooks/useSectionSettings";
+
 const SectionPainter = () => {
   console.log("Section Painters init");
 
+  const section = useSectionSettings();
+
   const categories = [
-    { name: "Оформление", icon: null, cmp: <Appearance /> },
-    { name: "Позиционирование", icon: null, cmp: <Alignments /> },
-    { name: "Отступы", icon: null, cmp: <Indentation /> },
+    {
+      name: "Оформление",
+      icon: null,
+      cmp: memo(<Appearance {...section} />),
+    },
+    {
+      name: "Позиционирование",
+      icon: null,
+      cmp: memo(<Alignments {...section} />),
+    },
+    {
+      name: "Отступы",
+      icon: null,
+      cmp: memo(<Indentation {...section} />),
+    },
   ];
 
   return (
