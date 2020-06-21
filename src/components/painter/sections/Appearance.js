@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
 import mutate from "dot-prop-immutable";
 
-import RangeInput from "../controls/RangeInput";
+import RangeControl from "../controls/RangeControl";
 import ColorPicker from "../controls/ColorPicker";
 
 import st from "helpers/styles";
@@ -25,7 +25,7 @@ const Appearance = ({ settings, setSettings }) => {
 
   return (
     <Form>
-      <RangeInput
+      <RangeControl
         name="Размер текста"
         property="fontSize"
         onChange={onChange}

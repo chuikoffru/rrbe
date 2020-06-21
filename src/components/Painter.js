@@ -23,7 +23,7 @@ const Painter = ({ type }) => {
   ];
 
   return (
-    <Accordion defaultActiveKey={0}>
+    <Accordion>
       {categories.map((category, index) => (
         <Card key={index}>
           <Accordion.Toggle as={Card.Header} eventKey={index}>

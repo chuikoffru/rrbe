@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 
-import RangeInput from "../controls/RangeInput";
+import RangeControl from "../controls/RangeControl";
 import ColorPicker from "../controls/ColorPicker";
 
 import useWidgetSettings from "hooks/useWidgetSettings";
@@ -18,9 +18,9 @@ const Appearance = () => {
 
   return (
     <Form>
-      <RangeInput
+      <RangeControl
         name="Размер текста"
-        options={{ min: 0.2, max: 5, step: 0.1 }}
+        options={{ min: 0.2, max: 5, step: 0.1, appendix: "rem" }}
         value={fontSize}
         onChange={setFontSize}
       />

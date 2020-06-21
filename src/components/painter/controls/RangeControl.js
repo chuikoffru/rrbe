@@ -1,14 +1,14 @@
 import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
 
-const RangeInput = ({ name, value, onChange, options = {} }) => {
+const RangeControl = ({ name, value, onChange, options = {} }) => {
   console.log("Range init");
 
   const handleChange = useCallback(
     (e) => {
-      onChange(e.target.value + "rem");
+      onChange(e.target.value + options.appendix);
     },
-    [onChange]
+    [onChange, options.appendix]
   );
 
   return (
@@ -24,4 +24,4 @@ const RangeInput = ({ name, value, onChange, options = {} }) => {
   );
 };
 
-export default RangeInput;
+export default RangeControl;
