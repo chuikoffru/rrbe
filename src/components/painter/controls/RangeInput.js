@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
-//import useWidgetSettings from "hooks/useWidgetSettings";
 
 const RangeInput = ({ name, value, onChange, options = {} }) => {
   console.log("Range init");

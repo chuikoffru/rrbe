@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { Form } from "react-bootstrap";
 
 import RangeInput from "../controls/RangeInput";
@@ -11,16 +11,10 @@ const Appearance = () => {
 
   const [fontSize, setFontSize] = useWidgetSettings("styles.fontSize", 1);
   const [color, setColor] = useWidgetSettings("styles.color", "#000000");
-
-  //const isEqual = (prev, next) => prev !== next;
-
-  const Color = ({ value }) =>
-    useMemo(
-      () => (
-        <ColorPicker name="Цвет текста" value={value} onChange={setColor} />
-      ),
-      [value]
-    );
+  const [bgColor, setBgColor] = useWidgetSettings(
+    "styles.backgroundColor",
+    "#ffffff"
+  );
 
   return (
     <Form>
@@ -30,8 +24,8 @@ const Appearance = () => {
         value={fontSize}
         onChange={setFontSize}
       />
-      {/* <FontSize value={fontSize} /> */}
-      <Color value={color} />
+      <ColorPicker name="Цвет текста" value={color} onChange={setColor} />
+      <ColorPicker name="Цвет фона" value={bgColor} onChange={setBgColor} />
     </Form>
   );
 };

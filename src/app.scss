@@ -7,6 +7,11 @@
     max-width: 400px;
     color: #ffffff;
     background-color: #333333;
+    overflow: auto;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
     .accordion {
       border-radius: 0.25rem;
       .card {
@@ -36,4 +41,9 @@
       background-color: #eeeeee;
     }
   }
+}
+
+.chrome-picker {
+  position: relative;
+  right: 0;
 }
