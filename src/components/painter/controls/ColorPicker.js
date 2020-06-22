@@ -26,6 +26,7 @@ const ColorPicker = ({ name, value, onChange, options = {} }) => {
         color={color}
         onChange={onChangeColor}
         onChangeComplete={onChangeComplete}
+        disableAlpha={true}
       />
     </Form.Group>
   );

@@ -1,10 +1,11 @@
 import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
-import useSectionSettings from "hooks/useSectionSettings";
+
+import useColumnsSettings from "../hooks/useColumnsSettings";
 
 const SectionSettings = () => {
   // Получаем данные выбранной секции
-  const { settings, setSettings } = useSectionSettings();
+  const [settings, setSettings] = useColumnsSettings();
 
   const onChange = useCallback(
     (e) => {

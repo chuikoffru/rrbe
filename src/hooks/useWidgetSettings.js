@@ -15,7 +15,6 @@ const useWidgetSettings = (property, defaultValue) => {
   // Получаем данные виджета
   const widget = sections[sectionIndex].columns[columnIndex][rowIndex];
 
-  // Если указано конкретное свойство возвращаем именно его
   let settings = {};
 
   // Если указано конкретное свойство, возвращаем только его
@@ -27,7 +26,6 @@ const useWidgetSettings = (property, defaultValue) => {
 
   // Записываем новые настройки
   const setSettings = (params) => {
-    console.log("params", widget.params, params);
     if (property) {
       const newSettings = mutate.set(widget.params, property, params);
       dispatch(changeWidget(newSettings));

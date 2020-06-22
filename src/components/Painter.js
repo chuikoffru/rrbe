@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import { Card, Accordion } from "react-bootstrap";
 import loadable from "@loadable/component";
 import Switch from "./painter/Switch";
+import { ItemTypes } from "helpers/itemTypes";
 
 const Painter = ({ type }) => {
   console.log("Painters init");
@@ -26,7 +27,7 @@ const Painter = ({ type }) => {
 
   return (
     <>
-      <Switch />
+      {type === ItemTypes.ELEMENTS && <Switch />}
       <Accordion>
         {categories.map((category, index) => (
           <Card key={index}>

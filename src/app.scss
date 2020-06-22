@@ -28,8 +28,7 @@
     }
   }
   &__right {
-    flex-basis: 70%;
-    padding: 20px;
+    flex-basis: 100%;
   }
   &__section {
     &:hover {
@@ -38,7 +37,7 @@
   }
   &__column {
     &:hover {
-      background-color: #eeeeee;
+      background-color: rgba(238, 238, 238, 0.5);
     }
   }
 }
