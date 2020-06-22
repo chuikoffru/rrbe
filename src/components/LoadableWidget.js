@@ -20,9 +20,12 @@ const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex }) => {
     [dispatch, sectionIndex, widget.name]
   );
 
+  const { styles, applyStylesToWidget } = widget.params;
+
   return (
     <div
       className="rrbe__widget"
+      style={applyStylesToWidget ? styles : {}}
       id={widget.id}
       key={rowIndex}
       onClickCapture={(event) =>

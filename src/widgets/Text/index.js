@@ -8,7 +8,12 @@ const Text = (props) => {
   console.log("text props", props);
 
   const saveText = (e) => {
-    dispatch(changeWidget({ ...props, text: e.currentTarget.innerHTML }));
+    dispatch(
+      changeWidget({
+        ...props,
+        text: e.currentTarget.innerHTML,
+      })
+    );
   };
 
   return (
@@ -16,7 +21,7 @@ const Text = (props) => {
       suppressContentEditableWarning={true}
       contentEditable={true}
       onBlur={saveText}
-      style={{ ...props.styles }}
+      //style={{ ...props.styles }}
     >
       {props.text}
     </div>

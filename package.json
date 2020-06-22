@@ -10,6 +10,7 @@
     "alloyeditor": "^2.11.7",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
+    "bootstrap-switch-button-react": "^1.2.0",
     "classnames": "^2.2.6",
     "dot-prop-immutable": "^2.1.0",
     "lodash": "^4.17.15",

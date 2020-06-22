@@ -1,9 +1,11 @@
-import React from "react";
+import React, { memo } from "react";
 import { Card, Accordion } from "react-bootstrap";
 import loadable from "@loadable/component";
+import Switch from "./painter/Switch";
 
 const Painter = ({ type }) => {
   console.log("Painters init");
+
   const categories = [
     {
       name: "Оформление",
@@ -23,19 +25,22 @@ const Painter = ({ type }) => {
   ];
 
   return (
-    <Accordion>
-      {categories.map((category, index) => (
-        <Card key={index}>
-          <Accordion.Toggle as={Card.Header} eventKey={index}>
-            {category.name}
-          </Accordion.Toggle>
-          <Accordion.Collapse eventKey={index}>
-            <Card.Body>{category.cmp.render()}</Card.Body>
-          </Accordion.Collapse>
-        </Card>
-      ))}
-    </Accordion>
+    <>
+      <Switch />
+      <Accordion>
+        {categories.map((category, index) => (
+          <Card key={index}>
+            <Accordion.Toggle as={Card.Header} eventKey={index}>
+              {category.name}
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey={index}>
+              <Card.Body>{category.cmp.render()}</Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        ))}
+      </Accordion>
+    </>
   );
 };
 
-export default Painter;
+export default memo(Painter);

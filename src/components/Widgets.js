@@ -22,6 +22,7 @@ const Widgets = (props) => {
       params: {
         text: "Привет",
         styles: {},
+        applyStylesToWidget: true,
       },
     },
     {
@@ -32,6 +33,7 @@ const Widgets = (props) => {
       params: {
         src: "./favicon.ico",
         styles: {},
+        applyStylesToWidget: true,
       },
     },
     {
@@ -42,6 +44,7 @@ const Widgets = (props) => {
       params: {
         url: "https://www.youtube.com/embed/Ti2Q4sQkNdU",
         styles: {},
+        applyStylesToWidget: true,
       },
     },
     {
@@ -52,6 +55,7 @@ const Widgets = (props) => {
       params: {
         category: "",
         styles: {},
+        applyStylesToWidget: true,
       },
     },
     {
@@ -62,6 +66,7 @@ const Widgets = (props) => {
       params: {
         columns: 3,
         styles: {},
+        applyStylesToWidget: true,
       },
     },
   ];
