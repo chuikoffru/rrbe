@@ -54,7 +54,7 @@ const Settings = () => {
         {isNumber(selectedSectionIndex) ? (
           <>
             <SectionSettings />
-            <Painter type={showTab} />
+            {/* <Painter type={showTab} /> */}
           </>
         ) : (
           <p>Выберите секцию</p>
