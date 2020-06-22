@@ -6,19 +6,15 @@ const InputControl = ({ name, value, onChange, options = {} }) => {
 
   const handleChange = useCallback(
     (e) => {
-      onChange(e.target.value + options.appendix);
+      onChange(e.target.value);
     },
-    [onChange, options.appendix]
+    [onChange]
   );
 
   return (
     <Form.Group>
       <Form.Label>{name}</Form.Label>
-      <Form.Control
-        {...options}
-        value={parseFloat(value)}
-        onChange={handleChange}
-      />
+      <Form.Control {...options} value={value} onChange={handleChange} />
     </Form.Group>
   );
 };

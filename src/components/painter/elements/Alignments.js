@@ -10,11 +10,19 @@ const Alignments = () => {
     "left"
   );
 
+  const [float, setFloat] = useWidgetSettings("styles.float", "inherit");
+
   return (
     <Form>
       <SelectControl
+        list={["none", "left", "right"]}
+        name="Положение виджета (float)"
+        value={float}
+        onChange={setFloat}
+      />
+      <SelectControl
         list={["left", "center", "right", "justify"]}
-        name="Расположение текста"
+        name="Расположение текста (text-align)"
         value={textAlign}
         onChange={setTextAlign}
       />

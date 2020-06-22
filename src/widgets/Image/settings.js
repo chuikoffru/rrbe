@@ -1,45 +1,36 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { Form } from "react-bootstrap";
 import useWidgetSettings from "hooks/useWidgetSettings";
-
-export const defaultParams = {
-  widgetName: "Image",
-  props: {
-    src: "./favicon.ico",
-    alt: "Подпись к изображению",
-  },
-};
+import InputControl from "components/painter/controls/InputControl";
+import RangeControl from "../../components/painter/controls/RangeControl";
 
 const ImageSettings = () => {
-  const [settings, setSettings] = useWidgetSettings();
-
-  const onChange = useCallback(
-    (e) => {
-      setSettings({ ...settings, [e.target.name]: e.target.value });
-    },
-    [setSettings, settings]
+  const [url, setUrl] = useWidgetSettings(
+    "src",
+    "https://picsum.photos/seed/picsum/300/200"
   );
+  const [alt, setAlt] = useWidgetSettings("alt", "");
+  const [width, setWidth] = useWidgetSettings("width", 10);
 
   return (
     <Form>
-      <Form.Group>
-        <Form.Label>URL изображения</Form.Label>
-        <Form.Control
-          type="text"
-          name="src"
-          value={settings.src}
-          onChange={onChange}
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Label>Подпись к изображению</Form.Label>
-        <Form.Control
-          name="alt"
-          type="text"
-          value={settings.alt}
-          onChange={onChange}
-        />
-      </Form.Group>
+      <InputControl name="URL изображения" value={url} onChange={setUrl} />
+      <InputControl
+        name="Подпись к изображению"
+        value={alt}
+        onChange={setAlt}
+      />
+      <RangeControl
+        name="Ширина изображения"
+        value={width}
+        onChange={setWidth}
+        options={{
+          min: 10,
+          max: 2000,
+          step: 1,
+          appendix: "px",
+        }}
+      />
     </Form>
   );
 };
