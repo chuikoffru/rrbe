@@ -9,6 +9,7 @@ import { ReactComponent as TextEditorIcon } from "icons/text-editor.svg";
 import { ReactComponent as VideoClipIcon } from "icons/video-clip.svg";
 import { ReactComponent as NewsIcon } from "icons/news.svg";
 import { ReactComponent as SectionIcon } from "icons/columns.svg";
+import { ReactComponent as LinkIcon } from "icons/hyperlink.svg";
 
 import "scss/widgets.scss";
 
@@ -65,6 +66,19 @@ const Widgets = (props) => {
       icon: <SectionIcon />,
       params: {
         columns: 3,
+        styles: {},
+        applyStylesToWidget: true,
+      },
+    },
+    {
+      id: 6,
+      name: "Link",
+      type: ItemTypes.ELEMENTS,
+      icon: <LinkIcon />,
+      params: {
+        text: "Ссылка",
+        target: "_self",
+        url: "#",
         styles: {},
         applyStylesToWidget: true,
       },
