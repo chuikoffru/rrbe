@@ -20,7 +20,6 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
 
   return (
     <div
-      key={columnIndex}
       ref={drop}
       className={classNames({
         rrbe__column: true,

@@ -2,7 +2,13 @@ import { combineReducers } from "redux";
 import undoable, { includeAction } from "redux-undo";
 import { appReducer } from "./app/reducer";
 import { sectionsReducer } from "./sections/reducer";
-import { ADD_SECTION, REMOVE_COLUMNS, ADD_COLUMNS, ADD_WIDGET } from "./types";
+import {
+  ADD_SECTION,
+  REMOVE_COLUMNS,
+  ADD_COLUMNS,
+  ADD_WIDGET,
+  REMOVE_WIDGET,
+} from "./types";
 
 export const rootReducer = combineReducers({
   sections: undoable(sectionsReducer, {
@@ -12,6 +18,7 @@ export const rootReducer = combineReducers({
       REMOVE_COLUMNS,
       ADD_COLUMNS,
       ADD_WIDGET,
+      REMOVE_WIDGET,
     ]),
   }),
   app: appReducer,

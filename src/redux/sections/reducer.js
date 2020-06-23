@@ -9,6 +9,7 @@ import {
   CHANGE_SECTION,
   ADD_COLUMNS,
   REMOVE_COLUMNS,
+  REMOVE_WIDGET,
 } from "../types";
 
 const initialState = {
@@ -71,6 +72,11 @@ export const sectionsReducer = (state = initialState, action) => {
         state,
         `sections.${state.selectedSection}.columns`,
         (columns) => columns.slice(0, action.payload)
+      );
+    case REMOVE_WIDGET:
+      return mutate.delete(
+        state,
+        `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}`
       );
     default:
       return state;

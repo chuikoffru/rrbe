@@ -45,7 +45,7 @@ const Preview = () => {
     <>
       {sections.map((section, sectionIndex) => (
         <Sections
-          key={sectionIndex}
+          key={section.id}
           section={section}
           sectionIndex={sectionIndex}
         />

@@ -7,6 +7,7 @@ import loadWidget from "helpers/loadWidget";
 import { isNumber } from "helpers/number";
 import { ItemTypes } from "helpers/itemTypes";
 import Painter from "./Painter";
+import DeleteWidget from "./DeleteWidget";
 
 const Settings = () => {
   console.log("Settings init");
@@ -60,18 +61,15 @@ const Settings = () => {
     <Tabs variant="pills" activeKey={showTab} onSelect={(k) => setShowTab(k)}>
       {widgetName && (
         <Tab eventKey={ItemTypes.ELEMENTS} title="Виджет">
-          <>
-            <WidgetSettings />
-            {showTab === ItemTypes.ELEMENTS && <Painter type={showTab} />}
-          </>
+          <WidgetSettings />
+          <DeleteWidget />
+          {showTab === ItemTypes.ELEMENTS && <Painter type={showTab} />}
         </Tab>
       )}
       {isNumber(selectedSectionIndex) && (
         <Tab eventKey={ItemTypes.SECTIONS} title="Секция">
-          <>
-            <SectionSettings />
-            {showTab === ItemTypes.SECTIONS && <Painter type={showTab} />}
-          </>
+          <SectionSettings />
+          {showTab === ItemTypes.SECTIONS && <Painter type={showTab} />}
         </Tab>
       )}
     </Tabs>
