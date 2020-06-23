@@ -7,11 +7,8 @@ import {
   CHANGE_SECTION,
   ADD_COLUMNS,
   REMOVE_COLUMNS,
-<<<<<<< HEAD
   REMOVE_WIDGET,
-=======
   IMPORT_STRUCTURE,
->>>>>>> export-html
 } from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
