@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { Modal, Button, FormControl, Spinner } from "react-bootstrap";
-import { importStructure } from "redux/sections/actions";
+import { importStructure, selectSection } from "redux/sections/actions";
 
 const ImportTemplate = () => {
   const dispatch = useDispatch();
@@ -13,13 +13,20 @@ const ImportTemplate = () => {
   const handleChange = useCallback((e) => setName(e.target.value), []);
 
   const loadTemplate = useCallback(async () => {
+    // Включаем спиннер
     setLoading(true);
+    // Загружаем данные
     const req = await axios(
       "https://regagro.herokuapp.com/templates?_limit=1&name=" + name
     );
+    // Выключаем спиннер
     setLoading(false);
-    console.log("req", req.data[0]);
+    //console.log("req", req.data[0]);
+    // Записываем данные в стор
     dispatch(importStructure(req.data[0].store));
+    // Делаем первую секцию активной
+    dispatch(selectSection(0));
+    // Скрываем модальное окно
     setShow(false);
   }, [dispatch, name]);
 
