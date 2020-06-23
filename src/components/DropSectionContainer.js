@@ -16,6 +16,7 @@ const DropSectionContainer = ({ accept, onDrop }) => {
     <div
       ref={drop}
       className={classNames({
+        "d-print-none": true,
         dropSection: true,
         canDrop,
         isActive: isOver && canDrop,

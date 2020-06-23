@@ -9,11 +9,8 @@ import {
   CHANGE_SECTION,
   ADD_COLUMNS,
   REMOVE_COLUMNS,
-<<<<<<< HEAD
   REMOVE_WIDGET,
-=======
   IMPORT_STRUCTURE,
->>>>>>> export-html
 } from "../types";
 
 const initialState = {
