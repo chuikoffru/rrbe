@@ -71,6 +71,12 @@ export function changeSection(settings) {
   };
 }
 
+export function removeWidget() {
+  return {
+    type: REMOVE_WIDGET,
+  };
+}
+
 export function addColumns(len) {
   return {
     type: ADD_COLUMNS,
