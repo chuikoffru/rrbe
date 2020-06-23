@@ -9,7 +9,7 @@ const useSectionSettings = (property, defaultValue) => {
     ({ sections }) =>
       sections.present.sections[sections.present.selectedSection]
   );
-  console.log("section", section);
+  //console.log("section", section);
   let settings = {};
 
   if (section && property) {

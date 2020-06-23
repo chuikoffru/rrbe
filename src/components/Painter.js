@@ -26,7 +26,7 @@ const Painter = ({ type }) => {
   ];
 
   return (
-    <>
+    <div className="my-3">
       {type === ItemTypes.ELEMENTS && <Switch />}
       <Accordion>
         {categories.map((category, index) => (
@@ -40,7 +40,7 @@ const Painter = ({ type }) => {
           </Card>
         ))}
       </Accordion>
-    </>
+    </div>
   );
 };
 
