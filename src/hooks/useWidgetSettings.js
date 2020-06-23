@@ -1,6 +1,7 @@
 import mutate from "dot-prop-immutable";
 import { useSelector, useDispatch } from "react-redux";
 import { changeWidget } from "redux/sections/actions";
+import { isNumber } from "helpers/number";
 
 const useWidgetSettings = (property, defaultValue) => {
   const dispatch = useDispatch();
@@ -11,6 +12,9 @@ const useWidgetSettings = (property, defaultValue) => {
   const { sectionIndex, columnIndex, rowIndex } = useSelector(
     ({ sections }) => sections.present.selectedWidget
   );
+
+  // Если виджет не выбран то выводим undefined
+  if (!isNumber(sectionIndex)) return [{}, () => {}];
 
   // Получаем данные виджета
   const widget = sections[sectionIndex].columns[columnIndex][rowIndex];

@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import loadable from "@loadable/component";
 import { Tabs, Tab } from "react-bootstrap";
@@ -11,8 +11,8 @@ import Painter from "./Painter";
 const Settings = () => {
   console.log("Settings init");
   const [showTab, setShowTab] = useState(ItemTypes.ELEMENTS);
-  const widgetName = useSelector(
-    (state) => state.sections.present.selectedWidget.widgetName
+  const { widgetName } = useSelector(
+    (state) => state.sections.present.selectedWidget
   );
 
   const selectedSectionIndex = useSelector(
@@ -38,28 +38,42 @@ const Settings = () => {
     [selectedSectionIndex]
   );
 
+  // Устанавливаем таб активным в зависимости от выбранных элементов
+  const activeTab = useCallback(() => {
+    if (isNumber(selectedSectionIndex) && !widgetName) {
+      // Если выбрана секция, но нет виджета
+      return ItemTypes.SECTIONS;
+    } else if (widgetName && !isNumber(selectedSectionIndex)) {
+      // Если выбран виджет, но не секция
+      return ItemTypes.SECTIONS;
+    } else {
+      // В остальных случаях возвращаем то что выбрал пользователь
+      return showTab;
+    }
+  }, [selectedSectionIndex, showTab, widgetName]);
+
+  useEffect(() => {
+    setShowTab(activeTab());
+  }, [activeTab]);
+
   return (
     <Tabs variant="pills" activeKey={showTab} onSelect={(k) => setShowTab(k)}>
-      <Tab eventKey={ItemTypes.ELEMENTS} title="Виджет">
-        {widgetName ? (
+      {widgetName && (
+        <Tab eventKey={ItemTypes.ELEMENTS} title="Виджет">
           <>
             <WidgetSettings />
-            <Painter type={showTab} />
+            {showTab === ItemTypes.ELEMENTS && <Painter type={showTab} />}
           </>
-        ) : (
-          <p>Выберите виджет</p>
-        )}
-      </Tab>
-      <Tab eventKey={ItemTypes.SECTIONS} title="Секция">
-        {isNumber(selectedSectionIndex) ? (
+        </Tab>
+      )}
+      {isNumber(selectedSectionIndex) && (
+        <Tab eventKey={ItemTypes.SECTIONS} title="Секция">
           <>
             <SectionSettings />
-            <Painter type={showTab} />
+            {showTab === ItemTypes.SECTIONS && <Painter type={showTab} />}
           </>
-        ) : (
-          <p>Выберите секцию</p>
-        )}
-      </Tab>
+        </Tab>
+      )}
     </Tabs>
   );
 };

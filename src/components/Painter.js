@@ -5,7 +5,7 @@ import Switch from "./painter/Switch";
 import { ItemTypes } from "helpers/itemTypes";
 
 const Painter = ({ type }) => {
-  console.log("Painters init");
+  console.log("Painters init - ", type);
 
   const categories = [
     {

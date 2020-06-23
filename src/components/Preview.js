@@ -1,7 +1,7 @@
 import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { addSection } from "redux/sections/actions";
+import { addSection, selectSection } from "redux/sections/actions";
 import { generateId } from "helpers/string";
 import { ItemTypes } from "helpers/itemTypes";
 
@@ -33,10 +33,12 @@ const Preview = () => {
         // Устанавливаем дефолтное количество колонок
         item.columns = new Array(item.params.columns).fill([]);
       }
-
+      // Добавляем новую секцию
       dispatch(addSection({ ...item }));
+      // Делаем новую секцию активной
+      dispatch(selectSection(sections.length));
     },
-    [dispatch]
+    [dispatch, sections.length]
   );
 
   return (

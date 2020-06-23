@@ -7,6 +7,7 @@ import { generateId } from "helpers/string";
 import Column from "./Column";
 
 import { ItemTypes } from "helpers/itemTypes";
+import { selectWidget } from "../redux/sections/actions";
 
 const Sections = ({ section, sectionIndex }) => {
   const dispatch = useDispatch();
@@ -14,11 +15,20 @@ const Sections = ({ section, sectionIndex }) => {
   const addNewWidget = useCallback(
     (item, columnIndex) => {
       delete item.icon;
+      // Добавляем новый виджет
       dispatch(
         addWidget(sectionIndex, columnIndex, { ...item, id: generateId() })
       );
+      // Делаем секцию в которую добавили активной
+      dispatch(selectSection(sectionIndex));
+      // Смотрим сколько виджетов в колонке
+      const countWidgets = section.columns[columnIndex].length;
+      // Делаем последний добавленный виджет активным
+      dispatch(
+        selectWidget(sectionIndex, columnIndex, countWidgets, item.name)
+      );
     },
-    [dispatch, sectionIndex]
+    [dispatch, section.columns, sectionIndex]
   );
 
   const setCurrentSection = useCallback(() => {
