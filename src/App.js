@@ -13,7 +13,7 @@ function App() {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="rrbe">
-        <div className="rrbe__left">
+        <div className="rrbe__left d-print-none">
           <UndoRedo />
           <h2>Виджеты</h2>
           <Widgets />
