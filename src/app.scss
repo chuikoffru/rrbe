@@ -29,6 +29,16 @@
   }
   &__right {
     flex-basis: 100%;
+    &-top {
+      width: 100%;
+      //position: fixed;
+      top: 0;
+      height: 60px;
+      background-color: #414141;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+    }
   }
   &__section {
     &:hover {

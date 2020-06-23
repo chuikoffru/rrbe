@@ -7,7 +7,7 @@ import { ItemTypes } from "helpers/itemTypes";
 
 import DropSectionContainer from "./DropSectionContainer";
 import Sections from "./Sections";
-import Export from "./Export";
+import Top from "./top/Top";
 
 const Preview = () => {
   const dispatch = useDispatch();
@@ -50,6 +50,7 @@ const Preview = () => {
 
   return (
     <>
+      <Top html={ref.current?.innerHTML} />
       <div className="rrbe__preview" ref={ref}>
         {sections.map((section, sectionIndex) => (
           <Sections
@@ -59,7 +60,6 @@ const Preview = () => {
           />
         ))}
       </div>
-      <Export html={ref.current?.innerHTML} />
       <DropSectionContainer
         accept={[ItemTypes.COMPONENTS, ItemTypes.SECTIONS]}
         onDrop={(item) => addNewSection(item)}

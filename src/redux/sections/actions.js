@@ -7,6 +7,7 @@ import {
   CHANGE_SECTION,
   ADD_COLUMNS,
   REMOVE_COLUMNS,
+  IMPORT_STRUCTURE,
 } from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
@@ -77,5 +78,12 @@ export function removeColumns(len) {
   return {
     type: REMOVE_COLUMNS,
     payload: len,
+  };
+}
+
+export function importStructure(json) {
+  return {
+    type: IMPORT_STRUCTURE,
+    payload: json,
   };
 }

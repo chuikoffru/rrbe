@@ -9,6 +9,7 @@ import {
   CHANGE_SECTION,
   ADD_COLUMNS,
   REMOVE_COLUMNS,
+  IMPORT_STRUCTURE,
 } from "../types";
 
 const initialState = {
@@ -72,6 +73,9 @@ export const sectionsReducer = (state = initialState, action) => {
         `sections.${state.selectedSection}.columns`,
         (columns) => columns.slice(0, action.payload)
       );
+    case IMPORT_STRUCTURE:
+      return mutate.set(state, `sections`, action.payload);
+
     default:
       return state;
   }
