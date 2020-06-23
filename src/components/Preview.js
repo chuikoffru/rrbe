@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useRef, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { addSection, selectSection } from "redux/sections/actions";
@@ -7,10 +7,13 @@ import { ItemTypes } from "helpers/itemTypes";
 
 import DropSectionContainer from "./DropSectionContainer";
 import Sections from "./Sections";
+import Top from "./top/Top";
 
 const Preview = () => {
   const dispatch = useDispatch();
   const sections = useSelector((state) => state.sections.present.sections);
+
+  const ref = useRef(null);
 
   const addNewSection = useCallback(
     (item) => {
@@ -41,15 +44,24 @@ const Preview = () => {
     [dispatch, sections.length]
   );
 
+  useEffect(() => {
+    if (sections.length > 0) {
+      console.log("ref.current", ref.current);
+    }
+  }, [sections]);
+
   return (
     <>
-      {sections.map((section, sectionIndex) => (
-        <Sections
-          key={section.id}
-          section={section}
-          sectionIndex={sectionIndex}
-        />
-      ))}
+      <Top html={ref.current?.innerHTML} />
+      <div className="rrbe__preview" ref={ref}>
+        {sections.map((section, sectionIndex) => (
+          <Sections
+            key={sectionIndex}
+            section={section}
+            sectionIndex={sectionIndex}
+          />
+        ))}
+      </div>
       <DropSectionContainer
         accept={[ItemTypes.COMPONENTS, ItemTypes.SECTIONS]}
         onDrop={(item) => addNewSection(item)}

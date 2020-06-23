@@ -7,7 +7,11 @@ import {
   CHANGE_SECTION,
   ADD_COLUMNS,
   REMOVE_COLUMNS,
+<<<<<<< HEAD
   REMOVE_WIDGET,
+=======
+  IMPORT_STRUCTURE,
+>>>>>>> export-html
 } from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
@@ -81,8 +85,9 @@ export function removeColumns(len) {
   };
 }
 
-export function removeWidget() {
+export function importStructure(json) {
   return {
-    type: REMOVE_WIDGET,
+    type: IMPORT_STRUCTURE,
+    payload: json,
   };
 }
