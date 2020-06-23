@@ -74,6 +74,11 @@ export const sectionsReducer = (state = initialState, action) => {
         `sections.${state.selectedSection}.columns`,
         (columns) => columns.slice(0, action.payload)
       );
+    case REMOVE_WIDGET:
+      return mutate.delete(
+        state,
+        `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}`
+      );
     case IMPORT_STRUCTURE:
       return mutate.set(state, `sections`, action.payload);
 
