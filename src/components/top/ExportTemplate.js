@@ -1,5 +1,7 @@
 import React, { useState, useCallback } from "react";
-import AceEditor from "react-ace";
+import { useSelector } from "react-redux";
+import axios from "axios";
+import Highlight from "react-highlight";
 import beautify from "js-beautify/js/lib/beautify-html";
 
 import {
@@ -11,14 +13,10 @@ import {
   Col,
   Spinner,
 } from "react-bootstrap";
-import htmlFilter from "helpers/htmlFilter";
-import { useSelector } from "react-redux";
-import axios from "axios";
 
-//import "ace-builds/webpack-resolver";
-import "ace-builds/src-noconflict/ace";
-import "ace-builds/src-noconflict/mode-html";
-import "ace-builds/src-noconflict/theme-monokai";
+import htmlFilter from "helpers/htmlFilter";
+
+import "highlight.js/scss/monokai.scss";
 
 const Export = ({ html }) => {
   const [show, setShow] = useState(false);
@@ -48,17 +46,7 @@ const Export = ({ html }) => {
       </Button>
       <Modal size="lg" show={show} onHide={() => setShow(false)}>
         <Modal.Body>
-          <AceEditor
-            width="100%"
-            setOptions={{
-              useWorker: false,
-              readOnly: true,
-            }}
-            mode="html"
-            theme="monokai"
-            name="export"
-            value={result}
-          />
+          <Highlight language="html">{result}</Highlight>
         </Modal.Body>
         <Modal.Footer>
           <Row className="w-100">

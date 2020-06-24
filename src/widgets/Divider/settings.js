@@ -1,8 +1,8 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import useWidgetSettings from "hooks/useWidgetSettings";
-import RangeControl from "../../components/painter/controls/RangeControl";
-import ColorPicker from "../../components/painter/controls/ColorPicker";
+import RangeControl from "components/painter/controls/RangeControl";
+import ColorPicker from "components/painter/controls/ColorPicker";
 
 const DividerSettings = () => {
   const [size, setSize] = useWidgetSettings("size", 2);
