@@ -10,7 +10,7 @@ import Painter from "./Painter";
 import DeleteWidget from "./DeleteWidget";
 
 const Settings = () => {
-  console.log("Settings init");
+  console.info("Settings init");
   const [showTab, setShowTab] = useState(ItemTypes.ELEMENTS);
   const { widgetName } = useSelector(
     (state) => state.sections.present.selectedWidget

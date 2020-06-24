@@ -7,7 +7,7 @@ import ColorPicker from "../controls/ColorPicker";
 import useWidgetSettings from "hooks/useWidgetSettings";
 
 const Appearance = () => {
-  console.log("Appearance init");
+  console.info("Appearance init");
 
   const [fontSize, setFontSize] = useWidgetSettings("styles.fontSize", 1);
   const [color, setColor] = useWidgetSettings("styles.color", "#000000");

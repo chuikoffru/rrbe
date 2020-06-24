@@ -4,7 +4,7 @@ import useWidgetSettings from "hooks/useWidgetSettings";
 import IndentControl from "../controls/IndentControl";
 
 const Indentation = () => {
-  console.log("Indentation init");
+  console.info("Indentation init");
 
   // Margins
   const [marginLeft, setMarginLeft] = useWidgetSettings("styles.marginLeft", 0);

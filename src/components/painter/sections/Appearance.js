@@ -4,7 +4,7 @@ import useSectionSettings from "hooks/useSectionSettings";
 import ColorPicker from "../controls/ColorPicker";
 
 const Appearance = () => {
-  console.log("Section Appearance init");
+  console.info("Section Appearance init");
 
   const [bgColor, setBgColor] = useSectionSettings(
     "styles.backgroundColor",

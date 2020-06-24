@@ -23,6 +23,7 @@ const useWidgetSettings = (property, defaultValue) => {
 
   // Если указано конкретное свойство, возвращаем только его
   if (widget && property) {
+    //console.log("widget.params", widget.params);
     settings = mutate.get(widget.params, property) || defaultValue;
   } else if (widget) {
     settings = widget.params;
@@ -31,6 +32,7 @@ const useWidgetSettings = (property, defaultValue) => {
   // Записываем новые настройки
   const setSettings = (params) => {
     if (property) {
+      console.log("params", property, params);
       const newSettings = mutate.set(widget.params, property, params);
       dispatch(changeWidget(newSettings));
     } else {

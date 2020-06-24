@@ -5,7 +5,7 @@ import RangeControl from "../controls/RangeControl";
 import useSectionSettings from "hooks/useSectionSettings";
 
 const Indentation = () => {
-  console.log("Indentation init");
+  console.info("Indentation init");
   const [margin, setMargin] = useSectionSettings("styles.margin", 0);
   const [padding, setPadding] = useSectionSettings("styles.padding", 0);
   return (

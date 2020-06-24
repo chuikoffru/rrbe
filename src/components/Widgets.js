@@ -10,6 +10,7 @@ import { ReactComponent as VideoClipIcon } from "icons/video-clip.svg";
 import { ReactComponent as NewsIcon } from "icons/news.svg";
 import { ReactComponent as SectionIcon } from "icons/columns.svg";
 import { ReactComponent as LinkIcon } from "icons/hyperlink.svg";
+import { ReactComponent as DividerIcon } from "icons/arrow.svg";
 
 import "scss/widgets.scss";
 
@@ -79,6 +80,16 @@ const Widgets = (props) => {
         text: "Ссылка",
         target: "_self",
         url: "#",
+        styles: {},
+        applyStylesToWidget: true,
+      },
+    },
+    {
+      id: 7,
+      name: "Divider",
+      type: ItemTypes.ELEMENTS,
+      icon: <DividerIcon />,
+      params: {
         styles: {},
         applyStylesToWidget: true,
       },
