@@ -1,30 +1,17 @@
-import React, { useCallback } from "react";
-import { Form } from "react-bootstrap";
+import React from "react";
+import JoditEditor from "jodit-react";
 import useWidgetSettings from "hooks/useWidgetSettings";
 
-const TextSettings = () => {
-  const [settings, setSettings] = useWidgetSettings();
+import "./text.scss";
 
-  const onChange = useCallback(
-    (e) => {
-      setSettings({ ...settings, [e.target.name]: e.target.value });
-    },
-    [setSettings, settings]
-  );
+const TextSettings = () => {
+  const [content, setContent] = useWidgetSettings("text", "<p></p>");
 
   return (
-    <Form>
-      <Form.Group>
-        <Form.Label>Текст</Form.Label>
-        <Form.Control
-          name="text"
-          as="textarea"
-          rows="3"
-          value={settings.text}
-          onChange={onChange}
-        />
-      </Form.Group>
-    </Form>
+    <JoditEditor
+      value={content}
+      onChange={(newContent) => setContent(newContent)}
+    />
   );
 };
 

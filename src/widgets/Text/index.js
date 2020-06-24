@@ -5,8 +5,6 @@ import { changeWidget } from "redux/sections/actions";
 const Text = (props) => {
   const dispatch = useDispatch();
 
-  console.log("text props", props);
-
   const saveText = (e) => {
     dispatch(
       changeWidget({
@@ -21,10 +19,8 @@ const Text = (props) => {
       suppressContentEditableWarning={true}
       contentEditable={true}
       onBlur={saveText}
-      //style={{ ...props.styles }}
-    >
-      {props.text}
-    </div>
+      dangerouslySetInnerHTML={{ __html: props.text }}
+    ></div>
   );
 };
 

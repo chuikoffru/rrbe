@@ -21,7 +21,7 @@ const Widgets = (props) => {
       type: ItemTypes.ELEMENTS,
       icon: <TextEditorIcon />,
       params: {
-        text: "Привет",
+        text: "<p>Текст</p>",
         styles: {},
         applyStylesToWidget: true,
       },

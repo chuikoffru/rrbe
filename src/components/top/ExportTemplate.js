@@ -2,8 +2,6 @@ import React, { useState, useCallback } from "react";
 import AceEditor from "react-ace";
 import beautify from "js-beautify/js/lib/beautify-html";
 
-import "ace-builds/src-noconflict/mode-html";
-import "ace-builds/src-noconflict/theme-monokai";
 import {
   Modal,
   Button,
@@ -16,6 +14,11 @@ import {
 import htmlFilter from "helpers/htmlFilter";
 import { useSelector } from "react-redux";
 import axios from "axios";
+
+//import "ace-builds/webpack-resolver";
+import "ace-builds/src-noconflict/ace";
+import "ace-builds/src-noconflict/mode-html";
+import "ace-builds/src-noconflict/theme-monokai";
 
 const Export = ({ html }) => {
   const [show, setShow] = useState(false);

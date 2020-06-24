@@ -2,7 +2,7 @@ import React from "react";
 import { Form } from "react-bootstrap";
 import useWidgetSettings from "hooks/useWidgetSettings";
 import InputControl from "components/painter/controls/InputControl";
-import RangeControl from "../../components/painter/controls/RangeControl";
+import RangeControl from "components/painter/controls/RangeControl";
 
 const ImageSettings = () => {
   const [url, setUrl] = useWidgetSettings(
