@@ -8,10 +8,13 @@ const TextSettings = () => {
   const [content, setContent] = useWidgetSettings("text", "<p></p>");
 
   return (
-    <JoditEditor
-      value={content}
-      onChange={(newContent) => setContent(newContent)}
-    />
+    <div className="my-3">
+      <JoditEditor
+        value={content}
+        onChange={(newContent) => setContent(newContent)}
+        onBlur={(newContent) => setContent(newContent)}
+      />
+    </div>
   );
 };
 
