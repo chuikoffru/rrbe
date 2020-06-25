@@ -1,6 +1,5 @@
-const arr = [" isActive", " canDrop"];
+const arr = [" isActive", " canDrop", 'contenteditable="true"'];
 
 export default (html) => {
-  let regex = new RegExp("\\b" + arr.join("|") + "\\b", "gi");
-  return html.replace(regex, "");
+  return arr.reduce((result, word) => result.replace(word, ""), html);
 };
