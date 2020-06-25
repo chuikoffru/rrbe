@@ -5,7 +5,7 @@ import ImportTemplate from "./ImportTemplate";
 
 const Top = (props) => {
   return (
-    <div className="rrbe__right-top top">
+    <div className="rrbe__right-top top d-print-none">
       <div className="top__left">
         <UndoRedo />
       </div>
