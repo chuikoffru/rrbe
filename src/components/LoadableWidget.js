@@ -14,7 +14,7 @@ const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex }) => {
   // Выбираем виджет
   const setSelectedWidget = useCallback(
     (event, columnIndex, rowIndex) => {
-      event.stopPropagation();
+      //event.stopPropagation();
       dispatch(selectWidget(sectionIndex, columnIndex, rowIndex, widget.name));
     },
     [dispatch, sectionIndex, widget.name]
@@ -28,7 +28,7 @@ const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex }) => {
       style={applyStylesToWidget ? styles : {}}
       id={widget.id}
       key={rowIndex}
-      onClickCapture={(event) =>
+      onClick={(event) =>
         setSelectedWidget(event, columnIndex, rowIndex, widget.name)
       }
     >

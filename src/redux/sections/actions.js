@@ -9,6 +9,7 @@ import {
   REMOVE_COLUMNS,
   REMOVE_WIDGET,
   IMPORT_STRUCTURE,
+  REMOVE_SECTION,
 } from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
@@ -27,6 +28,12 @@ export function selectSection(sectionIndex) {
   return {
     type: SELECT_SECTION,
     payload: sectionIndex,
+  };
+}
+
+export function removeSection() {
+  return {
+    type: REMOVE_SECTION,
   };
 }
 

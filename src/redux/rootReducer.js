@@ -9,6 +9,7 @@ import {
   ADD_WIDGET,
   REMOVE_WIDGET,
   IMPORT_STRUCTURE,
+  REMOVE_SECTION,
 } from "./types";
 
 export const rootReducer = combineReducers({
@@ -20,6 +21,7 @@ export const rootReducer = combineReducers({
       ADD_COLUMNS,
       ADD_WIDGET,
       REMOVE_WIDGET,
+      REMOVE_SECTION,
       IMPORT_STRUCTURE,
     ]),
   }),

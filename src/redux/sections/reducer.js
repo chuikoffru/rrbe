@@ -11,6 +11,7 @@ import {
   REMOVE_COLUMNS,
   REMOVE_WIDGET,
   IMPORT_STRUCTURE,
+  REMOVE_SECTION,
 } from "../types";
 
 const initialState = {
@@ -62,23 +63,30 @@ export const sectionsReducer = (state = initialState, action) => {
         `sections.${state.selectedSection}.params`,
         action.payload.settings
       );
+
     case ADD_COLUMNS:
       return mutate.set(
         state,
         `sections.${state.selectedSection}.columns`,
         (columns) => [...columns, ...Array(action.payload).fill([])]
       );
+
     case REMOVE_COLUMNS:
       return mutate.set(
         state,
         `sections.${state.selectedSection}.columns`,
         (columns) => columns.slice(0, action.payload)
       );
+
     case REMOVE_WIDGET:
       return mutate.delete(
         state,
         `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}`
       );
+
+    case REMOVE_SECTION:
+      return mutate.delete(state, `sections.${state.selectedSection}`);
+
     case IMPORT_STRUCTURE:
       return mutate.set(state, `sections`, action.payload);
 

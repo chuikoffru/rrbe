@@ -8,6 +8,7 @@ import { isNumber } from "helpers/number";
 import { ItemTypes } from "helpers/itemTypes";
 import Painter from "./Painter";
 import DeleteWidget from "./DeleteWidget";
+import DeleteSection from "./DeleteSection";
 
 const Settings = () => {
   console.info("Settings init");
@@ -62,14 +63,15 @@ const Settings = () => {
       {widgetName && (
         <Tab eventKey={ItemTypes.ELEMENTS} title="Виджет">
           <WidgetSettings />
-          <DeleteWidget />
           {showTab === ItemTypes.ELEMENTS && <Painter type={showTab} />}
+          <DeleteWidget />
         </Tab>
       )}
       {isNumber(selectedSectionIndex) && (
         <Tab eventKey={ItemTypes.SECTIONS} title="Секция">
           <SectionSettings />
           {showTab === ItemTypes.SECTIONS && <Painter type={showTab} />}
+          <DeleteSection />
         </Tab>
       )}
     </Tabs>
