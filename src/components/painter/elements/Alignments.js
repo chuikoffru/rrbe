@@ -15,13 +15,43 @@ const Alignments = () => {
   return (
     <Form>
       <SelectControl
-        list={["none", "left", "right"]}
+        list={[
+          {
+            name: "По-умолчанию",
+            value: "none",
+          },
+          {
+            name: "Слева",
+            value: "left",
+          },
+          {
+            name: "Справа",
+            value: "right",
+          },
+        ]}
         name="Положение виджета (float)"
         value={float}
         onChange={setFloat}
       />
       <SelectControl
-        list={["left", "center", "right", "justify"]}
+        list={[
+          {
+            name: "По левому краю",
+            value: "left",
+          },
+          {
+            name: "По центру",
+            value: "center",
+          },
+          {
+            name: "По правому краю",
+            value: "right",
+          },
+          {
+            name: "По ширине",
+            value: "justify",
+          },
+        ]}
         name="Расположение текста (text-align)"
         value={textAlign}
         onChange={setTextAlign}

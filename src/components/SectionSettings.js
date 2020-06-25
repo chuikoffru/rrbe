@@ -23,7 +23,7 @@ const SectionSettings = () => {
           value={settings.columns}
           onChange={onChange}
         >
-          {Array(11)
+          {Array(12)
             .fill([])
             .map((v, i) => (
               <option key={i}>{i + 1}</option>
