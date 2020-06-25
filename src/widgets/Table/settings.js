@@ -7,14 +7,14 @@ import RenderTableSettings from "./render";
 
 import useWidgetSettings from "hooks/useWidgetSettings";
 
-import { sourceTypes } from "./sourceTypes";
+import { sourceTypes, sourceTypesList } from "./sourceTypes";
 
 import "./table.scss";
 
 const TableSettings = () => {
   const [dataFrom, setDataFrom] = useWidgetSettings(
     "dataFrom",
-    sourceTypes.API.value
+    sourceTypes.API
   );
 
   /* const [striped, setStriped] = useWidgetSettings("striped", false);
@@ -24,11 +24,11 @@ const TableSettings = () => {
 
   const showSettings = () => {
     switch (dataFrom) {
-      case sourceTypes.API.value:
+      case sourceTypes.API:
         return <ApiTableSettings />;
-      case sourceTypes.CUSTOM.value:
+      case sourceTypes.CUSTOM:
         return <CustomTableSettings />;
-      case sourceTypes.RENDER.value:
+      case sourceTypes.RENDER:
         return <RenderTableSettings />;
       default:
         break;
@@ -41,7 +41,7 @@ const TableSettings = () => {
         name="Источник данных"
         value={dataFrom}
         onChange={setDataFrom}
-        list={sourceTypes}
+        list={sourceTypesList}
       />
       {showSettings()}
     </>

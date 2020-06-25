@@ -11,7 +11,7 @@ const Table = ({ dataFrom, api, columns, rows }) => {
   console.log("rows", rows);
 
   useEffect(() => {
-    if (dataFrom === sourceTypes.API.value && api) {
+    if (dataFrom === sourceTypes.API && api) {
       (async () => {
         const data = await getDataFromApi(api);
         if (data) {

@@ -1,5 +1,11 @@
 export const sourceTypes = {
-  API: { name: "API", value: "api" },
-  CUSTOM: { name: "В ручную", value: "custom" },
-  RENDER: { name: "Для рендеринга", value: "rendering" },
+  API: "api",
+  CUSTOM: "custom",
+  RENDER: "rendering",
 };
+
+export const sourceTypesList = [
+  { name: "API", value: sourceTypes.API },
+  { name: "В ручную", value: sourceTypes.CUSTOM },
+  { name: "Для рендеринга", value: sourceTypes.RENDER },
+];
