@@ -11,6 +11,7 @@ import { ReactComponent as NewsIcon } from "icons/news.svg";
 import { ReactComponent as SectionIcon } from "icons/columns.svg";
 import { ReactComponent as LinkIcon } from "icons/hyperlink.svg";
 import { ReactComponent as DividerIcon } from "icons/arrow.svg";
+import { ReactComponent as TableIcon } from "icons/scheme.svg";
 
 import "scss/widgets.scss";
 
@@ -66,7 +67,7 @@ const Widgets = (props) => {
       type: ItemTypes.SECTIONS,
       icon: <SectionIcon />,
       params: {
-        columns: 3,
+        columns: 1,
         styles: {},
         applyStylesToWidget: true,
       },
@@ -89,6 +90,16 @@ const Widgets = (props) => {
       name: "Divider",
       type: ItemTypes.ELEMENTS,
       icon: <DividerIcon />,
+      params: {
+        styles: {},
+        applyStylesToWidget: true,
+      },
+    },
+    {
+      id: 8,
+      name: "Table",
+      type: ItemTypes.ELEMENTS,
+      icon: <TableIcon />,
       params: {
         styles: {},
         applyStylesToWidget: true,
