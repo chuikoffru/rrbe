@@ -6,6 +6,7 @@ const Divider = (props) => {
       style={{
         borderTopWidth: parseInt(props.size),
         borderTopColor: props.color,
+        pageBreakAfter: props.pageBreakAfter,
       }}
     />
   );
