@@ -1,9 +1,11 @@
 import React from "react";
 
-import useWidgetSettings from "hooks/useWidgetSettings";
 import SelectControl from "components/painter/controls/SelectControl";
 import ApiTableSettings from "./api";
 import CustomTableSettings from "./custom";
+import RenderTableSettings from "./render";
+
+import useWidgetSettings from "hooks/useWidgetSettings";
 
 import { sourceTypes } from "./sourceTypes";
 
@@ -20,6 +22,19 @@ const TableSettings = () => {
   const [hover, setHover] = useWidgetSettings("hover", false);
   const [variant, setVariant] = useWidgetSettings("variant", ""); */
 
+  const showSettings = () => {
+    switch (dataFrom) {
+      case sourceTypes.API.value:
+        return <ApiTableSettings />;
+      case sourceTypes.CUSTOM.value:
+        return <CustomTableSettings />;
+      case sourceTypes.RENDER.value:
+        return <RenderTableSettings />;
+      default:
+        break;
+    }
+  };
+
   return (
     <>
       <SelectControl
@@ -28,11 +43,7 @@ const TableSettings = () => {
         onChange={setDataFrom}
         list={sourceTypes}
       />
-      {dataFrom === sourceTypes.API.value ? (
-        <ApiTableSettings />
-      ) : (
-        <CustomTableSettings />
-      )}
+      {showSettings()}
     </>
   );
 };

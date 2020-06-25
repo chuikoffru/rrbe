@@ -2,7 +2,7 @@ import React from "react";
 import InputControl from "components/painter/controls/InputControl";
 import useWidgetSettings from "hooks/useWidgetSettings";
 
-const ApiTableSettings = (props) => {
+const ApiTableSettings = () => {
   const [api, setApi] = useWidgetSettings(
     "api",
     "https://regagro.herokuapp.com/animals"
