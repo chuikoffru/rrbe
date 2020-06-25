@@ -4,12 +4,18 @@ import { Form, FormControl, Button, InputGroup } from "react-bootstrap";
 import useWidgetSettings from "hooks/useWidgetSettings";
 
 const CustomTableSettings = (props) => {
+  // Список колонок
   const [columns, setColumns] = useWidgetSettings("columns", []);
   //const [rows, setRows] = useWidgetSettings("rows", []);
+
+  // Временное название новой колонки
   const [columnName, setColumnName] = useState("");
+
+  // Добавляем новую колонку
   const addColumn = useCallback(() => {
     setColumns([...columns, columnName]);
   }, [columnName, columns, setColumns]);
+
   return (
     <>
       <Form.Group>

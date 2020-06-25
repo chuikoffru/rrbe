@@ -20,9 +20,13 @@ const SelectControl = ({ name, value, list, onChange, options = {} }) => {
         value={value}
         onChange={handleChange}
       >
-        {list.map((option, index) => (
-          <option key={index}>{option}</option>
-        ))}
+        {typeof list === "object"
+          ? Object.entries(list).map(([key, value]) => (
+              <option value={value.value} key={key}>
+                {value.name}
+              </option>
+            ))
+          : list.map((value, key) => <option key={key}>{value}</option>)}
       </Form.Control>
     </Form.Group>
   );

@@ -5,10 +5,15 @@ import SelectControl from "components/painter/controls/SelectControl";
 import ApiTableSettings from "./api";
 import CustomTableSettings from "./custom";
 
+import { sourceTypes } from "./sourceTypes";
+
 import "./table.scss";
 
 const TableSettings = () => {
-  const [dataFrom, setDataFrom] = useWidgetSettings("dataFrom", "API");
+  const [dataFrom, setDataFrom] = useWidgetSettings(
+    "dataFrom",
+    sourceTypes.API.value
+  );
 
   /* const [striped, setStriped] = useWidgetSettings("striped", false);
   const [bordered, setBordered] = useWidgetSettings("bordered", false);
@@ -21,9 +26,13 @@ const TableSettings = () => {
         name="Источник данных"
         value={dataFrom}
         onChange={setDataFrom}
-        list={["API", "Custom"]}
+        list={sourceTypes}
       />
-      {dataFrom === "API" ? <ApiTableSettings /> : <CustomTableSettings />}
+      {dataFrom === sourceTypes.API.value ? (
+        <ApiTableSettings />
+      ) : (
+        <CustomTableSettings />
+      )}
     </>
   );
 };
