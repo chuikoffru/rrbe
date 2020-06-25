@@ -1,5 +1,4 @@
 import React, { useState, useCallback } from "react";
-import { useSelector } from "react-redux";
 import axios from "axios";
 import Highlight from "react-highlight";
 import beautify from "js-beautify/js/lib/beautify-html";
@@ -23,13 +22,11 @@ import footer from "./template/footer";
 
 import "highlight.js/scss/monokai.scss";
 
-const Export = ({ html }) => {
+const Export = ({ html, sections }) => {
   const [show, setShow] = useState(false);
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
-  const [wrap, setWrap] = useState(false);
-
-  const markup = useSelector((state) => state.sections.present.sections);
+  const [wrap, setWrap] = useState(true);
 
   if (wrap) {
     html = String(header + html + footer);
@@ -43,11 +40,11 @@ const Export = ({ html }) => {
     setLoading(true);
     await axios.post("https://regagro.herokuapp.com/templates", {
       name,
-      store: markup,
+      store: sections,
       html,
     });
     setLoading(false);
-  }, [html, markup, name]);
+  }, [html, sections, name]);
 
   const handleChange = useCallback((e) => setName(e.target.value), []);
 

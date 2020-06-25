@@ -3,7 +3,7 @@ import ExportTemplate from "components/top/ExportTemplate";
 import UndoRedo from "components/top/UndoRedo";
 import ImportTemplate from "./ImportTemplate";
 
-const Top = ({ html }) => {
+const Top = (props) => {
   return (
     <div className="rrbe__right-top top">
       <div className="top__left">
@@ -11,7 +11,7 @@ const Top = ({ html }) => {
       </div>
       <div className="top__right">
         <ImportTemplate />
-        <ExportTemplate html={html} />
+        <ExportTemplate {...props} />
       </div>
     </div>
   );

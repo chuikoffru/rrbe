@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useEffect } from "react";
+import React, { useCallback, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { addSection, selectSection } from "redux/sections/actions";
@@ -44,15 +44,9 @@ const Preview = () => {
     [dispatch, sections.length]
   );
 
-  useEffect(() => {
-    if (sections.length > 0) {
-      console.log("ref.current", ref.current);
-    }
-  }, [sections]);
-
   return (
     <>
-      <Top html={ref.current?.innerHTML} />
+      <Top html={ref.current?.innerHTML} sections={sections} />
       <div className="rrbe__preview" ref={ref}>
         {sections.map((section, sectionIndex) => (
           <Sections
