@@ -16,7 +16,7 @@ const DividerSettings = () => {
         name="Толщина разделителя"
         value={size}
         onChange={setSize}
-        options={{ min: 1, max: 10, step: 1 }}
+        options={{ min: 1, max: 10, step: 1, appendix: "px" }}
       />
       <ColorPicker name="Цвет разделителя" value={color} onChange={setColor} />
       <SelectControl

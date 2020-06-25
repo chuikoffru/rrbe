@@ -4,7 +4,7 @@ const Divider = (props) => {
   return (
     <hr
       style={{
-        borderTopWidth: parseInt(props.size),
+        borderTopWidth: parseInt(props.size) || 2,
         borderTopColor: props.color,
         pageBreakAfter: props.pageBreakAfter,
       }}
