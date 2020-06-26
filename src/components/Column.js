@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useDrop } from "react-dnd";
 import classNames from "classnames";
 
@@ -18,6 +18,23 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
     }),
   });
 
+  const moveWidget = useCallback(
+    (dragIndex, hoverIndex) => {
+      const dragWidget = rows[dragIndex];
+      console.log("dragIndex, hoverIndex", dragIndex, hoverIndex);
+      console.log("dragWidget", dragWidget);
+      /* setCards(
+        update(rows, {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, dragWidget],
+          ],
+        }),
+      ) */
+    },
+    [rows]
+  );
+
   return (
     <div
       ref={drop}
@@ -35,6 +52,7 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
           sectionIndex={sectionIndex}
           rowIndex={rowIndex}
           columnIndex={columnIndex}
+          moveWidget={moveWidget}
         />
       ))}
     </div>
