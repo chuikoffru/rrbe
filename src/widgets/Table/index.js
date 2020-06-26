@@ -3,12 +3,9 @@ import { Table as T } from "react-bootstrap";
 import { sourceTypes } from "./sourceTypes";
 import getDataFromApi from "./helpers/getDataFromApi";
 
-const Table = ({ dataFrom, api, columns, rows }) => {
+const Table = ({ dataFrom, api, variable, columns, rows }) => {
   const [header, setHeader] = useState(columns || []);
   const [data, setData] = useState(rows || []);
-
-  console.log("columns", columns);
-  console.log("rows", rows);
 
   useEffect(() => {
     if (dataFrom === sourceTypes.API && api) {
@@ -22,6 +19,39 @@ const Table = ({ dataFrom, api, columns, rows }) => {
     }
   }, [api, dataFrom]);
 
+  const renderData = () => {
+    switch (dataFrom) {
+      case sourceTypes.RENDER:
+        return (
+          <>
+            @foreach(${variable} as $item)
+            {data.map((row, keyRow) => (
+              <tr key={keyRow}>
+                {Object.entries(row).map(([key, value]) => (
+                  <td
+                    key={key}
+                    dangerouslySetInnerHTML={{
+                      __html: `{{ $item->${value} }}`,
+                    }}
+                  ></td>
+                ))}
+              </tr>
+            ))}
+            @endforeach
+          </>
+        );
+
+      default:
+        return data.map((row, keyRow) => (
+          <tr key={keyRow}>
+            {Object.entries(row).map(([key, value]) => (
+              <td key={key}>{String(value)}</td>
+            ))}
+          </tr>
+        ));
+    }
+  };
+
   return (
     <T>
       <thead>
@@ -31,15 +61,7 @@ const Table = ({ dataFrom, api, columns, rows }) => {
           ))}
         </tr>
       </thead>
-      <tbody>
-        {data.map((row, keyRow) => (
-          <tr key={keyRow}>
-            {Object.entries(row).map(([key, value]) => (
-              <td key={key}>{String(value)}</td>
-            ))}
-          </tr>
-        ))}
-      </tbody>
+      <tbody>{renderData()}</tbody>
     </T>
   );
 };
