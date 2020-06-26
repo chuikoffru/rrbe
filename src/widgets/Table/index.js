@@ -7,9 +7,6 @@ const Table = ({ dataFrom, api, columns, rows }) => {
   const [header, setHeader] = useState(columns || []);
   const [data, setData] = useState(rows || []);
 
-  console.log("columns", columns);
-  console.log("rows", rows);
-
   useEffect(() => {
     if (dataFrom === sourceTypes.API && api) {
       (async () => {

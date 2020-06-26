@@ -3,7 +3,6 @@ import React from "react";
 import SelectControl from "components/painter/controls/SelectControl";
 import ApiTableSettings from "./api";
 import CustomTableSettings from "./custom";
-import RenderTableSettings from "./render";
 
 import useWidgetSettings from "hooks/useWidgetSettings";
 
@@ -28,8 +27,6 @@ const TableSettings = () => {
         return <ApiTableSettings />;
       case sourceTypes.CUSTOM:
         return <CustomTableSettings />;
-      case sourceTypes.RENDER:
-        return <RenderTableSettings />;
       default:
         break;
     }
