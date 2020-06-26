@@ -10,6 +10,7 @@ import {
   REMOVE_WIDGET,
   IMPORT_STRUCTURE,
   REMOVE_SECTION,
+  CHANGE_COLUMNS,
 } from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
@@ -92,6 +93,13 @@ export function removeColumns(len) {
   return {
     type: REMOVE_COLUMNS,
     payload: len,
+  };
+}
+
+export function changeColumns(payload) {
+  return {
+    type: CHANGE_COLUMNS,
+    payload,
   };
 }
 

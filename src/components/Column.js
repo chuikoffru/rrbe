@@ -1,13 +1,16 @@
 import React, { useCallback } from "react";
 import { useDrop } from "react-dnd";
+import { useDispatch } from "react-redux";
 import classNames from "classnames";
 
+import { changeColumns } from "redux/sections/actions";
+import { swap } from "helpers/arrays";
 import LoadableWidget from "./LoadableWidget";
 
 import "scss/columns.scss";
 
 const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
-  //console.log("Column init");
+  const dispatch = useDispatch();
 
   const [{ isOver, canDrop }, drop] = useDrop({
     accept,
@@ -20,19 +23,10 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
 
   const moveWidget = useCallback(
     (dragIndex, hoverIndex) => {
-      const dragWidget = rows[dragIndex];
-      console.log("dragIndex, hoverIndex", dragIndex, hoverIndex);
-      console.log("dragWidget", dragWidget);
-      /* setCards(
-        update(rows, {
-          $splice: [
-            [dragIndex, 1],
-            [hoverIndex, 0, dragWidget],
-          ],
-        }),
-      ) */
+      const data = swap(rows, dragIndex, hoverIndex);
+      dispatch(changeColumns({ sectionIndex, columnIndex, data }));
     },
-    [rows]
+    [columnIndex, dispatch, rows, sectionIndex]
   );
 
   return (
