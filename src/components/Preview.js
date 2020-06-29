@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addSection, selectSection } from "redux/sections/actions";
 import { generateId } from "helpers/string";
 import { ItemTypes } from "helpers/itemTypes";
+import useGlobalSettings from "hooks/useGlobalSettings";
 
 import DropSectionContainer from "./DropSectionContainer";
 import Sections from "./Sections";
@@ -12,6 +13,8 @@ import Top from "./top/Top";
 const Preview = () => {
   const dispatch = useDispatch();
   const sections = useSelector((state) => state.sections.present.sections);
+  const [globalSettings] = useGlobalSettings();
+  console.log("globalSettings", globalSettings);
 
   const ref = useRef(null);
 
@@ -47,13 +50,9 @@ const Preview = () => {
   return (
     <>
       <Top html={ref.current?.innerHTML} sections={sections} />
-      <div className="rrbe__preview" ref={ref}>
+      <div className="rrbe__preview" style={globalSettings} ref={ref}>
         {sections.map((section, sectionIndex) => (
-          <Sections
-            key={sectionIndex}
-            section={section}
-            sectionIndex={sectionIndex}
-          />
+          <Sections key={sectionIndex} section={section} sectionIndex={sectionIndex} />
         ))}
       </div>
       <DropSectionContainer

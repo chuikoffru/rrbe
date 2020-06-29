@@ -5,15 +5,7 @@ import beautify from "js-beautify/js/lib/beautify-html";
 
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 
-import {
-  Modal,
-  Button,
-  InputGroup,
-  FormControl,
-  Row,
-  Col,
-  Spinner,
-} from "react-bootstrap";
+import { Modal, Button, InputGroup, FormControl, Row, Col, Spinner } from "react-bootstrap";
 
 import htmlFilter from "helpers/htmlFilter";
 
@@ -50,7 +42,7 @@ const Export = ({ html, sections }) => {
 
   return (
     <>
-      <Button variant="primary" size="sm" onClick={() => setShow(true)}>
+      <Button variant="primary" className="mr-2" size="sm" onClick={() => setShow(true)}>
         Экспорт
       </Button>
       <Modal size="lg" show={show} onHide={() => setShow(false)}>
@@ -78,17 +70,9 @@ const Export = ({ html, sections }) => {
             </Col>
             <Col sm={6}>
               <InputGroup>
-                <FormControl
-                  value={name}
-                  onChange={handleChange}
-                  placeholder="Название шаблона"
-                />
+                <FormControl value={name} onChange={handleChange} placeholder="Название шаблона" />
                 <InputGroup.Append>
-                  <Button
-                    variant="primary"
-                    disabled={!name}
-                    onClick={saveTemplate}
-                  >
+                  <Button variant="primary" disabled={!name} onClick={saveTemplate}>
                     {loading ? (
                       <Spinner
                         as="span"

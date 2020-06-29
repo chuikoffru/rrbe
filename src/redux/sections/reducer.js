@@ -13,6 +13,7 @@ import {
   IMPORT_STRUCTURE,
   REMOVE_SECTION,
   CHANGE_COLUMNS,
+  CHANGE_SETTINGS,
 } from "../types";
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
   },
   selectedSection: null,
   sections: [],
+  settings: {},
 };
 
 export const sectionsReducer = (state = initialState, action) => {
@@ -59,18 +61,13 @@ export const sectionsReducer = (state = initialState, action) => {
       return { ...state, selectedSection: action.payload };
 
     case CHANGE_SECTION:
-      return mutate.set(
-        state,
-        `sections.${state.selectedSection}.params`,
-        action.payload.settings
-      );
+      return mutate.set(state, `sections.${state.selectedSection}.params`, action.payload.settings);
 
     case ADD_COLUMNS:
-      return mutate.set(
-        state,
-        `sections.${state.selectedSection}.columns`,
-        (columns) => [...columns, ...Array(action.payload).fill([])]
-      );
+      return mutate.set(state, `sections.${state.selectedSection}.columns`, (columns) => [
+        ...columns,
+        ...Array(action.payload).fill([]),
+      ]);
     case CHANGE_COLUMNS:
       return mutate.set(
         state,
@@ -79,23 +76,22 @@ export const sectionsReducer = (state = initialState, action) => {
       );
 
     case REMOVE_COLUMNS:
-      return mutate.set(
-        state,
-        `sections.${state.selectedSection}.columns`,
-        (columns) => columns.slice(0, action.payload)
+      return mutate.set(state, `sections.${state.selectedSection}.columns`, (columns) =>
+        columns.slice(0, action.payload)
       );
 
     case REMOVE_WIDGET:
-      return mutate.delete(
-        state,
-        `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}`
-      );
+      return mutate.delete(state, `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}`);
 
     case REMOVE_SECTION:
       return mutate.delete(state, `sections.${state.selectedSection}`);
 
     case IMPORT_STRUCTURE:
       return mutate.set(state, `sections`, action.payload);
+
+    case CHANGE_SETTINGS:
+      // Изменяем настройки виджета
+      return mutate.set(state, `settings`, action.payload);
 
     default:
       return state;

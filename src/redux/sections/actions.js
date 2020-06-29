@@ -11,6 +11,7 @@ import {
   IMPORT_STRUCTURE,
   REMOVE_SECTION,
   CHANGE_COLUMNS,
+  CHANGE_SETTINGS,
 } from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
@@ -107,5 +108,12 @@ export function importStructure(json) {
   return {
     type: IMPORT_STRUCTURE,
     payload: json,
+  };
+}
+
+export function changeSettings(settings) {
+  return {
+    type: CHANGE_SETTINGS,
+    payload: settings,
   };
 }
