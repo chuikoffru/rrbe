@@ -2,14 +2,16 @@ import React, { useState, useCallback } from "react";
 import axios from "axios";
 import Highlight from "react-highlight";
 import beautify from "js-beautify/js/lib/beautify-html";
+import styleToCss from "style-object-to-css-string";
 
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 
 import { Modal, Button, InputGroup, FormControl, Row, Col, Spinner } from "react-bootstrap";
 
+import useGlobalSettings from "hooks/useGlobalSettings";
 import htmlFilter from "helpers/htmlFilter";
 
-import header from "./template/header";
+import { header } from "./template/header";
 import footer from "./template/footer";
 
 import "highlight.js/scss/monokai.scss";
@@ -19,9 +21,10 @@ const Export = ({ html, sections }) => {
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [wrap, setWrap] = useState(true);
+  const [globalSettings] = useGlobalSettings();
 
   if (wrap) {
-    html = String(header + html + footer);
+    html = String(header(styleToCss(globalSettings), name) + html + footer);
     html = htmlFilter(html);
     html = beautify.html_beautify(html);
   } else if (html) {
