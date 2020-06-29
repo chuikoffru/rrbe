@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 import Fonts from "./Fonts";
 import Background from "./Background";
+import FontSize from "./FontSize";
 
 const GlobalSettings = () => {
   const [show, setShow] = useState(false);
@@ -16,6 +17,7 @@ const GlobalSettings = () => {
         </Modal.Header>
         <Modal.Body>
           <Fonts />
+          <FontSize />
           <Background />
         </Modal.Body>
       </Modal>
