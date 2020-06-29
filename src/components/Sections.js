@@ -1,32 +1,32 @@
 import React, { useCallback } from "react";
 import { Row, Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { addWidget, selectSection } from "redux/sections/actions";
+import classNames from "classnames";
+
+import useSectionSettings from "hooks/useSectionSettings";
+import { addWidget, selectSection, selectWidget } from "redux/sections/actions";
 import { generateId } from "helpers/string";
+import { ItemTypes } from "helpers/itemTypes";
+import { sectionTypes } from "helpers/sectionTypes";
 
 import Column from "./Column";
 
-import { ItemTypes } from "helpers/itemTypes";
-import { selectWidget } from "../redux/sections/actions";
-
 const Sections = ({ section, sectionIndex }) => {
   const dispatch = useDispatch();
+
+  const [type] = useSectionSettings("type", sectionTypes.PAGE_BODY);
 
   const addNewWidget = useCallback(
     (item, columnIndex) => {
       delete item.icon;
       // Добавляем новый виджет
-      dispatch(
-        addWidget(sectionIndex, columnIndex, { ...item, id: generateId() })
-      );
+      dispatch(addWidget(sectionIndex, columnIndex, { ...item, id: generateId() }));
       // Делаем секцию в которую добавили активной
       dispatch(selectSection(sectionIndex));
       // Смотрим сколько виджетов в колонке
       const countWidgets = section.columns[columnIndex].length;
       // Делаем последний добавленный виджет активным
-      dispatch(
-        selectWidget(sectionIndex, columnIndex, countWidgets, item.name)
-      );
+      dispatch(selectWidget(sectionIndex, columnIndex, countWidgets, item.name));
     },
     [dispatch, section.columns, sectionIndex]
   );
@@ -37,7 +37,10 @@ const Sections = ({ section, sectionIndex }) => {
 
   return (
     <div
-      className="rrbe__section"
+      className={classNames({
+        rrbe__section: true,
+        [type]: true,
+      })}
       id={section.id}
       style={section.params && section.params.styles}
       onClick={setCurrentSection}

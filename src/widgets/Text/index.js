@@ -1,23 +1,20 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { changeWidget } from "redux/sections/actions";
+import React, { useState } from "react";
+import useWidgetSettings from "hooks/useWidgetSettings";
 
 const Text = (props) => {
-  const dispatch = useDispatch();
+  const [editable, setEditable] = useState(false);
+  const [, setText] = useWidgetSettings("text", "");
 
   const saveText = (e) => {
-    dispatch(
-      changeWidget({
-        ...props,
-        text: e.currentTarget.innerHTML,
-      })
-    );
+    setText(e.currentTarget.innerHTML);
+    setEditable(false);
   };
 
   return (
     <div
       suppressContentEditableWarning={true}
-      contentEditable={true}
+      contentEditable={editable}
+      onDoubleClick={() => setEditable(true)}
       onBlur={saveText}
       dangerouslySetInnerHTML={{ __html: props.text }}
     ></div>

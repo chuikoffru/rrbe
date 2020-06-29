@@ -1,35 +1,29 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { Form } from "react-bootstrap";
 
 import useColumnsSettings from "../hooks/useColumnsSettings";
+import SelectControl from "./painter/controls/SelectControl";
+import { getListColumns, sectionTypesList, sectionTypes } from "../helpers/sectionTypes";
 
 const SectionSettings = () => {
   // Получаем данные выбранной секции
-  const [settings, setSettings] = useColumnsSettings();
+  const [columns, setColumns] = useColumnsSettings("columns", 1);
+  const [sectionType, setSectionType] = useColumnsSettings("type", sectionTypes.PAGE_BODY);
 
-  const onChange = useCallback(
-    (e) => {
-      setSettings({ ...settings, [e.target.name]: e.target.value });
-    },
-    [setSettings, settings]
-  );
   return (
     <Form>
-      <Form.Group>
-        <Form.Label>Количество колонок</Form.Label>
-        <Form.Control
-          as="select"
-          name="columns"
-          value={settings.columns}
-          onChange={onChange}
-        >
-          {Array(12)
-            .fill([])
-            .map((v, i) => (
-              <option key={i}>{i + 1}</option>
-            ))}
-        </Form.Control>
-      </Form.Group>
+      <SelectControl
+        name="Количество колонок"
+        value={columns}
+        onChange={setColumns}
+        list={getListColumns()}
+      />
+      <SelectControl
+        name="Тип секции при печати"
+        value={sectionType}
+        onChange={setSectionType}
+        list={sectionTypesList}
+      />
     </Form>
   );
 };

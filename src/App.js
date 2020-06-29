@@ -7,6 +7,7 @@ import Widgets from "components/Widgets";
 import Settings from "components/Settings";
 
 import "./app.scss";
+import "scss/print.scss";
 
 function App() {
   return (
