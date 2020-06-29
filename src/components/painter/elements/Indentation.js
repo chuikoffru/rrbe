@@ -8,30 +8,15 @@ const Indentation = () => {
 
   // Margins
   const [marginLeft, setMarginLeft] = useWidgetSettings("styles.marginLeft", 0);
-  const [marginRight, setMarginRight] = useWidgetSettings(
-    "styles.marginRight",
-    0
-  );
+  const [marginRight, setMarginRight] = useWidgetSettings("styles.marginRight", 0);
   const [marginTop, setMarginTop] = useWidgetSettings("styles.marginTop", 0);
-  const [marginBottom, setMarginBottom] = useWidgetSettings(
-    "styles.marginBottom",
-    0
-  );
+  const [marginBottom, setMarginBottom] = useWidgetSettings("styles.marginBottom", 0);
 
   // Paddings
-  const [paddingLeft, setPaddingLeft] = useWidgetSettings(
-    "styles.paddingLeft",
-    0
-  );
-  const [paddingRight, setPaddingRight] = useWidgetSettings(
-    "styles.paddingRight",
-    0
-  );
+  const [paddingLeft, setPaddingLeft] = useWidgetSettings("styles.paddingLeft", 0);
+  const [paddingRight, setPaddingRight] = useWidgetSettings("styles.paddingRight", 0);
   const [paddingTop, setPaddingTop] = useWidgetSettings("styles.paddingTop", 0);
-  const [paddingBottom, setPaddingBottom] = useWidgetSettings(
-    "styles.paddingBottom",
-    0
-  );
+  const [paddingBottom, setPaddingBottom] = useWidgetSettings("styles.paddingBottom", 0);
 
   return (
     <>
