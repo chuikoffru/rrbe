@@ -6,10 +6,10 @@ import { ItemTypes } from "helpers/itemTypes";
 
 import { ReactComponent as SharePostIcon } from "icons/share-post.svg";
 import { ReactComponent as TextEditorIcon } from "icons/text-editor.svg";
-import { ReactComponent as VideoClipIcon } from "icons/video-clip.svg";
+/* import { ReactComponent as VideoClipIcon } from "icons/video-clip.svg";
 import { ReactComponent as NewsIcon } from "icons/news.svg";
+import { ReactComponent as LinkIcon } from "icons/hyperlink.svg"; */
 import { ReactComponent as SectionIcon } from "icons/columns.svg";
-import { ReactComponent as LinkIcon } from "icons/hyperlink.svg";
 import { ReactComponent as DividerIcon } from "icons/arrow.svg";
 import { ReactComponent as TableIcon } from "icons/scheme.svg";
 
@@ -39,7 +39,7 @@ const Widgets = (props) => {
         applyStylesToWidget: true,
       },
     },
-    {
+    /* {
       id: 3,
       name: "Video",
       type: ItemTypes.ELEMENTS,
@@ -49,8 +49,8 @@ const Widgets = (props) => {
         styles: {},
         applyStylesToWidget: true,
       },
-    },
-    {
+    }, */
+    /* {
       id: 4,
       name: "News",
       type: ItemTypes.COMPONENTS,
@@ -60,7 +60,7 @@ const Widgets = (props) => {
         styles: {},
         applyStylesToWidget: true,
       },
-    },
+    }, */
     {
       id: 5,
       name: "Section",
@@ -72,7 +72,7 @@ const Widgets = (props) => {
         applyStylesToWidget: true,
       },
     },
-    {
+    /* {
       id: 6,
       name: "Link",
       type: ItemTypes.ELEMENTS,
@@ -84,7 +84,7 @@ const Widgets = (props) => {
         styles: {},
         applyStylesToWidget: true,
       },
-    },
+    }, */
     {
       id: 7,
       name: "Divider",
