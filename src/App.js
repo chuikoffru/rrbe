@@ -14,10 +14,12 @@ function App() {
     <DndProvider backend={HTML5Backend}>
       <div className="rrbe">
         <div className="rrbe__left d-print-none">
-          <h2>Виджеты</h2>
-          <Widgets />
-          <h3>Настройки</h3>
-          <Settings />
+          <aside className="rrbe__left-container">
+            <h2>Виджеты</h2>
+            <Widgets />
+            <h3>Настройки</h3>
+            <Settings />
+          </aside>
         </div>
         <div className="rrbe__right">
           <Preview />
