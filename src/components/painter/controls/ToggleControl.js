@@ -2,8 +2,6 @@ import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
 
 const ToggleControl = ({ name, value, onChange, options = {} }) => {
-  console.log("toggle init", value);
-
   const handleChange = useCallback(
     (e) => {
       onChange(!value);
@@ -13,13 +11,11 @@ const ToggleControl = ({ name, value, onChange, options = {} }) => {
 
   return (
     <Form.Group>
-      <Form.Check
-        type="checkbox"
-        {...options}
-        value={value}
-        onChange={handleChange}
-        label={name}
-      />
+      <Form.Check {...options}>
+        <Form.Check.Label>
+          <Form.Check.Input type="checkbox" value={value} onChange={handleChange} /> {name}
+        </Form.Check.Label>
+      </Form.Check>
     </Form.Group>
   );
 };

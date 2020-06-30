@@ -3,7 +3,19 @@ import { Table as T } from "react-bootstrap";
 import { sourceTypes } from "./sourceTypes";
 import getDataFromApi from "./helpers/getDataFromApi";
 
-const Table = ({ dataFrom, api, variable, columns, rows }) => {
+const Table = ({
+  dataFrom,
+  api,
+  variable,
+  columns,
+  rows,
+  striped,
+  variant,
+  bordered,
+  size,
+  hover,
+  borderless,
+}) => {
   const [header, setHeader] = useState(columns || []);
   const [data, setData] = useState(rows || []);
 
@@ -53,7 +65,14 @@ const Table = ({ dataFrom, api, variable, columns, rows }) => {
   };
 
   return (
-    <T>
+    <T
+      size={size}
+      variant={variant}
+      striped={striped}
+      bordered={bordered}
+      hover={hover}
+      borderless={borderless}
+    >
       <thead>
         <tr>
           {header.map((item, index) => (
