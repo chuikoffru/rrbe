@@ -14,6 +14,10 @@ import {
   CHANGE_SETTINGS,
   MENU_COPY_STYLES,
   MENU_PASTE_STYLES,
+  MENU_COPY_WIDGET,
+  MENU_PASTE_WIDGET,
+  MENU_PASTE_WIDGET_BEFORE,
+  MENU_PASTE_WIDGET_AFTER,
 } from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
@@ -79,6 +83,13 @@ export function changeSection(settings) {
   };
 }
 
+export function copyWidget(widget) {
+  return {
+    type: MENU_COPY_WIDGET,
+    payload: widget,
+  };
+}
+
 export function removeWidget() {
   return {
     type: REMOVE_WIDGET,
@@ -130,5 +141,27 @@ export function copyWidgetStyles(styles) {
 export function pasteWidgetStyles() {
   return {
     type: MENU_PASTE_STYLES,
+  };
+}
+
+export function insertWidgetBefore() {
+  return {
+    type: MENU_PASTE_WIDGET_BEFORE,
+  };
+}
+
+export function insertWidgetAfter() {
+  return {
+    type: MENU_PASTE_WIDGET_AFTER,
+  };
+}
+
+export function pasteWidget(sectionIndex, columnIndex) {
+  return {
+    type: MENU_PASTE_WIDGET,
+    payload: {
+      sectionIndex,
+      columnIndex,
+    },
   };
 }

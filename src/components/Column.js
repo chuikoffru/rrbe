@@ -1,13 +1,16 @@
 import React, { useCallback } from "react";
 import { useDrop } from "react-dnd";
 import { useDispatch } from "react-redux";
+import { contextMenu } from "react-contexify";
 import classNames from "classnames";
 
 import { changeColumns } from "redux/sections/actions";
 import { swap } from "helpers/arrays";
+import { ItemTypes } from "helpers/itemTypes";
 import LoadableWidget from "./LoadableWidget";
 
 import "scss/columns.scss";
+import { selectSection } from "../redux/sections/actions";
 
 const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
   const dispatch = useDispatch();
@@ -23,11 +26,28 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
 
   const moveWidget = useCallback(
     (dragIndex, hoverIndex) => {
-      console.log(dragIndex, hoverIndex);
       const data = swap(rows, dragIndex, hoverIndex);
       dispatch(changeColumns({ sectionIndex, columnIndex, data }));
     },
     [columnIndex, dispatch, rows, sectionIndex]
+  );
+
+  const showContextMenu = useCallback(
+    (e) => {
+      e.preventDefault();
+      // Делаем текущую секцию активной
+      dispatch(selectSection(sectionIndex));
+      // Показываем контекстное меню
+      contextMenu.show({
+        id: ItemTypes.SECTIONS,
+        event: e,
+        props: {
+          sectionIndex,
+          columnIndex,
+        },
+      });
+    },
+    [columnIndex, dispatch, sectionIndex]
   );
 
   return (
@@ -39,10 +59,11 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
         canDrop,
         isActive: isOver && canDrop,
       })}
+      onContextMenu={showContextMenu}
     >
       {rows.map((widget, rowIndex) => (
         <LoadableWidget
-          key={widget.id}
+          key={`${widget.id}-${rowIndex}`}
           widget={widget}
           sectionIndex={sectionIndex}
           rowIndex={rowIndex}

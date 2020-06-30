@@ -6,12 +6,13 @@ import { generateId } from "helpers/string";
 import { ItemTypes } from "helpers/itemTypes";
 import useGlobalSettings from "hooks/useGlobalSettings";
 
+import WidgetContextMenu from "./WidgetContextMenu";
+import ColumnContextMenu from "./ColumnContextMenu";
 import DropSectionContainer from "./DropSectionContainer";
 import Sections from "./Sections";
 import Top from "./top/Top";
 
 import "react-contexify/dist/ReactContexify.min.css";
-import WidgetContextMenu from "./WidgetContextMenu";
 
 const Preview = () => {
   const dispatch = useDispatch();
@@ -54,7 +55,7 @@ const Preview = () => {
       <Top html={ref.current?.innerHTML} sections={sections} />
       <div className="rrbe__preview" style={globalSettings} ref={ref}>
         {sections.map((section, sectionIndex) => (
-          <Sections key={sectionIndex} section={section} sectionIndex={sectionIndex} />
+          <Sections key={section.id} section={section} sectionIndex={sectionIndex} />
         ))}
       </div>
       <DropSectionContainer
@@ -62,6 +63,7 @@ const Preview = () => {
         onDrop={(item) => addNewSection(item)}
       />
       <WidgetContextMenu />
+      <ColumnContextMenu />
     </>
   );
 };

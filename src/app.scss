@@ -1,5 +1,8 @@
 .rrbe {
   display: flex;
+  &__widget {
+    width: fit-content;
+  }
   &__left {
     height: 100vh;
     padding: 20px;

@@ -50,7 +50,7 @@ const Sections = ({ section, sectionIndex }) => {
           {section.columns.map((rows, columnIndex) => {
             return (
               <Column
-                key={columnIndex}
+                key={`${sectionIndex}-${columnIndex}`}
                 rows={rows}
                 sectionIndex={sectionIndex}
                 columnIndex={columnIndex}

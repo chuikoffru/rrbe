@@ -8,11 +8,14 @@ import {
   pasteWidgetStyles,
   removeWidget,
   selectWidget,
+  copyWidget,
 } from "redux/sections/actions";
 
 import {
   MENU_COPY_WIDGET,
-  MENU_PASTE_WIDGET,
+  MENU_CUT_WIDGET,
+  MENU_PASTE_WIDGET_BEFORE,
+  MENU_PASTE_WIDGET_AFTER,
   MENU_DELETE_WIDGET,
   MENU_COPY_STYLES,
   MENU_PASTE_STYLES,
@@ -32,6 +35,12 @@ const WidgetContextMenu = () => {
       case MENU_DELETE_WIDGET:
         dispatch(removeWidget());
         return dispatch(selectWidget(null, null, null, null));
+      case MENU_COPY_WIDGET:
+        return dispatch(copyWidget(props.widget));
+      case MENU_CUT_WIDGET:
+        dispatch(copyWidget(props.widget));
+        dispatch(removeWidget());
+        return dispatch(selectWidget(null, null, null, null));
       default:
         break;
     }
@@ -39,11 +48,17 @@ const WidgetContextMenu = () => {
 
   return (
     <Menu id={ItemTypes.WIDGET}>
-      <Item data={{ action: MENU_COPY_WIDGET }} disabled onClick={onClick}>
+      <Item data={{ action: MENU_COPY_WIDGET }} onClick={onClick}>
         Копировать виджет
       </Item>
-      <Item data={{ action: MENU_PASTE_WIDGET }} disabled onClick={onClick}>
-        Вставить виджет
+      <Item data={{ action: MENU_CUT_WIDGET }} onClick={onClick}>
+        Вырезать виджет
+      </Item>
+      <Item data={{ action: MENU_PASTE_WIDGET_BEFORE }} disabled onClick={onClick}>
+        Вставить до
+      </Item>
+      <Item data={{ action: MENU_PASTE_WIDGET_AFTER }} disabled onClick={onClick}>
+        Вставить после
       </Item>
       <Item data={{ action: MENU_DELETE_WIDGET }} onClick={onClick}>
         Удалить виджет

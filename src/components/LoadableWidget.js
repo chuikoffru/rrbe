@@ -67,6 +67,7 @@ const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex, moveWidge
   const showContextMenu = useCallback(
     (e) => {
       e.preventDefault();
+      e.stopPropagation();
       // Делаем выбранный виджет активным
       dispatch(selectWidget(sectionIndex, columnIndex, rowIndex, widget.name));
       // Показываем контекстное меню

@@ -1,4 +1,5 @@
 import mutate from "dot-prop-immutable";
+import { generateId } from "helpers/string";
 
 import {
   ADD_SECTION,
@@ -16,6 +17,8 @@ import {
   CHANGE_SETTINGS,
   MENU_COPY_STYLES,
   MENU_PASTE_STYLES,
+  MENU_COPY_WIDGET,
+  MENU_PASTE_WIDGET,
 } from "../types";
 
 const initialState = {
@@ -28,6 +31,7 @@ const initialState = {
   selectedSection: null,
   sections: [],
   settings: {},
+  tmpWidget: {},
   tmpWidgetStyles: {},
 };
 
@@ -108,6 +112,18 @@ export const sectionsReducer = (state = initialState, action) => {
         state.tmpWidgetStyles
       );
 
+    case MENU_COPY_WIDGET:
+      // Копируем данные виджета
+      return mutate.set(state, `tmpWidget`, action.payload);
+
+    case MENU_PASTE_WIDGET:
+      // Вставляем виджет в колонку
+      state.tmpWidget.id = generateId();
+      return mutate.set(
+        state,
+        `sections.${action.payload.sectionIndex}.columns.${action.payload.columnIndex}`,
+        (columns) => [...columns, state.tmpWidget]
+      );
     default:
       return state;
   }
