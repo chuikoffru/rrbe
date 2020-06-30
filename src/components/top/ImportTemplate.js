@@ -5,6 +5,8 @@ import axios from "axios";
 import { Modal, Button, FormControl, Spinner } from "react-bootstrap";
 import { importStructure, selectSection } from "redux/sections/actions";
 
+import { ReactComponent as ImportIcon } from "icons/import.svg";
+
 const ImportTemplate = () => {
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
@@ -16,9 +18,7 @@ const ImportTemplate = () => {
     // Включаем спиннер
     setLoading(true);
     // Загружаем данные
-    const req = await axios(
-      "https://regagro.herokuapp.com/templates?_limit=1&name=" + name
-    );
+    const req = await axios("https://regagro.herokuapp.com/templates?_limit=1&name=" + name);
     // Выключаем спиннер
     setLoading(false);
     //console.log("req", req.data[0]);
@@ -32,21 +32,12 @@ const ImportTemplate = () => {
 
   return (
     <>
-      <Button
-        variant="primary"
-        className="mr-2"
-        size="sm"
-        onClick={() => setShow(true)}
-      >
-        Импорт
+      <Button variant="primary" className="mr-2" size="sm" onClick={() => setShow(true)}>
+        <ImportIcon title="Импорт" width="20" height="20" fill="#ffffff" />
       </Button>
       <Modal size="lg" show={show} onHide={() => setShow(false)}>
         <Modal.Body>
-          <FormControl
-            value={name}
-            onChange={handleChange}
-            placeholder="Название шаблона"
-          />
+          <FormControl value={name} onChange={handleChange} placeholder="Название шаблона" />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShow(false)}>
@@ -54,13 +45,7 @@ const ImportTemplate = () => {
           </Button>
           <Button variant="primary" disabled={!name} onClick={loadTemplate}>
             {loading ? (
-              <Spinner
-                as="span"
-                animation="grow"
-                size="sm"
-                role="status"
-                aria-hidden="true"
-              />
+              <Spinner as="span" animation="grow" size="sm" role="status" aria-hidden="true" />
             ) : (
               "Импорт"
             )}

@@ -8,6 +8,8 @@ import BootstrapSwitchButton from "bootstrap-switch-button-react";
 
 import { Modal, Button, InputGroup, FormControl, Row, Col, Spinner } from "react-bootstrap";
 
+import { ReactComponent as ExportIcon } from "icons/export.svg";
+
 import useGlobalSettings from "hooks/useGlobalSettings";
 import htmlFilter from "helpers/htmlFilter";
 
@@ -47,7 +49,7 @@ const Export = ({ html, sections }) => {
   return (
     <>
       <Button variant="primary" className="mr-2" size="sm" onClick={() => setShow(true)}>
-        Экспорт
+        <ExportIcon title="Экспорт" width="20" height="20" fill="#ffffff" />
       </Button>
       <Modal size="lg" show={show} onHide={() => setShow(false)}>
         <Modal.Body>
