@@ -18,13 +18,14 @@ import "highlight.js/scss/monokai.scss";
 
 const Export = ({ html, sections }) => {
   const [show, setShow] = useState(false);
+  const [showPrintPanel, setShowPrintPanel] = useState(false);
   const [name, setName] = useState("");
   const [loading, setLoading] = useState(false);
   const [wrap, setWrap] = useState(true);
   const [globalSettings] = useGlobalSettings();
 
   if (wrap) {
-    html = String(header(styleToCss(globalSettings), name) + html + footer);
+    html = String(header(styleToCss(globalSettings), name, showPrintPanel) + html + footer);
     html = htmlFilter(html);
     html = beautify.html_beautify(html);
   } else if (html) {
@@ -54,24 +55,36 @@ const Export = ({ html, sections }) => {
         </Modal.Body>
         <Modal.Footer>
           <Row className="w-100">
-            <Col sm={2}>
+            <Col sm={1}>
               <Button variant="secondary" onClick={() => setShow(false)}>
-                Закрыть
+                X
               </Button>
             </Col>
-            <Col sm={4}>
+            <Col sm={3}>
               <BootstrapSwitchButton
                 checked={wrap}
                 onlabel="Полный шаблон"
-                onstyle="primary"
+                onstyle="success"
                 offlabel="Только контент"
-                offstyle="success"
+                offstyle="primary"
                 onChange={(checked) => {
                   setWrap(checked);
                 }}
               />
             </Col>
-            <Col sm={6}>
+            <Col sm={3}>
+              <BootstrapSwitchButton
+                checked={showPrintPanel}
+                onlabel="Панель печати"
+                onstyle="success"
+                offlabel="Без панели"
+                offstyle="primary"
+                onChange={(checked) => {
+                  setShowPrintPanel(checked);
+                }}
+              />
+            </Col>
+            <Col sm={5}>
               <InputGroup>
                 <FormControl value={name} onChange={handleChange} placeholder="Название шаблона" />
                 <InputGroup.Append>

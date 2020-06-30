@@ -1,4 +1,6 @@
-export const header = (style, title = "RRBE Print") => `
+import { print } from "./print";
+
+export const header = (style, title = "RRBE Print", isPrint = true) => `
   <!doctype html>
   <html lang="en">
     <head>
@@ -8,4 +10,5 @@ export const header = (style, title = "RRBE Print") => `
       <title>${title}</title>
     </head>
     <body style='${style}'>
+    ${isPrint ? print(title) : ""}
   `;
