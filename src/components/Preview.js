@@ -17,7 +17,6 @@ const Preview = () => {
   const dispatch = useDispatch();
   const sections = useSelector((state) => state.sections.present.sections);
   const [globalSettings] = useGlobalSettings();
-  console.log("globalSettings", globalSettings);
 
   const ref = useRef(null);
 

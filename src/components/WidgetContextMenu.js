@@ -3,7 +3,12 @@ import { Menu, Item, Separator } from "react-contexify";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ItemTypes } from "helpers/itemTypes";
-import { copyWidgetStyles, pasteWidgetStyles, removeWidget } from "redux/sections/actions";
+import {
+  copyWidgetStyles,
+  pasteWidgetStyles,
+  removeWidget,
+  selectWidget,
+} from "redux/sections/actions";
 
 import {
   MENU_COPY_WIDGET,
@@ -25,7 +30,8 @@ const WidgetContextMenu = () => {
       case MENU_PASTE_STYLES:
         return dispatch(pasteWidgetStyles());
       case MENU_DELETE_WIDGET:
-        return dispatch(removeWidget());
+        dispatch(removeWidget());
+        return dispatch(selectWidget(null, null, null, null));
       default:
         break;
     }

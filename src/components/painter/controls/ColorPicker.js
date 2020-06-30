@@ -3,7 +3,6 @@ import { Form } from "react-bootstrap";
 import { ChromePicker } from "react-color";
 
 const ColorPicker = ({ name, value, onChange, options = {} }) => {
-  console.log("ColorPicker init");
   const [color, setColor] = useState(value);
 
   const onChangeColor = ({ hex }) => {

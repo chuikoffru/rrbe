@@ -23,6 +23,7 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
 
   const moveWidget = useCallback(
     (dragIndex, hoverIndex) => {
+      console.log(dragIndex, hoverIndex);
       const data = swap(rows, dragIndex, hoverIndex);
       dispatch(changeColumns({ sectionIndex, columnIndex, data }));
     },

@@ -11,22 +11,14 @@ import DeleteWidget from "./DeleteWidget";
 import DeleteSection from "./DeleteSection";
 
 const Settings = () => {
-  console.info("Settings init");
   const [showTab, setShowTab] = useState(ItemTypes.ELEMENTS);
-  const { widgetName } = useSelector(
-    (state) => state.sections.present.selectedWidget
-  );
+  const { widgetName } = useSelector((state) => state.sections.present.selectedWidget);
 
-  const selectedSectionIndex = useSelector(
-    (state) => state.sections.present.selectedSection
-  );
+  const selectedSectionIndex = useSelector((state) => state.sections.present.selectedSection);
 
   // Загрузаем страницу настроек виджета
   const WidgetSettings = useMemo(
-    () =>
-      loadable(() =>
-        widgetName ? loadWidget(widgetName, true) : new Promise(() => null)
-      ),
+    () => loadable(() => (widgetName ? loadWidget(widgetName, true) : new Promise(() => null))),
     [widgetName]
   );
 
