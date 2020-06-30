@@ -3,6 +3,7 @@ import { Menu, Item, Separator } from "react-contexify";
 import { useDispatch, useSelector } from "react-redux";
 
 import { ItemTypes } from "helpers/itemTypes";
+import { copyWidgetStyles, pasteWidgetStyles, removeWidget } from "redux/sections/actions";
 
 import {
   MENU_COPY_WIDGET,
@@ -12,24 +13,18 @@ import {
   MENU_PASTE_STYLES,
 } from "redux/types";
 
-import { copyWidgetStyles, pasteWidgetStyles, removeWidget } from "redux/sections/actions";
-
 const WidgetContextMenu = () => {
   const dispatch = useDispatch();
   const tmpWidgetStyles = useSelector((state) => state.sections.present.tmpWidgetStyles);
-  console.log("tmpWidgetStyles", tmpWidgetStyles);
 
-  const onClick = ({ event, props }) => {
-    console.log(event.target, props);
-    const { sectionIndex, columnIndex, rowIndex } = props;
+  const onClick = ({ props }) => {
+    console.log(props);
     switch (props.action) {
       case MENU_COPY_STYLES:
         return dispatch(copyWidgetStyles(props.widget?.params?.styles));
       case MENU_PASTE_STYLES:
-        console.log("Вставить стили");
-        return dispatch(pasteWidgetStyles(sectionIndex, columnIndex, rowIndex));
+        return dispatch(pasteWidgetStyles());
       case MENU_DELETE_WIDGET:
-        console.log("Удалить виджет");
         return dispatch(removeWidget());
       default:
         break;
@@ -38,7 +33,7 @@ const WidgetContextMenu = () => {
 
   return (
     <Menu id={ItemTypes.WIDGET}>
-      <Item data={{ action: MENU_COPY_WIDGET }} onClick={onClick}>
+      <Item data={{ action: MENU_COPY_WIDGET }} disabled onClick={onClick}>
         Копировать виджет
       </Item>
       <Item data={{ action: MENU_PASTE_WIDGET }} disabled onClick={onClick}>
