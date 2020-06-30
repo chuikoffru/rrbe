@@ -49,10 +49,10 @@ body {
       justify-content: space-between;
       z-index: 999;
     }
-  }
-  &__preview {
-    overflow: auto;
-    height: 100vh;
+    &-container {
+      overflow: auto;
+      height: 100vh;
+    }
   }
   &__section {
     &:hover {
