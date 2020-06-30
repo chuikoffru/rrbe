@@ -2,6 +2,7 @@ import React, { Suspense, useCallback, useMemo, useRef } from "react";
 import loadable from "@loadable/component";
 import { useDispatch } from "react-redux";
 import { useDrag, useDrop } from "react-dnd";
+import { contextMenu } from "react-contexify";
 
 import loadWidget from "helpers/loadWidget";
 import { selectWidget } from "redux/sections/actions";
@@ -63,6 +64,23 @@ const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex, moveWidge
 
   drag(drop(ref));
 
+  const showContextMenu = useCallback(
+    (e) => {
+      e.preventDefault();
+      contextMenu.show({
+        id: ItemTypes.WIDGET,
+        event: e,
+        props: {
+          widget,
+          sectionIndex,
+          rowIndex,
+          columnIndex,
+        },
+      });
+    },
+    [columnIndex, rowIndex, sectionIndex, widget]
+  );
+
   return (
     <div
       ref={ref}
@@ -71,6 +89,7 @@ const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex, moveWidge
       id={widget.id}
       key={rowIndex}
       onClick={() => setSelectedWidget(columnIndex, rowIndex, widget.name)}
+      onContextMenu={showContextMenu}
     >
       <Suspense fallback={<div>Loading...</div>}>
         <WidgetComponent {...widget.params} />

@@ -12,6 +12,8 @@ import {
   REMOVE_SECTION,
   CHANGE_COLUMNS,
   CHANGE_SETTINGS,
+  MENU_COPY_STYLES,
+  MENU_PASTE_STYLES,
 } from "../types";
 
 export function selectWidget(sectionIndex, columnIndex, rowIndex, widgetName) {
@@ -115,5 +117,23 @@ export function changeSettings(settings) {
   return {
     type: CHANGE_SETTINGS,
     payload: settings,
+  };
+}
+
+export function copyWidgetStyles(styles) {
+  return {
+    type: MENU_COPY_STYLES,
+    payload: styles,
+  };
+}
+
+export function pasteWidgetStyles(sectionIndex, columnIndex, rowIndex) {
+  return {
+    type: MENU_PASTE_STYLES,
+    payload: {
+      sectionIndex,
+      columnIndex,
+      rowIndex,
+    },
   };
 }

@@ -14,6 +14,8 @@ import {
   REMOVE_SECTION,
   CHANGE_COLUMNS,
   CHANGE_SETTINGS,
+  MENU_COPY_STYLES,
+  MENU_PASTE_STYLES,
 } from "../types";
 
 const initialState = {
@@ -26,6 +28,7 @@ const initialState = {
   selectedSection: null,
   sections: [],
   settings: {},
+  tmpWidgetStyles: {},
 };
 
 export const sectionsReducer = (state = initialState, action) => {
@@ -92,6 +95,18 @@ export const sectionsReducer = (state = initialState, action) => {
     case CHANGE_SETTINGS:
       // Изменяем настройки виджета
       return mutate.set(state, `settings`, action.payload);
+
+    case MENU_COPY_STYLES:
+      // Копируем стиль виджета
+      return mutate.set(state, `tmpWidgetStyles`, action.payload);
+
+    case MENU_PASTE_STYLES:
+      // Вставляем стиль виджета
+      return mutate.set(
+        state,
+        `sections.${action.payload.sectionIndex}.columns.${action.payload.columnIndex}.${action.payload.rowIndex}.params.styles`,
+        state.tmpWidgetStyles
+      );
 
     default:
       return state;

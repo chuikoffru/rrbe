@@ -10,6 +10,9 @@ import DropSectionContainer from "./DropSectionContainer";
 import Sections from "./Sections";
 import Top from "./top/Top";
 
+import "react-contexify/dist/ReactContexify.min.css";
+import WidgetContextMenu from "./WidgetContextMenu";
+
 const Preview = () => {
   const dispatch = useDispatch();
   const sections = useSelector((state) => state.sections.present.sections);
@@ -59,6 +62,7 @@ const Preview = () => {
         accept={[ItemTypes.COMPONENTS, ItemTypes.SECTIONS]}
         onDrop={(item) => addNewSection(item)}
       />
+      <WidgetContextMenu />
     </>
   );
 };
