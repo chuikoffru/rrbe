@@ -104,7 +104,7 @@ export const sectionsReducer = (state = initialState, action) => {
       // Вставляем стиль виджета
       return mutate.set(
         state,
-        `sections.${action.payload.sectionIndex}.columns.${action.payload.columnIndex}.${action.payload.rowIndex}.params.styles`,
+        `sections.${sectionIndex}.columns.${columnIndex}.${rowIndex}.params.styles`,
         state.tmpWidgetStyles
       );
 

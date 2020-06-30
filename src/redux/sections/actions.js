@@ -127,13 +127,8 @@ export function copyWidgetStyles(styles) {
   };
 }
 
-export function pasteWidgetStyles(sectionIndex, columnIndex, rowIndex) {
+export function pasteWidgetStyles() {
   return {
     type: MENU_PASTE_STYLES,
-    payload: {
-      sectionIndex,
-      columnIndex,
-      rowIndex,
-    },
   };
 }

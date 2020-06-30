@@ -12,7 +12,7 @@ import {
   MENU_PASTE_STYLES,
 } from "redux/types";
 
-import { copyWidgetStyles, pasteWidgetStyles } from "redux/sections/actions";
+import { copyWidgetStyles, pasteWidgetStyles, removeWidget } from "redux/sections/actions";
 
 const WidgetContextMenu = () => {
   const dispatch = useDispatch();
@@ -28,6 +28,9 @@ const WidgetContextMenu = () => {
       case MENU_PASTE_STYLES:
         console.log("Вставить стили");
         return dispatch(pasteWidgetStyles(sectionIndex, columnIndex, rowIndex));
+      case MENU_DELETE_WIDGET:
+        console.log("Удалить виджет");
+        return dispatch(removeWidget());
       default:
         break;
     }
