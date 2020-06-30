@@ -118,11 +118,10 @@ export const sectionsReducer = (state = initialState, action) => {
 
     case MENU_PASTE_WIDGET:
       // Вставляем виджет в колонку
-      state.tmpWidget.id = generateId();
       return mutate.set(
         state,
         `sections.${action.payload.sectionIndex}.columns.${action.payload.columnIndex}`,
-        (columns) => [...columns, state.tmpWidget]
+        (columns) => [...columns, { ...state.tmpWidget, id: generateId() }]
       );
     default:
       return state;
