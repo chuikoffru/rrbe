@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "react-bootstrap";
-import { ChromePicker } from "react-color";
-import useSectionSettings from "../../../hooks/useSectionSettings";
+import { SketchPicker } from "react-color";
 
-const ColorPicker = ({ name, property, defaultValue, options = {} }) => {
+const ColorPicker = ({ name, value, onChange, options = {} }) => {
   const [show, setShow] = useState(false);
-  const [color, setColor] = useState(defaultValue);
-  const [bg, setBg] = useSectionSettings(property, defaultValue);
+  const [color, setColor] = useState(value);
 
   useEffect(() => {
     const bounce = setTimeout(() => {
-      setBg(color);
+      onChange(color);
     }, 500);
     return () => clearTimeout(bounce);
-  }, [color, setBg]);
+  }, [color, onChange]);
 
   return (
     <Form.Group>
       <Form.Label>{name}</Form.Label>
-      <Form.Control value={bg} onClick={() => setShow(!show)} readOnly />
+      <Form.Control value={value} onClick={() => setShow(!show)} readOnly />
       {show && (
-        <ChromePicker
+        <SketchPicker
           {...options}
           color={color}
           onChange={({ hex }) => setColor(hex)}
