@@ -12,7 +12,7 @@ import LoadableWidget from "./LoadableWidget";
 import "scss/columns.scss";
 import { selectSection } from "../redux/sections/actions";
 
-const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
+const Column = ({ rows, md, columnIndex, sectionIndex, accept, onDrop }) => {
   const dispatch = useDispatch();
 
   const [{ isOver, canDrop }, drop] = useDrop({
@@ -57,6 +57,7 @@ const Column = ({ rows, columnIndex, sectionIndex, accept, onDrop }) => {
         rrbe__column: true,
         col: true,
         canDrop,
+        [`col-md-${md}`]: md > 0,
         isActive: isOver && canDrop,
       })}
       onContextMenu={showContextMenu}

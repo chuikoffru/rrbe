@@ -17,7 +17,7 @@ function App() {
       // CMD+P
       if (e.metaKey && e.keyCode === 80) {
         console.log("Печать");
-        // Убирать все hover при печати
+        //TODO: Убирать все hover при печати
       }
     });
     return () => {

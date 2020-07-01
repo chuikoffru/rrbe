@@ -11,8 +11,6 @@ const useColumnsSettings = (property, defaultValue) => {
 
   // Записываем новые настройки
   const setSettings = (params) => {
-    console.log("property, params", property, params);
-
     if (property) {
       const newSettings = mutate.set(section.params, property, params);
       dispatch(changeSection(newSettings));

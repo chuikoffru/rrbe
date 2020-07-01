@@ -34,7 +34,9 @@ const Sections = ({ section, sectionIndex }) => {
   const setCurrentSection = useCallback(() => {
     dispatch(selectSection(sectionIndex));
   }, [dispatch, sectionIndex]);
-  console.log("section.params.styles", section.params.styles);
+
+  const { widthColumns, styles } = section.params;
+
   return (
     <div
       className={classNames({
@@ -42,16 +44,18 @@ const Sections = ({ section, sectionIndex }) => {
         [type]: true,
       })}
       id={section.id}
-      style={{ ...section.params?.styles }}
+      style={{ ...styles }}
       onClick={setCurrentSection}
     >
       <Container>
         <Row>
           {section.columns.map((rows, columnIndex) => {
+            const md = widthColumns?.[columnIndex];
             return (
               <Column
                 key={`${sectionIndex}-${columnIndex}`}
                 rows={rows}
+                md={md}
                 sectionIndex={sectionIndex}
                 columnIndex={columnIndex}
                 accept={[ItemTypes.ELEMENTS]}

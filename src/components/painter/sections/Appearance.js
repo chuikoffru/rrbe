@@ -4,12 +4,7 @@ import useSectionSettings from "hooks/useSectionSettings";
 import ColorPicker from "../controls/ColorPicker";
 
 const Appearance = () => {
-  console.info("Section Appearance init");
-
-  const [bgColor, setBgColor] = useSectionSettings(
-    "styles.backgroundColor",
-    "#ffffff"
-  );
+  const [bgColor, setBgColor] = useSectionSettings("styles.backgroundColor", "#ffffff");
 
   return (
     <Form>
