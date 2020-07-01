@@ -2,7 +2,6 @@ import React from "react";
 import Wysiwyg from "components/painter/controls/wysiwyg";
 import useWidgetSettings from "hooks/useWidgetSettings";
 import SelectControl from "components/painter/controls/SelectControl";
-import ToggleControl from "components/painter/controls/ToggleControl";
 import RangeControl from "components/painter/controls/RangeControl";
 
 const TextSettings = () => {
@@ -10,6 +9,7 @@ const TextSettings = () => {
   const [textTransform, setTextTransform] = useWidgetSettings("styles.textTransform", "none");
   const [fitContent, setFitContent] = useWidgetSettings("styles.width", "100%");
   const [lineHeight, setLineHeight] = useWidgetSettings("styles.lineHeight", "1.5rem");
+  const [letterSpacing, setLetterSpacing] = useWidgetSettings("styles.letterSpacing", "0rem");
 
   return (
     <div className="my-3">
@@ -38,6 +38,12 @@ const TextSettings = () => {
         value={lineHeight}
         onChange={setLineHeight}
         options={{ min: 1.0, max: 2.5, step: 0.1, appendix: "rem" }}
+      />
+      <RangeControl
+        name="Межбуквенный интервал"
+        value={letterSpacing}
+        onChange={setLetterSpacing}
+        options={{ min: 0.0, max: 0.25, step: 0.01, appendix: "rem" }}
       />
       <SelectControl
         name="Ширина текстового контейнера"

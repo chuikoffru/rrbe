@@ -4,18 +4,9 @@
     height: 100%;
     width: 100%;
   }
-  /* body * {
-    visibility: hidden;
+  * {
+    -webkit-print-color-adjust: exact;
   }
-  .rrbe__preview,
-  .rrbe__preview * {
-    visibility: visible;
-  }
-  .rrbe__preview {
-    position: absolute;
-    left: 0;
-    top: 0;
-  } */
   .page_print_header {
     position: absolute;
     left: 0;
