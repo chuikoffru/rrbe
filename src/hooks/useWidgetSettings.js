@@ -32,7 +32,6 @@ const useWidgetSettings = (property, defaultValue) => {
   // Записываем новые настройки
   const setSettings = (params) => {
     if (property) {
-      console.log("params", property, params);
       const newSettings = mutate.set(widget.params, property, params);
       dispatch(changeWidget(newSettings));
     } else {

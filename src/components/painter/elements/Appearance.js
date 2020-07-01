@@ -7,14 +7,9 @@ import ColorPicker from "../controls/ColorPicker";
 import useWidgetSettings from "hooks/useWidgetSettings";
 
 const Appearance = () => {
-  console.info("Appearance init");
-
   const [fontSize, setFontSize] = useWidgetSettings("styles.fontSize", 1);
   const [color, setColor] = useWidgetSettings("styles.color", "#000000");
-  const [bgColor, setBgColor] = useWidgetSettings(
-    "styles.backgroundColor",
-    "#ffffff"
-  );
+  const [bgColor, setBgColor] = useWidgetSettings("styles.backgroundColor", "#ffffff");
 
   return (
     <Form>

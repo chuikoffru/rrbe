@@ -4,11 +4,7 @@ import SelectControl from "../controls/SelectControl";
 import useWidgetSettings from "hooks/useWidgetSettings";
 
 const Alignments = () => {
-  console.info("Alignments init");
-  const [textAlign, setTextAlign] = useWidgetSettings(
-    "styles.textAlign",
-    "left"
-  );
+  const [textAlign, setTextAlign] = useWidgetSettings("styles.textAlign", "left");
 
   const [float, setFloat] = useWidgetSettings("styles.float", "inherit");
 

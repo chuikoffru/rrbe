@@ -1,7 +1,6 @@
 import React from "react";
 
 const Divider = (props) => {
-  console.log("props", props);
   return (
     <hr
       style={{

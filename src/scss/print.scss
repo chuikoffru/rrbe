@@ -7,6 +7,13 @@
   * {
     -webkit-print-color-adjust: exact;
   }
+  .rrbe {
+    &__right {
+      &-container {
+        height: auto;
+      }
+    }
+  }
   .page_print_header {
     position: absolute;
     left: 0;
