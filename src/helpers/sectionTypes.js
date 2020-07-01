@@ -9,16 +9,3 @@ export const sectionTypesList = [
   { name: "Верхний колонтитул", value: sectionTypes.PAGE_HEADER },
   { name: "Нижний колонтитул", value: sectionTypes.PAGE_FOOTER },
 ];
-
-export const getListColumns = (len = 12) => {
-  let values = [];
-  Array(len)
-    .fill([])
-    .map((_, i) =>
-      values.push({
-        name: i + 1,
-        value: i + 1,
-      })
-    );
-  return values;
-};

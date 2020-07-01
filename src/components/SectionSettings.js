@@ -1,10 +1,11 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, useLayoutEffect } from "react";
 import { Form } from "react-bootstrap";
 
 import SelectControl from "./painter/controls/SelectControl";
 import useColumnsSettings from "hooks/useColumnsSettings";
-import { getListColumns, sectionTypesList, sectionTypes } from "helpers/sectionTypes";
+import { sectionTypesList, sectionTypes } from "helpers/sectionTypes";
 import RangeControl from "./painter/controls/RangeControl";
+import usePrevious from "../hooks/usePrevious";
 
 const SectionSettings = () => {
   // Получаем данные выбранной секции
@@ -12,31 +13,29 @@ const SectionSettings = () => {
   const [sectionType, setSectionType] = useColumnsSettings("type", sectionTypes.PAGE_BODY);
   const [breakAfter, setBreakAfter] = useColumnsSettings("styles.breakAfter", "auto");
   // Создаем массив из количества колонок
-  const columnCount = useMemo(() => Array(+columns).fill(0), [columns]);
+  const count = usePrevious(columns) || 1;
+  const columnCount = useMemo(() => Array(+count).fill(0), [count]);
   const [widthColumns, setWidthColumns] = useColumnsSettings("widthColumns", columnCount);
 
   // Управляем количеством колонок
-  const handleCountColumns = useCallback(
-    (count) => {
-      // Указываем новое количество колонок
-      setColumns(+count);
-      // Получаем текущее значение колонок
-      const currentCount = +columns;
-      // Получаем желаемое значение колонок
-      const wishCount = +count;
-      // Получаем разницу текущего количества колонок и желаемого
-      const diff = wishCount - currentCount;
-      // Определяем действие над массивом
-      if (currentCount > wishCount) {
-        // Если текущее количество колонок больше желаемого - убираем
-        setWidthColumns([...widthColumns.splice(0, diff)]);
-      } else {
-        // Если текущее количество колонок меньше желаемого - добавляем
-        setWidthColumns([...widthColumns, ...Array(diff).fill(0)]);
-      }
-    },
-    [columns, setColumns, setWidthColumns, widthColumns]
-  );
+  useLayoutEffect(() => {
+    // Получаем текущее значение колонок
+    const currentCount = +columns;
+    // Получаем желаемое значение колонок
+    const wishCount = +count;
+    // Получаем разницу текущего количества колонок и желаемого
+    const diff = currentCount - wishCount;
+    // Определяем действие над массивом
+    if (diff < 0) {
+      // Если текущее количество колонок больше желаемого - убираем
+      setWidthColumns([...widthColumns.slice(0, diff)]);
+    } else if (diff > 0) {
+      // Если текущее количество колонок меньше желаемого - добавляем
+      setWidthColumns([...widthColumns, 0]);
+    } else {
+      return;
+    }
+  }, [columns, count, setWidthColumns, widthColumns]);
 
   // Управляем шириной колонки по индексу
   const handleWidthColumn = useCallback(
@@ -49,19 +48,19 @@ const SectionSettings = () => {
 
   return (
     <Form>
-      <SelectControl
-        name="Количество колонок"
+      <RangeControl
+        name={`Количество колонок - ${columns}`}
         value={columns}
-        onChange={handleCountColumns}
-        list={getListColumns()}
+        onChange={setColumns}
+        options={{ min: 1, max: 12, appendix: "" }}
       />
       {widthColumns.map((_, i) => (
         <RangeControl
           key={i}
-          name={`Ширина колонки ${i + 1}`}
+          name={`Ширина колонки ${i + 1} = ${widthColumns[i]}`}
           value={widthColumns[i]}
           onChange={(value) => handleWidthColumn(i, value)}
-          options={{ min: 1, max: 12, step: 1, appendix: "" }}
+          options={{ min: 0, max: 12, appendix: "" }}
         />
       ))}
       <SelectControl
