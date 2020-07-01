@@ -1,12 +1,13 @@
 import React from "react";
 
 const Divider = (props) => {
+  console.log("props", props);
   return (
     <hr
       style={{
         borderTopWidth: parseInt(props.size) || 2,
         borderTopColor: props.color,
-        pageBreakAfter: props.pageBreakAfter,
+        breakAfter: props.breakAfter,
       }}
     />
   );

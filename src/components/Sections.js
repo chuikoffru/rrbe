@@ -34,7 +34,7 @@ const Sections = ({ section, sectionIndex }) => {
   const setCurrentSection = useCallback(() => {
     dispatch(selectSection(sectionIndex));
   }, [dispatch, sectionIndex]);
-
+  console.log("section.params.styles", section.params.styles);
   return (
     <div
       className={classNames({
@@ -42,7 +42,7 @@ const Sections = ({ section, sectionIndex }) => {
         [type]: true,
       })}
       id={section.id}
-      style={section.params && section.params.styles}
+      style={{ ...section.params?.styles }}
       onClick={setCurrentSection}
     >
       <Container>

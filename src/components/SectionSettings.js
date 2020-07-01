@@ -9,6 +9,7 @@ const SectionSettings = () => {
   // Получаем данные выбранной секции
   const [columns, setColumns] = useColumnsSettings("columns", 1);
   const [sectionType, setSectionType] = useColumnsSettings("type", sectionTypes.PAGE_BODY);
+  const [breakAfter, setBreakAfter] = useColumnsSettings("styles.breakAfter", "auto");
 
   return (
     <Form>
@@ -23,6 +24,16 @@ const SectionSettings = () => {
         value={sectionType}
         onChange={setSectionType}
         list={sectionTypesList}
+      />
+      <SelectControl
+        name="Разрыв страницы при печати"
+        value={breakAfter}
+        onChange={setBreakAfter}
+        list={[
+          { name: "Автоматически", value: "auto" },
+          { name: "Разорвать страницу", value: "page" },
+          { name: "Не разрывать страницу", value: "avoid" },
+        ]}
       />
     </Form>
   );

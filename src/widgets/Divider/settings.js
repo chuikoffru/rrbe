@@ -8,7 +8,7 @@ import SelectControl from "components/painter/controls/SelectControl";
 const DividerSettings = () => {
   const [size, setSize] = useWidgetSettings("size", 2);
   const [color, setColor] = useWidgetSettings("color", "#000000");
-  const [pageBreak, setPageBreak] = useWidgetSettings("pageBreakAfter", "auto");
+  const [breakAfter, setBreakAfter] = useWidgetSettings("breakAfter", "auto");
 
   return (
     <Form>
@@ -21,11 +21,11 @@ const DividerSettings = () => {
       <ColorPicker name="Цвет разделителя" value={color} onChange={setColor} />
       <SelectControl
         name="Разрыв страницы при печати"
-        value={pageBreak}
-        onChange={setPageBreak}
+        value={breakAfter}
+        onChange={setBreakAfter}
         list={[
           { name: "Автоматически", value: "auto" },
-          { name: "Разорвать страницу", value: "always" },
+          { name: "Разорвать страницу", value: "page" },
           { name: "Не разрывать страницу", value: "avoid" },
         ]}
       />
