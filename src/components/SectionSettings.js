@@ -49,11 +49,11 @@ const SectionSettings = () => {
 
   return (
     <Form>
-      <RangeControl
-        name={`Количество колонок - ${columns}`}
+      <SelectControl
+        name="Количество колонок"
         value={columns}
         onChange={handleCountColumns}
-        options={{ min: 1, max: 12, step: 1, appendix: "" }}
+        list={getListColumns()}
       />
       {widthColumns.map((_, i) => (
         <RangeControl
