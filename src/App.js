@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 
@@ -10,6 +10,21 @@ import "./app.scss";
 import "scss/print.scss";
 
 function App() {
+  // Назначаем глобальные события на окна
+  useEffect(() => {
+    // Нажатия клавиш
+    const keydown = document.addEventListener("keydown", (e) => {
+      // CMD+P
+      if (e.metaKey && e.keyCode === 80) {
+        console.log("Печать");
+        // Убирать все hover при печати
+      }
+    });
+    return () => {
+      document.removeEventListener("keydown", keydown);
+    };
+  }, []);
+
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="rrbe">
