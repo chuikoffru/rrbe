@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { Table as T } from "react-bootstrap";
 import { sourceTypes } from "./sourceTypes";
 import getDataFromApi from "./helpers/getDataFromApi";
@@ -19,7 +19,7 @@ const Table = ({
   const [header, setHeader] = useState(columns || []);
   const [data, setData] = useState(rows || []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (dataFrom === sourceTypes.API && api) {
       (async () => {
         const data = await getDataFromApi(api);
