@@ -1,14 +1,14 @@
 import React, { useState, useCallback } from "react";
+import { Modal, Button, InputGroup, FormControl, Row, Col, Spinner } from "react-bootstrap";
 import axios from "axios";
 import Highlight from "react-highlight";
-import beautify from "js-beautify/js/lib/beautify-html";
 import styleToCss from "style-object-to-css-string";
-
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
-
-import { Modal, Button, InputGroup, FormControl, Row, Col, Spinner } from "react-bootstrap";
+import useClipboard from "react-use-clipboard";
 
 import { ReactComponent as ExportIcon } from "icons/export.svg";
+import { ReactComponent as SaveIcon } from "icons/save.svg";
+import { ReactComponent as CopyIcon } from "icons/sheet.svg";
 
 import useGlobalSettings from "hooks/useGlobalSettings";
 import htmlFilter from "helpers/htmlFilter";
@@ -18,7 +18,7 @@ import footer from "./template/footer";
 
 import "highlight.js/scss/monokai.scss";
 
-const Export = ({ html, sections }) => {
+const Export = ({ sections }) => {
   const [show, setShow] = useState(false);
   const [showPrintPanel, setShowPrintPanel] = useState(false);
   const [name, setName] = useState("");
@@ -26,12 +26,14 @@ const Export = ({ html, sections }) => {
   const [wrap, setWrap] = useState(true);
   const [globalSettings] = useGlobalSettings();
 
+  let html = htmlFilter();
+
+  const [, setCopied] = useClipboard(html, {
+    successDuration: 1000,
+  });
+
   if (wrap) {
     html = String(header(styleToCss(globalSettings), name, showPrintPanel) + html + footer);
-    html = htmlFilter(html);
-    html = beautify.html_beautify(html);
-  } else if (html) {
-    html = beautify.html_beautify(htmlFilter(html));
   }
 
   const saveTemplate = useCallback(async () => {
@@ -86,7 +88,12 @@ const Export = ({ html, sections }) => {
                 }}
               />
             </Col>
-            <Col sm={5}>
+            <Col sm={1}>
+              <Button variant="info" onClick={() => setCopied(html)}>
+                <CopyIcon title="Копировать в буфер" width="20" height="20" fill="#ffffff" />
+              </Button>
+            </Col>
+            <Col sm={4}>
               <InputGroup>
                 <FormControl value={name} onChange={handleChange} placeholder="Название шаблона" />
                 <InputGroup.Append>
@@ -100,7 +107,7 @@ const Export = ({ html, sections }) => {
                         aria-hidden="true"
                       />
                     ) : (
-                      "Сохранить"
+                      <SaveIcon title="Сохранить" width="20" height="20" fill="#ffffff" />
                     )}
                   </Button>
                 </InputGroup.Append>

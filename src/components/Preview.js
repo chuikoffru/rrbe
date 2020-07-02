@@ -1,4 +1,4 @@
-import React, { useRef, useCallback } from "react";
+import React, { useCallback } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useDrop } from "react-dnd";
 import classNames from "classnames";
@@ -20,7 +20,6 @@ const Preview = () => {
   const dispatch = useDispatch();
   const sections = useSelector((state) => state.sections.present.sections);
   const [globalSettings] = useGlobalSettings();
-  const ref = useRef(null);
 
   const addNewSection = useCallback(
     (item) => {
@@ -70,8 +69,8 @@ const Preview = () => {
         isActive: isOver && canDrop,
       })}
     >
-      <Top html={ref.current?.innerHTML} sections={sections} />
-      <div className="rrbe__preview" style={globalSettings} ref={ref}>
+      <Top sections={sections} />
+      <div className="rrbe__preview" style={globalSettings}>
         {sections.map((section, sectionIndex) => (
           <Sections key={section.id} section={section} sectionIndex={sectionIndex} />
         ))}
