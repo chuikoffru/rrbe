@@ -12,7 +12,13 @@ const RangeControl = ({ name, value, onChange, options = {} }) => {
   return (
     <Form.Group>
       <Form.Label>{name}</Form.Label>
-      <Form.Control {...options} type="range" value={parseFloat(value)} onChange={handleChange} />
+      <Form.Control
+        size="sm"
+        {...options}
+        type="range"
+        value={parseFloat(value)}
+        onChange={handleChange}
+      />
     </Form.Group>
   );
 };

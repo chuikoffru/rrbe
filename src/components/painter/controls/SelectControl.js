@@ -27,12 +27,7 @@ const SelectControl = ({ name, value, list, onChange, options = {} }) => {
   return (
     <Form.Group>
       <Form.Label>{name}</Form.Label>
-      <Form.Control
-        {...options}
-        as="select"
-        value={value}
-        onChange={handleChange}
-      >
+      <Form.Control {...options} as="select" size="sm" value={value} onChange={handleChange}>
         {showList()}
       </Form.Control>
     </Form.Group>

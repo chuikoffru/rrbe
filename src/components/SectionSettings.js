@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useLayoutEffect } from "react";
-import { Form } from "react-bootstrap";
+import { Form, Accordion, Card } from "react-bootstrap";
 
 import SelectControl from "./painter/controls/SelectControl";
 import useColumnsSettings from "hooks/useColumnsSettings";
@@ -54,15 +54,25 @@ const SectionSettings = () => {
         onChange={setColumns}
         options={{ min: 1, max: 12, appendix: "" }}
       />
-      {widthColumns.map((_, i) => (
-        <RangeControl
-          key={i}
-          name={`Ширина колонки ${i + 1} = ${widthColumns[i]}`}
-          value={widthColumns[i]}
-          onChange={(value) => handleWidthColumn(i, value)}
-          options={{ min: 0, max: 12, appendix: "" }}
-        />
-      ))}
+      <Accordion className="my-3">
+        {widthColumns.map((_, i) => (
+          <Card key={i}>
+            <Accordion.Toggle as={Card.Header} eventKey={i}>
+              {`Настроить колонку ${i + 1}`}
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey={i}>
+              <Card.Body>
+                <RangeControl
+                  name={`Ширина колонки ${i + 1} = ${widthColumns[i]}`}
+                  value={widthColumns[i]}
+                  onChange={(value) => handleWidthColumn(i, value)}
+                  options={{ min: 0, max: 12, appendix: "" }}
+                />
+              </Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        ))}
+      </Accordion>
       <SelectControl
         name="Тип секции при печати"
         value={sectionType}

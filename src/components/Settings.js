@@ -1,14 +1,12 @@
 import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { useSelector } from "react-redux";
 import loadable from "@loadable/component";
-import { Tabs, Tab } from "react-bootstrap";
+import { Tabs, Tab, Card } from "react-bootstrap";
 
 import loadWidget from "helpers/loadWidget";
 import { isNumber } from "helpers/number";
 import { ItemTypes } from "helpers/itemTypes";
 import Painter from "./Painter";
-import DeleteWidget from "./DeleteWidget";
-import DeleteSection from "./DeleteSection";
 
 const Settings = () => {
   const [showTab, setShowTab] = useState(ItemTypes.ELEMENTS);
@@ -51,22 +49,32 @@ const Settings = () => {
   }, [activeTab]);
 
   return (
-    <Tabs variant="pills" activeKey={showTab} onSelect={(k) => setShowTab(k)}>
-      {widgetName && (
-        <Tab eventKey={ItemTypes.ELEMENTS} title="Виджет">
-          <WidgetSettings />
-          {showTab === ItemTypes.ELEMENTS && <Painter type={showTab} />}
-          <DeleteWidget />
-        </Tab>
-      )}
-      {isNumber(selectedSectionIndex) && (
-        <Tab eventKey={ItemTypes.SECTIONS} title="Секция">
-          <SectionSettings />
-          {showTab === ItemTypes.SECTIONS && <Painter type={showTab} />}
-          <DeleteSection />
-        </Tab>
-      )}
-    </Tabs>
+    <Card>
+      <Card.Body>
+        <Tabs variant="pills" activeKey={showTab} onSelect={(k) => setShowTab(k)}>
+          <Tab eventKey={ItemTypes.ELEMENTS} title="Виджет" disabled={!widgetName}>
+            {widgetName && (
+              <>
+                <WidgetSettings />
+                {showTab === ItemTypes.ELEMENTS && <Painter type={showTab} />}
+              </>
+            )}
+          </Tab>
+          <Tab
+            eventKey={ItemTypes.SECTIONS}
+            title="Секция"
+            disabled={!isNumber(selectedSectionIndex)}
+          >
+            {isNumber(selectedSectionIndex) && (
+              <>
+                <SectionSettings />
+                {showTab === ItemTypes.SECTIONS && <Painter type={showTab} />}
+              </>
+            )}
+          </Tab>
+        </Tabs>
+      </Card.Body>
+    </Card>
   );
 };
 

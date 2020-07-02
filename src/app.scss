@@ -24,14 +24,31 @@ body {
     .accordion {
       border-radius: 0.25rem;
       .card {
-        border: 0;
         &-header {
-          padding: 0.5rem 1.25rem;
-          color: #333333;
-          cursor: pointer;
+          background-color: #787878;
+          color: #ffffff;
         }
         &-body {
-          color: #333333;
+          background-color: #fafafa;
+        }
+      }
+    }
+    .card {
+      border: 0;
+      &-header {
+        padding: 0.5rem 1.25rem;
+        font-size: 0.9rem;
+        color: #333333;
+        cursor: pointer;
+      }
+      &-body {
+        color: #333333;
+        .card-header-pills {
+          margin-bottom: 20px;
+          font-size: 0.85rem;
+        }
+        .form-label {
+          font-size: 0.9rem;
         }
       }
     }

@@ -12,7 +12,7 @@ const InputControl = ({ name, value, onChange, options = {} }) => {
   return (
     <Form.Group>
       <Form.Label>{name}</Form.Label>
-      <Form.Control {...options} value={value} onChange={handleChange} />
+      <Form.Control size="sm" {...options} value={value} onChange={handleChange} />
     </Form.Group>
   );
 };

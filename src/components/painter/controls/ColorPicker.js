@@ -16,7 +16,7 @@ const ColorPicker = ({ name, value, onChange, options = {} }) => {
   return (
     <Form.Group>
       <Form.Label>{name}</Form.Label>
-      <Form.Control value={value} onClick={() => setShow(!show)} readOnly />
+      <Form.Control size="sm" value={value} onClick={() => setShow(!show)} readOnly />
       {show && (
         <SketchPicker
           {...options}

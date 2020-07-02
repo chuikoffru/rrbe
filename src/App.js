@@ -30,9 +30,9 @@ function App() {
       <div className="rrbe">
         <div className="rrbe__left d-print-none">
           <aside className="rrbe__left-container">
-            <h2>Виджеты</h2>
+            <h4>Виджеты</h4>
             <Widgets />
-            <h3>Настройки</h3>
+            <h4>Настройки</h4>
             <Settings />
           </aside>
         </div>
