@@ -48,6 +48,22 @@ const SectionSettings = () => {
 
   return (
     <Form>
+      <SelectControl
+        name="Тип секции при печати"
+        value={sectionType}
+        onChange={setSectionType}
+        list={sectionTypesList}
+      />
+      <SelectControl
+        name="Разрыв страницы при печати"
+        value={breakAfter}
+        onChange={setBreakAfter}
+        list={[
+          { name: "Автоматически", value: "auto" },
+          { name: "Разорвать страницу", value: "page" },
+          { name: "Не разрывать страницу", value: "avoid" },
+        ]}
+      />
       <RangeControl
         name={`Количество колонок - ${columns}`}
         value={columns}
@@ -73,22 +89,6 @@ const SectionSettings = () => {
           </Card>
         ))}
       </Accordion>
-      <SelectControl
-        name="Тип секции при печати"
-        value={sectionType}
-        onChange={setSectionType}
-        list={sectionTypesList}
-      />
-      <SelectControl
-        name="Разрыв страницы при печати"
-        value={breakAfter}
-        onChange={setBreakAfter}
-        list={[
-          { name: "Автоматически", value: "auto" },
-          { name: "Разорвать страницу", value: "page" },
-          { name: "Не разрывать страницу", value: "avoid" },
-        ]}
-      />
     </Form>
   );
 };
