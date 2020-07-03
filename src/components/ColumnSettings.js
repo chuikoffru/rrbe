@@ -20,4 +20,4 @@ const ColumnSettings = () => {
   );
 };
 
-export default ColumnSettings;
+export default React.memo(ColumnSettings);

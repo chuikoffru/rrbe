@@ -4,15 +4,6 @@ import { SketchPicker } from "react-color";
 
 const ColorPicker = ({ name, value, onChange, options = {} }) => {
   const [show, setShow] = useState(false);
-  const [color, setColor] = useState(value);
-
-  /* useEffect(() => {
-    console.log("color :>> ", color);
-    const bounce = setTimeout(() => {
-      onChange(color);
-    }, 500);
-    return () => clearTimeout(bounce);
-  }, [color, onChange]); */
 
   return (
     <Form.Group>
@@ -21,8 +12,8 @@ const ColorPicker = ({ name, value, onChange, options = {} }) => {
       {show && (
         <SketchPicker
           {...options}
-          color={color}
-          onChange={({ hex }) => setColor(hex)}
+          color={value}
+          onChange={({ hex }) => onChange(hex)}
           disableAlpha={true}
         />
       )}

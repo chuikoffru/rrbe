@@ -1,5 +1,4 @@
 import React from "react";
-import { Form } from "react-bootstrap";
 import { useSelector } from "react-redux";
 
 import useColumnsSettings from "hooks/useColumnsSettings";
@@ -7,6 +6,7 @@ import { sectionTypesList, sectionTypes } from "helpers/sectionTypes";
 import { isNumber } from "helpers/number";
 
 import SelectControl from "./painter/controls/SelectControl";
+import SectionPainter from "./painter/SectionPainter";
 import ColumnSettings from "./ColumnSettings";
 
 const SectionSettings = () => {
@@ -20,7 +20,7 @@ const SectionSettings = () => {
   if (!isNumber(selectedSectionIndex)) return <p>Выбрите секцию</p>;
 
   return (
-    <Form>
+    <>
       <ColumnSettings />
       <SelectControl
         name="Тип секции при печати"
@@ -38,8 +38,9 @@ const SectionSettings = () => {
           { name: "Не разрывать страницу", value: "avoid" },
         ]}
       />
-    </Form>
+      <SectionPainter />
+    </>
   );
 };
 
-export default SectionSettings;
+export default React.memo(SectionSettings);

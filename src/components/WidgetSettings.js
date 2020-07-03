@@ -1,7 +1,9 @@
 import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
-import loadWidget from "../helpers/loadWidget";
 import loadable from "@loadable/component";
+
+import loadWidget from "helpers/loadWidget";
+import WidgetPainter from "./painter/WidgetPainter";
 
 const WidgetSettings = () => {
   const { widgetName } = useSelector((state) => state.sections.present.selectedWidget);
@@ -12,7 +14,14 @@ const WidgetSettings = () => {
     [widgetName]
   );
 
-  return widgetName ? <WidgetSettings /> : <p>Выберите виджет</p>;
+  return widgetName ? (
+    <>
+      <WidgetSettings />
+      <WidgetPainter />
+    </>
+  ) : (
+    <p>Выберите виджет</p>
+  );
 };
 
-export default WidgetSettings;
+export default React.memo(WidgetSettings);

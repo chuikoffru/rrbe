@@ -1,5 +1,4 @@
 import React from "react";
-import { Form } from "react-bootstrap";
 
 import useSectionSettings from "hooks/useSectionSettings";
 import IndentControl from "../controls/IndentControl";
@@ -18,7 +17,7 @@ const Indentation = () => {
   const [paddingBottom, setPaddingBottom] = useSectionSettings("styles.paddingBottom", 0);
 
   return (
-    <Form>
+    <>
       <IndentControl
         title="Внешние отступы"
         list={[
@@ -37,7 +36,7 @@ const Indentation = () => {
           { name: "Слева", value: paddingLeft, onChange: setPaddingLeft },
         ]}
       />
-    </Form>
+    </>
   );
 };
 
