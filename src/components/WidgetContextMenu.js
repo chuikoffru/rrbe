@@ -9,6 +9,8 @@ import {
   removeWidget,
   selectWidget,
   copyWidget,
+  selectSection,
+  removeSection,
 } from "redux/sections/actions";
 
 import {
@@ -19,6 +21,7 @@ import {
   MENU_DELETE_WIDGET,
   MENU_COPY_STYLES,
   MENU_PASTE_STYLES,
+  MENU_DELETE_SECTION,
 } from "redux/types";
 
 const WidgetContextMenu = () => {
@@ -40,6 +43,13 @@ const WidgetContextMenu = () => {
         dispatch(copyWidget(props.widget));
         dispatch(removeWidget());
         return dispatch(selectWidget(null, null, null, null));
+      case MENU_DELETE_SECTION:
+        // Удаляем текущую выбранную секцию
+        dispatch(removeSection());
+        // Сбрасываем значение выбранного виджета
+        dispatch(selectWidget(null, null, null, null));
+        // Сбрасываем значение выбранной секции
+        return dispatch(selectSection(null));
       default:
         break;
     }
@@ -72,6 +82,10 @@ const WidgetContextMenu = () => {
         onClick={onClick}
       >
         Вставить стили
+      </Item>
+      <Separator />
+      <Item data={{ action: MENU_DELETE_SECTION }} onClick={onClick}>
+        Удалить секцию
       </Item>
     </Menu>
   );

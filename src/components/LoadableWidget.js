@@ -5,7 +5,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { contextMenu } from "react-contexify";
 
 import loadWidget from "helpers/loadWidget";
-import { selectWidget } from "redux/sections/actions";
+import { selectWidget, selectSection } from "redux/sections/actions";
 import { ItemTypes } from "helpers/itemTypes";
 
 const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex, moveWidget }) => {
@@ -68,6 +68,8 @@ const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex, moveWidge
     (e) => {
       e.preventDefault();
       e.stopPropagation();
+      // Делаем выбранную секцию активной
+      dispatch(selectSection(sectionIndex));
       // Делаем выбранный виджет активным
       dispatch(selectWidget(sectionIndex, columnIndex, rowIndex, widget.name));
       // Показываем контекстное меню

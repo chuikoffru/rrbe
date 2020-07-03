@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import loadable from "@loadable/component";
 
@@ -9,9 +9,8 @@ const WidgetSettings = () => {
   const { widgetName } = useSelector((state) => state.sections.present.selectedWidget);
 
   // Загрузаем страницу настроек виджета
-  const WidgetSettings = useMemo(
-    () => loadable(() => (widgetName ? loadWidget(widgetName, true) : new Promise(() => null))),
-    [widgetName]
+  const WidgetSettings = loadable(() =>
+    widgetName ? loadWidget(widgetName, true) : new Promise(() => null)
   );
 
   return widgetName ? (
@@ -24,4 +23,4 @@ const WidgetSettings = () => {
   );
 };
 
-export default React.memo(WidgetSettings);
+export default WidgetSettings;
