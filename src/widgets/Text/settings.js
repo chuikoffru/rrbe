@@ -3,17 +3,33 @@ import Wysiwyg from "components/painter/controls/wysiwyg";
 import useWidgetSettings from "hooks/useWidgetSettings";
 import SelectControl from "components/painter/controls/SelectControl";
 import RangeControl from "components/painter/controls/RangeControl";
+import ToggleControl from "components/painter/controls/ToggleControl";
 
 const TextSettings = () => {
+  const [text, setText] = useWidgetSettings("text", "<p></p>");
   const [wordBreak, setWordBreak] = useWidgetSettings("styles.wordBreak", "normal");
   const [textTransform, setTextTransform] = useWidgetSettings("styles.textTransform", "none");
   const [fitContent, setFitContent] = useWidgetSettings("styles.width", "100%");
   const [lineHeight, setLineHeight] = useWidgetSettings("styles.lineHeight", "1.5rem");
   const [letterSpacing, setLetterSpacing] = useWidgetSettings("styles.letterSpacing", "0rem");
+  const [editable, setEditable] = useWidgetSettings("editable", true);
 
   return (
     <div className="my-3">
-      <Wysiwyg propery="text" />
+      <Wysiwyg value={text} onChange={setText} />
+      <ToggleControl name="Редактируемый по-умолчанию" value={editable} onChange={setEditable} />
+      <RangeControl
+        name="Межстрочный интервал"
+        value={lineHeight}
+        onChange={setLineHeight}
+        options={{ min: 1.0, max: 2.5, step: 0.1, appendix: "rem" }}
+      />
+      <RangeControl
+        name="Межбуквенный интервал"
+        value={letterSpacing}
+        onChange={setLetterSpacing}
+        options={{ min: 0.0, max: 0.25, step: 0.01, appendix: "rem" }}
+      />
       <SelectControl
         name="Регистр текста"
         value={textTransform}
@@ -32,18 +48,6 @@ const TextSettings = () => {
             value: "uppercase",
           },
         ]}
-      />
-      <RangeControl
-        name="Межстрочный интервал"
-        value={lineHeight}
-        onChange={setLineHeight}
-        options={{ min: 1.0, max: 2.5, step: 0.1, appendix: "rem" }}
-      />
-      <RangeControl
-        name="Межбуквенный интервал"
-        value={letterSpacing}
-        onChange={setLetterSpacing}
-        options={{ min: 0.0, max: 0.25, step: 0.01, appendix: "rem" }}
       />
       <SelectControl
         name="Ширина текстового контейнера"

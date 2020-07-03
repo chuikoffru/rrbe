@@ -5,6 +5,7 @@ import Highlight from "react-highlight";
 import styleToCss from "style-object-to-css-string";
 import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import useClipboard from "react-use-clipboard";
+import { useSelector } from "react-redux";
 
 import { ReactComponent as ExportIcon } from "icons/export.svg";
 import { ReactComponent as SaveIcon } from "icons/save.svg";
@@ -18,7 +19,8 @@ import footer from "./template/footer";
 
 import "highlight.js/scss/monokai.scss";
 
-const Export = ({ sections }) => {
+const Export = () => {
+  const sections = useSelector((state) => state.sections.present.sections);
   const [show, setShow] = useState(false);
   const [showPrintPanel, setShowPrintPanel] = useState(false);
   const [name, setName] = useState("");

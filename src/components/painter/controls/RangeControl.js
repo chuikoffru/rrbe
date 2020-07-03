@@ -4,7 +4,7 @@ import { Form } from "react-bootstrap";
 const RangeControl = ({ name, value, onChange, options = {} }) => {
   const handleChange = useCallback(
     (e) => {
-      onChange(e.target.value + options.appendix);
+      onChange(e.target.value + (options.appendix || ""));
     },
     [onChange, options.appendix]
   );

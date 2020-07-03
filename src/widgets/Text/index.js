@@ -1,20 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import useWidgetSettings from "hooks/useWidgetSettings";
 
 const Text = (props) => {
-  const [editable, setEditable] = useState(false);
-  const [, setText] = useWidgetSettings("text", "");
+  const [, setText] = useWidgetSettings("text");
 
-  const saveText = (e) => {
-    setText(e.currentTarget.innerHTML);
-    setEditable(false);
-  };
+  const saveText = (e) => setText(e.currentTarget.innerHTML);
 
   return (
     <div
       suppressContentEditableWarning={true}
-      contentEditable={editable}
-      onDoubleClick={() => setEditable(true)}
+      contentEditable={props.editable}
       onBlur={saveText}
       dangerouslySetInnerHTML={{ __html: props.text }}
     ></div>

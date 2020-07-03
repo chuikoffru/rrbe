@@ -5,6 +5,7 @@ import classNames from "classnames";
 
 import useGlobalSettings from "hooks/useGlobalSettings";
 import { addSection, selectSection } from "redux/sections/actions";
+import { toggleWidgets, switchSettingsTab } from "../redux/app/actions";
 
 import { generateId } from "helpers/string";
 import { ItemTypes } from "helpers/itemTypes";
@@ -12,7 +13,6 @@ import { ItemTypes } from "helpers/itemTypes";
 import WidgetContextMenu from "./WidgetContextMenu";
 import ColumnContextMenu from "./ColumnContextMenu";
 import Sections from "./Sections";
-import Top from "./top/Top";
 
 import "react-contexify/dist/ReactContexify.min.css";
 
@@ -46,6 +46,10 @@ const Preview = () => {
       dispatch(addSection({ ...item }));
       // Делаем новую секцию активной
       dispatch(selectSection(sections.length));
+      // Скрываем виджеты
+      dispatch(toggleWidgets(false));
+      // Делаем вкладку секция активной
+      dispatch(switchSettingsTab(ItemTypes.SECTIONS));
     },
     [dispatch, sections.length]
   );
@@ -69,7 +73,6 @@ const Preview = () => {
         isActive: isOver && canDrop,
       })}
     >
-      <Top sections={sections} />
       <div className="rrbe__preview" style={globalSettings}>
         {sections.map((section, sectionIndex) => (
           <Sections key={section.id} section={section} sectionIndex={sectionIndex} />

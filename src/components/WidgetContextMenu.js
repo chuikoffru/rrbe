@@ -26,7 +26,6 @@ const WidgetContextMenu = () => {
   const tmpWidgetStyles = useSelector((state) => state.sections.present.tmpWidgetStyles);
 
   const onClick = ({ props }) => {
-    console.log(props);
     switch (props.action) {
       case MENU_COPY_STYLES:
         return dispatch(copyWidgetStyles(props.widget?.params?.styles));

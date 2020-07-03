@@ -1,80 +1,47 @@
-import React, { useState, useMemo, useEffect, useCallback } from "react";
-import { useSelector } from "react-redux";
-import loadable from "@loadable/component";
-import { Tabs, Tab, Card } from "react-bootstrap";
+import React from "react";
+import { ToggleButtonGroup, ToggleButton } from "react-bootstrap";
 
-import loadWidget from "helpers/loadWidget";
-import { isNumber } from "helpers/number";
 import { ItemTypes } from "helpers/itemTypes";
-import Painter from "./Painter";
+
+import GlobalSettings from "./settings/GlobalSettings";
+
+import SectionSettings from "./SectionSettings";
+import WidgetSettings from "./WidgetSettings";
+
+import "scss/settings.scss";
+import { useSelector, useDispatch } from "react-redux";
+import { switchSettingsTab } from "../redux/app/actions";
 
 const Settings = () => {
-  const [showTab, setShowTab] = useState(ItemTypes.ELEMENTS);
-  const { widgetName } = useSelector((state) => state.sections.present.selectedWidget);
+  const dispatch = useDispatch();
+  const settingsTab = useSelector((state) => state.app.settingsTab);
 
-  const selectedSectionIndex = useSelector((state) => state.sections.present.selectedSection);
-
-  // Загрузаем страницу настроек виджета
-  const WidgetSettings = useMemo(
-    () => loadable(() => (widgetName ? loadWidget(widgetName, true) : new Promise(() => null))),
-    [widgetName]
-  );
-
-  const SectionSettings = useMemo(
-    () =>
-      loadable(() =>
-        isNumber(selectedSectionIndex)
-          ? import("components/SectionSettings")
-          : new Promise(() => null)
-      ),
-    [selectedSectionIndex]
-  );
-
-  // Устанавливаем таб активным в зависимости от выбранных элементов
-  const activeTab = useCallback(() => {
-    if (isNumber(selectedSectionIndex) && !widgetName) {
-      // Если выбрана секция, но нет виджета
-      return ItemTypes.SECTIONS;
-    } else if (widgetName && !isNumber(selectedSectionIndex)) {
-      // Если выбран виджет, но не секция
-      return ItemTypes.SECTIONS;
-    } else {
-      // В остальных случаях возвращаем то что выбрал пользователь
-      return showTab;
+  const renderSettings = () => {
+    switch (settingsTab) {
+      case ItemTypes.SECTIONS:
+        return <SectionSettings />;
+      case ItemTypes.ELEMENTS:
+        return <WidgetSettings />;
+      case ItemTypes.GLOBAL:
+        return <GlobalSettings />;
+      default:
+        break;
     }
-  }, [selectedSectionIndex, showTab, widgetName]);
-
-  useEffect(() => {
-    setShowTab(activeTab());
-  }, [activeTab]);
+  };
 
   return (
-    <Card>
-      <Card.Body>
-        <Tabs variant="pills" activeKey={showTab} onSelect={(k) => setShowTab(k)}>
-          <Tab eventKey={ItemTypes.ELEMENTS} title="Виджет" disabled={!widgetName}>
-            {widgetName && (
-              <>
-                <WidgetSettings />
-                {showTab === ItemTypes.ELEMENTS && <Painter type={showTab} />}
-              </>
-            )}
-          </Tab>
-          <Tab
-            eventKey={ItemTypes.SECTIONS}
-            title="Секция"
-            disabled={!isNumber(selectedSectionIndex)}
-          >
-            {isNumber(selectedSectionIndex) && (
-              <>
-                <SectionSettings />
-                {showTab === ItemTypes.SECTIONS && <Painter type={showTab} />}
-              </>
-            )}
-          </Tab>
-        </Tabs>
-      </Card.Body>
-    </Card>
+    <div className="settings">
+      <ToggleButtonGroup
+        name="settings"
+        value={settingsTab}
+        onChange={(value) => dispatch(switchSettingsTab(value))}
+      >
+        <ToggleButton value={ItemTypes.SECTIONS}>Секция</ToggleButton>
+        <ToggleButton value={ItemTypes.ELEMENTS}>Виджет</ToggleButton>
+        <ToggleButton value={ItemTypes.GLOBAL}>Глобальные</ToggleButton>
+      </ToggleButtonGroup>
+      <div className="settings__container">{renderSettings()}</div>
+    </div>
   );
 };
 

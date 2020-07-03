@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { SketchPicker } from "react-color";
 
@@ -6,12 +6,13 @@ const ColorPicker = ({ name, value, onChange, options = {} }) => {
   const [show, setShow] = useState(false);
   const [color, setColor] = useState(value);
 
-  useEffect(() => {
+  /* useEffect(() => {
+    console.log("color :>> ", color);
     const bounce = setTimeout(() => {
       onChange(color);
     }, 500);
     return () => clearTimeout(bounce);
-  }, [color, onChange]);
+  }, [color, onChange]); */
 
   return (
     <Form.Group>

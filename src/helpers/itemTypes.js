@@ -3,4 +3,5 @@ export const ItemTypes = {
   COMPONENTS: "components",
   SECTIONS: "sections",
   WIDGET: "widget",
+  GLOBAL: "global",
 };
