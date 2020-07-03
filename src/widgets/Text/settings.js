@@ -12,7 +12,7 @@ const TextSettings = () => {
   const [fitContent, setFitContent] = useWidgetSettings("styles.width", "100%");
   const [lineHeight, setLineHeight] = useWidgetSettings("styles.lineHeight", "1.5rem");
   const [letterSpacing, setLetterSpacing] = useWidgetSettings("styles.letterSpacing", "0rem");
-  const [editable, setEditable] = useWidgetSettings("editable", true);
+  const [editable, setEditable] = useWidgetSettings("editable", false);
 
   return (
     <div className="my-3">
