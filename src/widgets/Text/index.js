@@ -5,12 +5,7 @@ import WysiwygInlineControl from "../../components/painter/controls/WysiwygInlin
 const Text = (props) => {
   const [, setText] = useWidgetSettings("text");
 
-  const saveText = (e) => {
-    console.log("e", e);
-    setText(e);
-  };
-
-  return <WysiwygInlineControl value={props.text} onChange={saveText} />;
+  return <WysiwygInlineControl value={props.text} onChange={(text) => setText(text)} />;
 };
 
 export default Text;

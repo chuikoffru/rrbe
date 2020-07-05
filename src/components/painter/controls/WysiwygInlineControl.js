@@ -8,6 +8,7 @@ import "tinymce/plugins/table";
 import "tinymce/plugins/autolink";
 
 import "tinymce/skins/ui/oxide/skin.min.css";
+import "tinymce/skins/ui/oxide/content.inline.min.css";
 
 const WysiwygInlineControl = ({ value, onChange, disabled = false }) => {
   const [text, setText] = useState(value);
