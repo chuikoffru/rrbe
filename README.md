@@ -59,3 +59,8 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+tinymce.min.js - 389 KB
+icons.js 60kb
+theme - 407kb
+table - 126kb

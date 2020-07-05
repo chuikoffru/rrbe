@@ -1,9 +1,9 @@
 import React from "react";
-import Wysiwyg from "components/painter/controls/wysiwyg";
 import useWidgetSettings from "hooks/useWidgetSettings";
 import SelectControl from "components/painter/controls/SelectControl";
 import RangeControl from "components/painter/controls/RangeControl";
 import ToggleControl from "components/painter/controls/ToggleControl";
+import WysiwygControl from "components/painter/controls/WysiwygControl";
 
 const TextSettings = () => {
   const [text, setText] = useWidgetSettings("text", "<p></p>");
@@ -16,7 +16,7 @@ const TextSettings = () => {
 
   return (
     <div className="my-3">
-      <Wysiwyg value={text} onChange={setText} />
+      <WysiwygControl value={text} onChange={setText} />
       <ToggleControl name="Редактируемый по-умолчанию" value={editable} onChange={setEditable} />
       <RangeControl
         name="Межстрочный интервал"
