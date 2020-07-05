@@ -11,12 +11,11 @@ import "tinymce/plugins/autolink";
 
 import "tinymce/skins/ui/oxide/skin.min.css";
 
-const WysiwygControl = ({ value, onChange, inline = false, disabled = false, options = {} }) => {
+const WysiwygControl = ({ value, onChange, disabled = false }) => {
   return (
     <Editor
       value={value}
       onEditorChange={onChange}
-      inline={inline}
       disabled={disabled}
       init={{
         height: 400,
@@ -26,7 +25,6 @@ const WysiwygControl = ({ value, onChange, inline = false, disabled = false, opt
     alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | 
     removeformat`,
       }}
-      {...options}
     />
   );
 };

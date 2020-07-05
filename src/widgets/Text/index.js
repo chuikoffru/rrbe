@@ -1,19 +1,16 @@
 import React from "react";
 import useWidgetSettings from "hooks/useWidgetSettings";
+import WysiwygInlineControl from "../../components/painter/controls/WysiwygInlineControl";
 
 const Text = (props) => {
   const [, setText] = useWidgetSettings("text");
 
-  const saveText = (e) => setText(e.currentTarget.innerHTML);
+  const saveText = (e) => {
+    console.log("e", e);
+    setText(e);
+  };
 
-  return (
-    <div
-      suppressContentEditableWarning={true}
-      contentEditable={props.editable}
-      onBlur={saveText}
-      dangerouslySetInnerHTML={{ __html: props.text }}
-    ></div>
-  );
+  return <WysiwygInlineControl value={props.text} onChange={saveText} />;
 };
 
 export default Text;

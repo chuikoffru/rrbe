@@ -2,22 +2,16 @@ import React from "react";
 import useWidgetSettings from "hooks/useWidgetSettings";
 import SelectControl from "components/painter/controls/SelectControl";
 import RangeControl from "components/painter/controls/RangeControl";
-import ToggleControl from "components/painter/controls/ToggleControl";
-import WysiwygControl from "components/painter/controls/WysiwygControl";
 
 const TextSettings = () => {
-  const [text, setText] = useWidgetSettings("text", "<p></p>");
   const [wordBreak, setWordBreak] = useWidgetSettings("styles.wordBreak", "normal");
   const [textTransform, setTextTransform] = useWidgetSettings("styles.textTransform", "none");
   const [fitContent, setFitContent] = useWidgetSettings("styles.width", "100%");
   const [lineHeight, setLineHeight] = useWidgetSettings("styles.lineHeight", "1.5rem");
   const [letterSpacing, setLetterSpacing] = useWidgetSettings("styles.letterSpacing", "0rem");
-  const [editable, setEditable] = useWidgetSettings("editable", false);
 
   return (
     <div className="my-3">
-      <WysiwygControl value={text} onChange={setText} />
-      <ToggleControl name="Редактируемый по-умолчанию" value={editable} onChange={setEditable} />
       <RangeControl
         name="Межстрочный интервал"
         value={lineHeight}
