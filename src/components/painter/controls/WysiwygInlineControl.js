@@ -22,6 +22,7 @@ const WysiwygInlineControl = ({ value, onChange, disabled = false }) => {
       disabled={disabled}
       init={{
         removed_menuitems: "newdocument",
+        table_toolbar: "",
         menubar: true,
         plugins: ["autolink insertdatetime table"],
         toolbar: `formatselect | bold italic | 
