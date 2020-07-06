@@ -77,6 +77,11 @@ body {
       }
     }
   }
+  &__resizer {
+    width: 15px;
+    height: 100vh;
+    cursor: col-resize;
+  }
   &__right {
     width: 100%;
     &-container {
