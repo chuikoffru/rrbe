@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
+
 import "tinymce/tinymce.min.js";
 import "tinymce/icons/default";
 import "tinymce/themes/silver";
