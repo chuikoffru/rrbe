@@ -46,7 +46,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "redux-undo": "^1.0.1",
-    "rrbe": "file:../../../../usr/local/lib/node_modules/rrbe",
+    "rrbe": "^1.0.6",
     "style-object-to-css-string": "^1.0.1",
     "tinymce": "^5.4.0"
   },
@@ -55,7 +55,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pack": "rollup -c"
+    "pack": "rollup -c && cd dist && npm version patch && npm publish"
   },
   "eslintConfig": {
     "extends": "react-app"
