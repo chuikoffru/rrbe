@@ -4,14 +4,14 @@ import { Row } from "react-bootstrap";
 import Widget from "./Widget";
 import { ItemTypes } from "helpers/itemTypes";
 
-import { ReactComponent as SharePostIcon } from "icons/share-post.svg";
-import { ReactComponent as TextEditorIcon } from "icons/text-editor.svg";
-/* import { ReactComponent as VideoClipIcon } from "icons/video-clip.svg";
-import { ReactComponent as NewsIcon } from "icons/news.svg";
-import { ReactComponent as LinkIcon } from "icons/hyperlink.svg"; */
-import { ReactComponent as SectionIcon } from "icons/columns.svg";
-import { ReactComponent as DividerIcon } from "icons/arrow.svg";
-import { ReactComponent as TableIcon } from "icons/scheme.svg";
+import { ReactComponent as SharePostIcon } from "icons/widgets/share-post.svg";
+import { ReactComponent as TextEditorIcon } from "icons/widgets/text-editor.svg";
+/* import { ReactComponent as VideoClipIcon } from "icons/widgets/video-clip.svg";
+import { ReactComponent as NewsIcon } from "icons/widgets/news.svg";
+import { ReactComponent as LinkIcon } from "icons/widgets/hyperlink.svg"; */
+import { ReactComponent as SectionIcon } from "icons/widgets/columns.svg";
+import { ReactComponent as DividerIcon } from "icons/widgets/arrow.svg";
+import { ReactComponent as TableIcon } from "icons/widgets/scheme.svg";
 
 import "scss/widgets.scss";
 

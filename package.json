@@ -2,6 +2,8 @@
   "name": "rrbe-editor",
   "version": "1.0.3",
   "private": true,
+  "main": "src/main.js",
+  "module": "dist/index.esm.js",
   "author": {
     "name": "Konstantin Chuykov",
     "email": "chuikoff.ru@gmail.com",
@@ -14,11 +16,12 @@
   "bugs": {
     "url": "https://github.com/chuikoffru/rrbe/issues"
   },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "dependencies": {
     "@loadable/component": "^5.12.0",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.2.1",
     "@tinymce/tinymce-react": "^3.6.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
@@ -36,7 +39,6 @@
     "react-dnd-html5-backend": "^11.1.3",
     "react-dom": "^16.13.1",
     "react-highlight": "^0.12.0",
-    "react-quill": "^2.0.0-beta.2",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.1",
     "react-use-clipboard": "^1.0.0",
@@ -44,6 +46,7 @@
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
     "redux-undo": "^1.0.1",
+    "rrbe": "file:../../../../usr/local/lib/node_modules/rrbe",
     "style-object-to-css-string": "^1.0.1",
     "tinymce": "^5.4.0"
   },
@@ -51,7 +54,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "pack": "rollup -c"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -69,7 +73,27 @@
     ]
   },
   "devDependencies": {
+    "@babel/cli": "^7.10.4",
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.10.4",
+    "@babel/preset-env": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@rollup/plugin-alias": "^3.1.1",
+    "@rollup/plugin-babel": "^5.0.4",
+    "@rollup/plugin-commonjs": "^13.0.0",
+    "@rollup/plugin-image": "^2.0.5",
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^8.1.0",
+    "@rollup/plugin-url": "^5.0.1",
+    "@svgr/rollup": "^5.4.0",
     "@types/tinymce": "^4.5.24",
-    "node-sass": "^4.14.1"
+    "babel-loader": "^8.1.0",
+    "node-sass": "^4.14.1",
+    "rollup": "^2.20.0",
+    "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-postcss": "^3.1.2"
   }
 }
