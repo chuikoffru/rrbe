@@ -2,6 +2,7 @@
   "presets": ["@babel/preset-react"],
   "plugins": [
     "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-syntax-dynamic-import",
     [
       "module-resolver",
       {
@@ -9,7 +10,7 @@
         "alias": {
           "components": "./src/components",
           "hooks": "./src/hooks",
-          "redux": "./src/redux",
+          "store": "./src/store",
           "scss": "./src/scss",
           "icons": "./src/icons",
           "helpers": "./src/helpers",

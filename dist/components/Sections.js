@@ -10,64 +10,57 @@ import { sectionTypes } from "../helpers/sectionTypes";
 import useSectionSettings from "../hooks/useSectionSettings";
 import Column from "./Column";
 
-const Sections = ({ section, sectionIndex }) => {
+const Sections = ({
+  section,
+  sectionIndex
+}) => {
   const dispatch = useDispatch();
   const [type] = useSectionSettings("type", sectionTypes.PAGE_BODY);
-  const addNewWidget = useCallback(
-    (item, columnIndex) => {
-      delete item.icon; // Добавляем новый виджет
+  const addNewWidget = useCallback((item, columnIndex) => {
+    delete item.icon; // Добавляем новый виджет
 
-      dispatch(addWidget(sectionIndex, columnIndex, { ...item, id: generateId() })); // Делаем секцию в которую добавили активной
+    dispatch(addWidget(sectionIndex, columnIndex, { ...item,
+      id: generateId()
+    })); // Делаем секцию в которую добавили активной
 
-      dispatch(selectSection(sectionIndex)); // Смотрим сколько виджетов в колонке
+    dispatch(selectSection(sectionIndex)); // Смотрим сколько виджетов в колонке
 
-      const countWidgets = section.columns[columnIndex].length; // Делаем последний добавленный виджет активным
+    const countWidgets = section.columns[columnIndex].length; // Делаем последний добавленный виджет активным
 
-      dispatch(selectWidget(sectionIndex, columnIndex, countWidgets, item.name)); // Скрываем виджеты
+    dispatch(selectWidget(sectionIndex, columnIndex, countWidgets, item.name)); // Скрываем виджеты
 
-      dispatch(toggleWidgets(false)); // Делаем вкладку виджет активной
+    dispatch(toggleWidgets(false)); // Делаем вкладку виджет активной
 
-      dispatch(switchSettingsTab(ItemTypes.ELEMENTS));
-    },
-    [dispatch, section.columns, sectionIndex]
-  );
+    dispatch(switchSettingsTab(ItemTypes.ELEMENTS));
+  }, [dispatch, section.columns, sectionIndex]);
   const setCurrentSection = useCallback(() => {
     dispatch(selectSection(sectionIndex));
   }, [dispatch, sectionIndex]);
-  const { widthColumns, styles } = section.params;
-  return /*#__PURE__*/ React.createElement(
-    "div",
-    {
-      className: classNames({
-        rrbe__section: true,
-        [type]: true,
-      }),
-      id: section.id,
-      style: { ...styles },
-      onClick: setCurrentSection,
+  const {
+    widthColumns,
+    styles
+  } = section.params;
+  return /*#__PURE__*/React.createElement("div", {
+    className: classNames({
+      rrbe__section: true,
+      [type]: true
+    }),
+    id: section.id,
+    style: { ...styles
     },
-    /*#__PURE__*/ React.createElement(
-      Container,
-      null,
-      /*#__PURE__*/ React.createElement(
-        Row,
-        null,
-        section.columns.map((rows, columnIndex) => {
-          const md =
-            widthColumns === null || widthColumns === void 0 ? void 0 : widthColumns[columnIndex];
-          return /*#__PURE__*/ React.createElement(Column, {
-            key: `${sectionIndex}-${columnIndex}`,
-            rows: rows,
-            md: md,
-            sectionIndex: sectionIndex,
-            columnIndex: columnIndex,
-            accept: [ItemTypes.ELEMENTS],
-            onDrop: (item) => addNewWidget(item, columnIndex),
-          });
-        })
-      )
-    )
-  );
+    onClick: setCurrentSection
+  }, /*#__PURE__*/React.createElement(Container, null, /*#__PURE__*/React.createElement(Row, null, section.columns.map((rows, columnIndex) => {
+    const md = widthColumns === null || widthColumns === void 0 ? void 0 : widthColumns[columnIndex];
+    return /*#__PURE__*/React.createElement(Column, {
+      key: `${sectionIndex}-${columnIndex}`,
+      rows: rows,
+      md: md,
+      sectionIndex: sectionIndex,
+      columnIndex: columnIndex,
+      accept: [ItemTypes.ELEMENTS],
+      onDrop: item => addNewWidget(item, columnIndex)
+    });
+  }))));
 };
 
 export default Sections;

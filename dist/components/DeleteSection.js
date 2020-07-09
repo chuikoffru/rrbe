@@ -13,14 +13,10 @@ const DeleteSection = () => {
 
     dispatch(selectWidget(null, null, null, null));
   }, [dispatch]);
-  return /*#__PURE__*/ React.createElement(
-    Button,
-    {
-      variant: "danger",
-      onClick: handleRemove,
-    },
-    "\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u0441\u0435\u043A\u0446\u0438\u044E"
-  );
+  return /*#__PURE__*/React.createElement(Button, {
+    variant: "danger",
+    onClick: handleRemove
+  }, "\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u0441\u0435\u043A\u0446\u0438\u044E");
 };
 
 export default DeleteSection;

@@ -10,70 +10,66 @@ import LoadableWidget from "./LoadableWidget";
 import "../scss/columns.scss";
 import { selectSection } from "../store/sections/actions";
 
-const Column = ({ rows, md, columnIndex, sectionIndex, accept, onDrop }) => {
+const Column = ({
+  rows,
+  md,
+  columnIndex,
+  sectionIndex,
+  accept,
+  onDrop
+}) => {
   const dispatch = useDispatch();
-  const [{ isOver, canDrop }, drop] = useDrop({
+  const [{
+    isOver,
+    canDrop
+  }, drop] = useDrop({
     accept,
     drop: onDrop,
-    collect: (monitor) => ({
+    collect: monitor => ({
       isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
-    }),
+      canDrop: monitor.canDrop()
+    })
   });
-  const moveWidget = useCallback(
-    (dragIndex, hoverIndex) => {
-      const data = swap(rows, dragIndex, hoverIndex);
-      dispatch(
-        changeColumns({
-          sectionIndex,
-          columnIndex,
-          data,
-        })
-      );
-    },
-    [columnIndex, dispatch, rows, sectionIndex]
-  );
-  const showContextMenu = useCallback(
-    (e) => {
-      e.preventDefault(); // Делаем текущую секцию активной
+  const moveWidget = useCallback((dragIndex, hoverIndex) => {
+    const data = swap(rows, dragIndex, hoverIndex);
+    dispatch(changeColumns({
+      sectionIndex,
+      columnIndex,
+      data
+    }));
+  }, [columnIndex, dispatch, rows, sectionIndex]);
+  const showContextMenu = useCallback(e => {
+    e.preventDefault(); // Делаем текущую секцию активной
 
-      dispatch(selectSection(sectionIndex)); // Показываем контекстное меню
+    dispatch(selectSection(sectionIndex)); // Показываем контекстное меню
 
-      contextMenu.show({
-        id: ItemTypes.SECTIONS,
-        event: e,
-        props: {
-          sectionIndex,
-          columnIndex,
-        },
-      });
-    },
-    [columnIndex, dispatch, sectionIndex]
-  );
-  return /*#__PURE__*/ React.createElement(
-    "div",
-    {
-      ref: drop,
-      className: classNames({
-        rrbe__column: true,
-        col: true,
-        canDrop,
-        [`col-md-${md}`]: md > 0,
-        isActive: isOver && canDrop,
-      }),
-      onContextMenu: showContextMenu,
-    },
-    rows.map((widget, rowIndex) =>
-      /*#__PURE__*/ React.createElement(LoadableWidget, {
-        key: `${widget.id}-${rowIndex}`,
-        widget: widget,
-        sectionIndex: sectionIndex,
-        rowIndex: rowIndex,
-        columnIndex: columnIndex,
-        moveWidget: moveWidget,
-      })
-    )
-  );
+    contextMenu.show({
+      id: ItemTypes.SECTIONS,
+      event: e,
+      props: {
+        sectionIndex,
+        columnIndex
+      }
+    });
+  }, [columnIndex, dispatch, sectionIndex]);
+  return /*#__PURE__*/React.createElement("div", {
+    ref: drop,
+    className: classNames({
+      rrbe__column: true,
+      col: true,
+      canDrop,
+      [`col-md-${md}`]: md > 0,
+      isActive: isOver && canDrop
+    }),
+    onContextMenu: showContextMenu
+  }, rows.map((widget, rowIndex) => /*#__PURE__*/React.createElement(LoadableWidget, {
+    key: `${widget.id}-${rowIndex}`,
+    widget: widget,
+    sectionIndex: sectionIndex,
+    rowIndex: rowIndex,
+    columnIndex: columnIndex,
+    moveWidget: moveWidget
+  })));
 };
 
 export default Column;

@@ -1,6 +1,5 @@
 import React from "react";
 import { render } from "react-dom";
-import RRBE from "rrbe";
-import "rrbe/index.esm.css";
+import RRBE from "main";
 
 render(<RRBE />, document.getElementById("root"));

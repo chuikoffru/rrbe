@@ -5,11 +5,11 @@ import { changeSection, addColumns, removeColumns } from "../store/sections/acti
 const useColumnsSettings = (property, defaultValue) => {
   const dispatch = useDispatch(); // Получаем данные о секции
 
-  const section = useSelector(
-    ({ sections }) => sections.present.sections[sections.present.selectedSection]
-  ); // Записываем новые настройки
+  const section = useSelector(({
+    sections
+  }) => sections.present.sections[sections.present.selectedSection]); // Записываем новые настройки
 
-  const setSettings = (params) => {
+  const setSettings = params => {
     if (property) {
       const newSettings = mutate.set(section.params, property, params);
       dispatch(changeSection(newSettings));

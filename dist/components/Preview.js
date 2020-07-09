@@ -14,76 +14,63 @@ import "react-contexify/dist/ReactContexify.min.css";
 
 const Preview = () => {
   const dispatch = useDispatch();
-  const sections = useSelector((state) => state.sections.present.sections);
+  const sections = useSelector(state => state.sections.present.sections);
   const [globalSettings] = useGlobalSettings();
-  const addNewSection = useCallback(
-    (item) => {
-      delete item.icon;
-      item.id = generateId(); // Проверяем тип секции
+  const addNewSection = useCallback(item => {
+    delete item.icon;
+    item.id = generateId(); // Проверяем тип секции
 
-      if (item.type === ItemTypes.COMPONENTS) {
-        item.type = ItemTypes.ELEMENTS;
-        item.columns = [
-          [
-            {
-              id: generateId(),
-              name: item.name,
-              type: ItemTypes.ELEMENTS,
-              params: { ...item.params },
-            },
-          ],
-        ];
-      } else {
-        // Устанавливаем дефолтное количество колонок
-        item.columns = new Array(item.params.columns).fill([]);
-      } // Добавляем новую секцию
+    if (item.type === ItemTypes.COMPONENTS) {
+      item.type = ItemTypes.ELEMENTS;
+      item.columns = [[{
+        id: generateId(),
+        name: item.name,
+        type: ItemTypes.ELEMENTS,
+        params: { ...item.params
+        }
+      }]];
+    } else {
+      // Устанавливаем дефолтное количество колонок
+      item.columns = new Array(item.params.columns).fill([]);
+    } // Добавляем новую секцию
 
-      dispatch(addSection({ ...item })); // Делаем новую секцию активной
 
-      dispatch(selectSection(sections.length)); // Скрываем виджеты
+    dispatch(addSection({ ...item
+    })); // Делаем новую секцию активной
 
-      dispatch(toggleWidgets(false)); // Делаем вкладку секция активной
+    dispatch(selectSection(sections.length)); // Скрываем виджеты
 
-      dispatch(switchSettingsTab(ItemTypes.SECTIONS));
-    },
-    [dispatch, sections.length]
-  );
-  const [{ isOver, canDrop }, drop] = useDrop({
+    dispatch(toggleWidgets(false)); // Делаем вкладку секция активной
+
+    dispatch(switchSettingsTab(ItemTypes.SECTIONS));
+  }, [dispatch, sections.length]);
+  const [{
+    isOver,
+    canDrop
+  }, drop] = useDrop({
     accept: [ItemTypes.SECTIONS, ItemTypes.COMPONENTS],
     drop: addNewSection,
-    collect: (monitor) => ({
+    collect: monitor => ({
       isOver: monitor.isOver(),
-      canDrop: monitor.canDrop(),
-    }),
+      canDrop: monitor.canDrop()
+    })
   });
-  return /*#__PURE__*/ React.createElement(
-    "div",
-    {
-      ref: drop,
-      className: classNames({
-        "rrbe__right-container": true,
-        dropSection: true,
-        canDrop,
-        isActive: isOver && canDrop,
-      }),
-    },
-    /*#__PURE__*/ React.createElement(
-      "div",
-      {
-        className: "rrbe__preview",
-        style: globalSettings,
-      },
-      sections.map((section, sectionIndex) =>
-        /*#__PURE__*/ React.createElement(Sections, {
-          key: section.id,
-          section: section,
-          sectionIndex: sectionIndex,
-        })
-      )
-    ),
-    /*#__PURE__*/ React.createElement(WidgetContextMenu, null),
-    /*#__PURE__*/ React.createElement(ColumnContextMenu, null)
-  );
+  return /*#__PURE__*/React.createElement("div", {
+    ref: drop,
+    className: classNames({
+      "rrbe__right-container": true,
+      dropSection: true,
+      canDrop,
+      isActive: isOver && canDrop
+    })
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "rrbe__preview",
+    style: globalSettings
+  }, sections.map((section, sectionIndex) => /*#__PURE__*/React.createElement(Sections, {
+    key: section.id,
+    section: section,
+    sectionIndex: sectionIndex
+  }))), /*#__PURE__*/React.createElement(WidgetContextMenu, null), /*#__PURE__*/React.createElement(ColumnContextMenu, null));
 };
 
 export default Preview;

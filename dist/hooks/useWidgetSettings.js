@@ -6,11 +6,17 @@ import { isNumber } from "../helpers/number";
 const useWidgetSettings = (property, defaultValue) => {
   const dispatch = useDispatch(); // Получаем секции
 
-  const sections = useSelector(({ sections }) => sections.present.sections); // Получаем позицию выбранного виджета в массиве
+  const sections = useSelector(({
+    sections
+  }) => sections.present.sections); // Получаем позицию выбранного виджета в массиве
 
-  const { sectionIndex, columnIndex, rowIndex } = useSelector(
-    ({ sections }) => sections.present.selectedWidget
-  ); // Если виджет не выбран то выводим undefined
+  const {
+    sectionIndex,
+    columnIndex,
+    rowIndex
+  } = useSelector(({
+    sections
+  }) => sections.present.selectedWidget); // Если виджет не выбран то выводим undefined
 
   if (!isNumber(sectionIndex)) return [{}, () => {}]; // Получаем данные виджета
 
@@ -24,7 +30,8 @@ const useWidgetSettings = (property, defaultValue) => {
     settings = widget.params;
   } // Записываем новые настройки
 
-  const setSettings = (params) => {
+
+  const setSettings = params => {
     if (property) {
       const newSettings = mutate.set(widget.params, property, params);
       dispatch(changeWidget(newSettings));

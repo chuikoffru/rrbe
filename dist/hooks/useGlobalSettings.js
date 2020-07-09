@@ -5,7 +5,7 @@ import { changeSettings } from "../store/sections/actions";
 const useGlobalSettings = (property, defaultValue) => {
   const dispatch = useDispatch(); // Получаем настройки
 
-  const globalSettings = useSelector((state) => state.sections.present.settings);
+  const globalSettings = useSelector(state => state.sections.present.settings);
   let settings = {}; // Если указано конкретное свойство, возвращаем только его
 
   if (property) {
@@ -14,7 +14,8 @@ const useGlobalSettings = (property, defaultValue) => {
     settings = globalSettings;
   } // Записываем новые настройки
 
-  const setSettings = (params) => {
+
+  const setSettings = params => {
     if (property) {
       const newSettings = mutate.set(globalSettings, property, params);
       dispatch(changeSettings(newSettings));
@@ -26,6 +27,7 @@ const useGlobalSettings = (property, defaultValue) => {
     console.log("globalSettings", globalSettings);
     document.body.style.fontFamily = globalSettings.fontFamily;
   }, [globalSettings]); */
+
 
   return [settings, setSettings];
 };

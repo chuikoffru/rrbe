@@ -6,15 +6,15 @@ const WidgetPainter = () => {
   const categories = [
     {
       name: "Оформление",
-      cmp: loadable(() => import(`components/painter/widgets/Appearance`)),
+      cmp: loadable(() => import(`./widgets/Appearance`)),
     },
     {
       name: "Позиционирование",
-      cmp: loadable(() => import(`components/painter/widgets/Alignments`)),
+      cmp: loadable(() => import(`./widgets/Alignments`)),
     },
     {
       name: "Отступы",
-      cmp: loadable(() => import(`components/painter/widgets/Indentation`)),
+      cmp: loadable(() => import(`./widgets/Indentation`)),
     },
   ];
   return (

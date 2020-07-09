@@ -6,15 +6,15 @@ const SectionPainter = () => {
   const categories = [
     {
       name: "Оформление",
-      cmp: loadable(() => import(`components/painter/sections/Appearance`)),
+      cmp: loadable(() => import(`./sections/Appearance`)),
     },
     {
       name: "Позиционирование",
-      cmp: loadable(() => import(`components/painter/sections/Alignments`)),
+      cmp: loadable(() => import(`./sections/Alignments`)),
     },
     {
       name: "Отступы",
-      cmp: loadable(() => import(`components/painter/sections/Indentation`)),
+      cmp: loadable(() => import(`./sections/Indentation`)),
     },
   ];
   return (

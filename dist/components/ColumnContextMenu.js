@@ -7,9 +7,11 @@ import { pasteWidget } from "../store/sections/actions";
 
 const ColumnContextMenu = () => {
   const dispatch = useDispatch();
-  const tmpWidget = useSelector((state) => state.sections.present.tmpWidget);
+  const tmpWidget = useSelector(state => state.sections.present.tmpWidget);
 
-  const onClick = ({ props }) => {
+  const onClick = ({
+    props
+  }) => {
     console.log(props);
 
     switch (props.action) {
@@ -21,34 +23,21 @@ const ColumnContextMenu = () => {
     }
   };
 
-  return /*#__PURE__*/ React.createElement(
-    Menu,
-    {
-      id: ItemTypes.SECTIONS,
+  return /*#__PURE__*/React.createElement(Menu, {
+    id: ItemTypes.SECTIONS
+  }, /*#__PURE__*/React.createElement(Item, {
+    data: {
+      action: MENU_PASTE_WIDGET
     },
-    /*#__PURE__*/ React.createElement(
-      Item,
-      {
-        data: {
-          action: MENU_PASTE_WIDGET,
-        },
-        disabled: Object.keys(tmpWidget).length === 0,
-        onClick: onClick,
-      },
-      "\u0412\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u0432\u0438\u0434\u0436\u0435\u0442"
-    ),
-    /*#__PURE__*/ React.createElement(
-      Item,
-      {
-        data: {
-          action: MENU_PASTE_WIDGET,
-        },
-        disabled: true,
-        onClick: onClick,
-      },
-      "\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u043A\u043E\u043B\u043E\u043D\u043A\u0443"
-    )
-  );
+    disabled: Object.keys(tmpWidget).length === 0,
+    onClick: onClick
+  }, "\u0412\u0441\u0442\u0430\u0432\u0438\u0442\u044C \u0432\u0438\u0434\u0436\u0435\u0442"), /*#__PURE__*/React.createElement(Item, {
+    data: {
+      action: MENU_PASTE_WIDGET
+    },
+    disabled: true,
+    onClick: onClick
+  }, "\u0423\u0434\u0430\u043B\u0438\u0442\u044C \u043A\u043E\u043B\u043E\u043D\u043A\u0443"));
 };
 
 export default ColumnContextMenu;

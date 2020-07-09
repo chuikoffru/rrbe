@@ -5,9 +5,9 @@ import { changeSection } from "../store/sections/actions";
 const useSectionSettings = (property, defaultValue) => {
   const dispatch = useDispatch(); // Получаем данные о секции
 
-  const section = useSelector(
-    ({ sections }) => sections.present.sections[sections.present.selectedSection]
-  ); //console.log("section", section);
+  const section = useSelector(({
+    sections
+  }) => sections.present.sections[sections.present.selectedSection]); //console.log("section", section);
 
   let settings = {};
 
@@ -17,7 +17,8 @@ const useSectionSettings = (property, defaultValue) => {
     settings = section.params;
   } // Записываем новые настройки
 
-  const setSettings = (params) => {
+
+  const setSettings = params => {
     if (property) {
       const newSettings = mutate.set(section.params, property, params);
       dispatch(changeSection(newSettings));
