@@ -2,7 +2,7 @@
   "name": "rrbe",
   "version": "1.0.7",
   "private": false,
-  "main": "main.js",
+  "main": "build/layout.js",
   "author": {
     "name": "Konstantin Chuykov",
     "email": "chuikoff.ru@gmail.com",
