@@ -4,9 +4,9 @@ import { useDispatch } from "react-redux";
 import { useDrag, useDrop } from "react-dnd";
 import { contextMenu } from "react-contexify";
 
-import loadWidget from "helpers/loadWidget";
-import { selectWidget, selectSection } from "store/sections/actions";
-import { ItemTypes } from "helpers/itemTypes";
+import loadWidget from "../helpers/loadWidget";
+import { selectWidget, selectSection } from "../store/sections/actions";
+import { ItemTypes } from "../helpers/itemTypes";
 
 const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex, moveWidget }) => {
   const ref = useRef(null);

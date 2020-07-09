@@ -7,12 +7,12 @@ import BootstrapSwitchButton from "bootstrap-switch-button-react";
 import useClipboard from "react-use-clipboard";
 import { useSelector } from "react-redux";
 
-import { ReactComponent as ExportIcon } from "icons/export.svg";
-import { ReactComponent as SaveIcon } from "icons/save.svg";
-import { ReactComponent as CopyIcon } from "icons/sheet.svg";
+import { ReactComponent as ExportIcon } from "../../icons/export.svg";
+import { ReactComponent as SaveIcon } from "../../icons/save.svg";
+import { ReactComponent as CopyIcon } from "../../icons/sheet.svg";
 
-import useGlobalSettings from "hooks/useGlobalSettings";
-import htmlFilter from "helpers/htmlFilter";
+import useGlobalSettings from "../../hooks/useGlobalSettings";
+import htmlFilter from "../../helpers/htmlFilter";
 
 import { header } from "./template/header";
 import footer from "./template/footer";

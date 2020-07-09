@@ -1,6 +1,6 @@
 import React from "react";
 
-import useSectionSettings from "hooks/useSectionSettings";
+import useSectionSettings from "../../../hooks/useSectionSettings";
 import IndentControl from "../controls/IndentControl";
 
 const Indentation = () => {

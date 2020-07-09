@@ -1,5 +1,5 @@
 import React from "react";
-import useGlobalSettings from "hooks/useGlobalSettings";
+import useGlobalSettings from "../../hooks/useGlobalSettings";
 import RangeControl from "../painter/controls/RangeControl";
 
 const FontSize = () => {
