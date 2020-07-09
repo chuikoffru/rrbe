@@ -1,6 +1,6 @@
 {
   "name": "rrbe",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "private": false,
   "main": "main.js",
   "author": {
@@ -15,10 +15,9 @@
   "bugs": {
     "url": "https://github.com/chuikoffru/rrbe/issues"
   },
-  "devDependencies": {
+  "dependencies": {
     "@loadable/component": "^5.12.0",
     "@tinymce/tinymce-react": "^3.6.0",
-    "bootstrap": "^4.5.0",
     "bootstrap-switch-button-react": "^1.2.0",
     "classnames": "^2.2.6",
     "dot-prop-immutable": "^2.1.0",
@@ -43,6 +42,7 @@
     "react-dom": "^16.13.1",
     "axios": "^0.19.2",
     "lodash": "^4.17.15",
-    "redux": "^4.0.5"
+    "redux": "^4.0.5",
+    "bootstrap": "^4.5.0"
   }
 }
