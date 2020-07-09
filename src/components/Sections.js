@@ -3,8 +3,8 @@ import { Row, Container } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import classNames from "classnames";
 
-import { addWidget, selectSection, selectWidget } from "redux/sections/actions";
-import { toggleWidgets, switchSettingsTab } from "redux/app/actions";
+import { addWidget, selectSection, selectWidget } from "store/sections/actions";
+import { toggleWidgets, switchSettingsTab } from "store/app/actions";
 import { generateId } from "helpers/string";
 import { ItemTypes } from "helpers/itemTypes";
 import { sectionTypes } from "helpers/sectionTypes";

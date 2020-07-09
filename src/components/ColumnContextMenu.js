@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { ItemTypes } from "helpers/itemTypes";
 
-import { MENU_PASTE_WIDGET } from "redux/types";
-import { pasteWidget } from "../redux/sections/actions";
+import { MENU_PASTE_WIDGET } from "store/types";
+import { pasteWidget } from "../store/sections/actions";
 
 const ColumnContextMenu = () => {
   const dispatch = useDispatch();

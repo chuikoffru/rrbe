@@ -55,7 +55,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "pack": "rollup -c && cd dist && npm version patch && npm publish"
+    "pack-widget": "babel src --out-dir dist --copy-files",
+    "pack": "rollup -c",
+    "publish": "cd dist && npm version patch && npm publish"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -88,9 +90,11 @@
     "@svgr/rollup": "^5.4.0",
     "@types/tinymce": "^4.5.24",
     "babel-loader": "^8.1.0",
+    "babel-plugin-module-resolver": "^4.0.0",
     "node-sass": "^4.14.1",
     "rollup": "^2.20.0",
     "rollup-plugin-auto-external": "^2.0.0",
+    "rollup-plugin-includepaths": "^0.2.3",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-peer-deps-external": "^2.2.3",

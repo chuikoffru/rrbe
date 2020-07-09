@@ -4,8 +4,8 @@ import { useDrop } from "react-dnd";
 import classNames from "classnames";
 
 import useGlobalSettings from "hooks/useGlobalSettings";
-import { addSection, selectSection } from "redux/sections/actions";
-import { toggleWidgets, switchSettingsTab } from "../redux/app/actions";
+import { addSection, selectSection } from "store/sections/actions";
+import { toggleWidgets, switchSettingsTab } from "../store/app/actions";
 
 import { generateId } from "helpers/string";
 import { ItemTypes } from "helpers/itemTypes";

@@ -5,7 +5,7 @@ import { useDrag, useDrop } from "react-dnd";
 import { contextMenu } from "react-contexify";
 
 import loadWidget from "helpers/loadWidget";
-import { selectWidget, selectSection } from "redux/sections/actions";
+import { selectWidget, selectSection } from "store/sections/actions";
 import { ItemTypes } from "helpers/itemTypes";
 
 const LoadableWidget = ({ widget, sectionIndex, rowIndex, columnIndex, moveWidget }) => {

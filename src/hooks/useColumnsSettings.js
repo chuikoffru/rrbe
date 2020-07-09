@@ -1,6 +1,6 @@
 import mutate from "dot-prop-immutable";
 import { useSelector, useDispatch } from "react-redux";
-import { changeSection, addColumns, removeColumns } from "redux/sections/actions";
+import { changeSection, addColumns, removeColumns } from "store/sections/actions";
 
 const useColumnsSettings = (property, defaultValue) => {
   const dispatch = useDispatch();

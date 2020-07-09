@@ -1,6 +1,6 @@
 export default (widgetName = null, isSettings = false) => {
   return new Promise((resolve) => {
-    import(`widgets/${widgetName}/${isSettings ? "settings" : "index"}`)
+    import(`./widgets/${widgetName}/${isSettings ? "settings" : "index"}`)
       .then((module) => {
         resolve(module.default);
       })

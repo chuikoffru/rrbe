@@ -1,11 +1,7 @@
 import React, { useCallback } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import {
-  removeSection,
-  selectSection,
-  selectWidget,
-} from "redux/sections/actions";
+import { removeSection, selectSection, selectWidget } from "store/sections/actions";
 
 const DeleteSection = () => {
   const dispatch = useDispatch();

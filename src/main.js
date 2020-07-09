@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 
-import { rootReducer } from "redux/rootReducer";
+import { rootReducer } from "store/rootReducer";
 import App from "./App";
 
 import "bootstrap/dist/css/bootstrap.min.css";

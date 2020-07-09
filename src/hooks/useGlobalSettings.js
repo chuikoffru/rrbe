@@ -1,6 +1,6 @@
 import mutate from "dot-prop-immutable";
 import { useSelector, useDispatch } from "react-redux";
-import { changeSettings } from "redux/sections/actions";
+import { changeSettings } from "store/sections/actions";
 
 const useGlobalSettings = (property, defaultValue) => {
   const dispatch = useDispatch();

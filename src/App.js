@@ -4,7 +4,7 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 
-import { toggleWidgets } from "redux/app/actions";
+import { toggleWidgets } from "store/app/actions";
 
 import Preview from "components/Preview";
 import Widgets from "components/Widgets";

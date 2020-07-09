@@ -11,7 +11,7 @@ import {
   copyWidget,
   selectSection,
   removeSection,
-} from "redux/sections/actions";
+} from "store/sections/actions";
 
 import {
   MENU_COPY_WIDGET,
@@ -22,7 +22,7 @@ import {
   MENU_COPY_STYLES,
   MENU_PASTE_STYLES,
   MENU_DELETE_SECTION,
-} from "redux/types";
+} from "store/types";
 
 const WidgetContextMenu = () => {
   const dispatch = useDispatch();

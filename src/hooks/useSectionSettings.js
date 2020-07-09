@@ -1,13 +1,12 @@
 import mutate from "dot-prop-immutable";
 import { useSelector, useDispatch } from "react-redux";
-import { changeSection } from "redux/sections/actions";
+import { changeSection } from "store/sections/actions";
 
 const useSectionSettings = (property, defaultValue) => {
   const dispatch = useDispatch();
   // Получаем данные о секции
   const section = useSelector(
-    ({ sections }) =>
-      sections.present.sections[sections.present.selectedSection]
+    ({ sections }) => sections.present.sections[sections.present.selectedSection]
   );
   //console.log("section", section);
   let settings = {};

@@ -1,3 +1,21 @@
 {
-  "plugins": ["@babel/plugin-proposal-optional-chaining"]
+  "presets": ["@babel/preset-react"],
+  "plugins": [
+    "@babel/plugin-proposal-optional-chaining",
+    [
+      "module-resolver",
+      {
+        "root": ".",
+        "alias": {
+          "components": "./src/components",
+          "hooks": "./src/hooks",
+          "redux": "./src/redux",
+          "scss": "./src/scss",
+          "icons": "./src/icons",
+          "helpers": "./src/helpers",
+          "widgets": "./src/widgets"
+        }
+      }
+    ]
+  ]
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import useWidgetSettings from "hooks/useWidgetSettings";
-import WysiwygInlineControl from "../../components/painter/controls/WysiwygInlineControl";
+import WysiwygInlineControl from "components/painter/controls/WysiwygInlineControl";
 
 const Text = (props) => {
   const [, setText] = useWidgetSettings("text");

@@ -10,7 +10,7 @@ import WidgetSettings from "./WidgetSettings";
 
 import "scss/settings.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { switchSettingsTab } from "../redux/app/actions";
+import { switchSettingsTab } from "../store/app/actions";
 
 const Settings = () => {
   const dispatch = useDispatch();
