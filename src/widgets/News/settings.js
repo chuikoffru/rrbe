@@ -1,6 +1,6 @@
 import React from "react";
-import useWidgetSettings from "hooks/useWidgetSettings";
-import SelectControl from "components/painter/controls/SelectControl";
+import useWidgetSettings from "../../hooks/useWidgetSettings";
+import SelectControl from "../../components/painter/controls/SelectControl";
 import fakeCategories from "./fakeCategories";
 
 const NewsSettings = () => {

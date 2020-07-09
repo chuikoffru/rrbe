@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import useColumnsSettings from "hooks/useColumnsSettings";
-import { sectionTypesList, sectionTypes } from "helpers/sectionTypes";
-import { isNumber } from "helpers/number";
+import useColumnsSettings from "../hooks/useColumnsSettings";
+import { sectionTypesList, sectionTypes } from "../helpers/sectionTypes";
+import { isNumber } from "../helpers/number";
 
 import SelectControl from "./painter/controls/SelectControl";
 import SectionPainter from "./painter/SectionPainter";

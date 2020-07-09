@@ -1,7 +1,7 @@
 import React from "react";
-import SelectControl from "components/painter/controls/SelectControl";
-import useGlobalSettings from "hooks/useGlobalSettings";
-import fonts from "helpers/fonts";
+import SelectControl from "../painter/controls/SelectControl";
+import useGlobalSettings from "../../hooks/useGlobalSettings";
+import fonts from "../../helpers/fonts";
 
 const Fonts = () => {
   const [font, setFont] = useGlobalSettings("fontFamily", fonts[0]);

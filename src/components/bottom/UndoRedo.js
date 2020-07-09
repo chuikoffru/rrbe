@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { ActionCreators } from "redux-undo";
 import { Button } from "react-bootstrap";
 
-import { ReactComponent as UndoIcon } from "icons/undo.svg";
-import { ReactComponent as SendIcon } from "icons/send.svg";
+import { ReactComponent as UndoIcon } from "../../icons/undo.svg";
+import { ReactComponent as SendIcon } from "../../icons/send.svg";
 
 const UndoRedo = (props) => {
   const dispatch = useDispatch();

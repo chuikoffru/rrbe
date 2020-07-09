@@ -3,12 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useDrop } from "react-dnd";
 import classNames from "classnames";
 
-import useGlobalSettings from "hooks/useGlobalSettings";
-import { addSection, selectSection } from "store/sections/actions";
+import useGlobalSettings from "../hooks/useGlobalSettings";
+import { addSection, selectSection } from "../store/sections/actions";
 import { toggleWidgets, switchSettingsTab } from "../store/app/actions";
 
-import { generateId } from "helpers/string";
-import { ItemTypes } from "helpers/itemTypes";
+import { generateId } from "../helpers/string";
+import { ItemTypes } from "../helpers/itemTypes";
 
 import WidgetContextMenu from "./WidgetContextMenu";
 import ColumnContextMenu from "./ColumnContextMenu";

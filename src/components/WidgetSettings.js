@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import loadable from "@loadable/component";
 
-import loadWidget from "helpers/loadWidget";
+import loadWidget from "../helpers/loadWidget";
 import WidgetPainter from "./painter/WidgetPainter";
 
 const WidgetSettings = () => {

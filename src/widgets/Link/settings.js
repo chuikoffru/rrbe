@@ -1,9 +1,9 @@
 import React from "react";
 import { Form } from "react-bootstrap";
-import useWidgetSettings from "hooks/useWidgetSettings";
-import InputControl from "components/painter/controls/InputControl";
-import SelectControl from "components/painter/controls/SelectControl";
-import ToggleControl from "components/painter/controls/ToggleControl";
+import useWidgetSettings from "../../hooks/useWidgetSettings";
+import InputControl from "../../components/painter/controls/InputControl";
+import SelectControl from "../../components/painter/controls/SelectControl";
+import ToggleControl from "../../components/painter/controls/ToggleControl";
 
 const LinkSettings = () => {
   const [url, setUrl] = useWidgetSettings("url", "#");

@@ -1,7 +1,7 @@
 import React from "react";
-import useWidgetSettings from "hooks/useWidgetSettings";
-import SelectControl from "components/painter/controls/SelectControl";
-import RangeControl from "components/painter/controls/RangeControl";
+import useWidgetSettings from "../../hooks/useWidgetSettings";
+import SelectControl from "../../components/painter/controls/SelectControl";
+import RangeControl from "../../components/painter/controls/RangeControl";
 
 const TextSettings = () => {
   const [wordBreak, setWordBreak] = useWidgetSettings("styles.wordBreak", "normal");

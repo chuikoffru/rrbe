@@ -7,7 +7,7 @@ import {
   SWITCH_SETTINGS_TAB,
 } from "../types";
 
-import { ItemTypes } from "helpers/itemTypes";
+import { ItemTypes } from "../../helpers/itemTypes";
 
 const initialState = {
   showWidgets: false,
