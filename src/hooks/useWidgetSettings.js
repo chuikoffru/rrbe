@@ -1,7 +1,7 @@
 import mutate from "dot-prop-immutable";
 import { useSelector, useDispatch } from "react-redux";
-import { changeWidget } from "store/sections/actions";
-import { isNumber } from "helpers/number";
+import { changeWidget } from "../store/sections/actions";
+import { isNumber } from "../helpers/number";
 
 const useWidgetSettings = (property, defaultValue) => {
   const dispatch = useDispatch();

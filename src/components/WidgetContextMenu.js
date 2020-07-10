@@ -2,7 +2,7 @@ import React from "react";
 import { Menu, Item, Separator } from "react-contexify";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ItemTypes } from "helpers/itemTypes";
+import { ItemTypes } from "../helpers/itemTypes";
 import {
   copyWidgetStyles,
   pasteWidgetStyles,
@@ -11,7 +11,7 @@ import {
   copyWidget,
   selectSection,
   removeSection,
-} from "store/sections/actions";
+} from "../store/sections/actions";
 
 import {
   MENU_COPY_WIDGET,
@@ -22,7 +22,7 @@ import {
   MENU_COPY_STYLES,
   MENU_PASTE_STYLES,
   MENU_DELETE_SECTION,
-} from "store/types";
+} from "../store/types";
 
 const WidgetContextMenu = () => {
   const dispatch = useDispatch();

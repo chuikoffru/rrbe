@@ -1,5 +1,5 @@
 import mutate from "dot-prop-immutable";
-import { generateId } from "helpers/string";
+import { generateId } from "../../helpers/string";
 
 import {
   ADD_SECTION,

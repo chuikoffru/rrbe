@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import axios from "axios";
 
 import { Modal, Button, FormControl, Spinner } from "react-bootstrap";
-import { importStructure, selectSection } from "store/sections/actions";
+import { importStructure, selectSection } from "../../store/sections/actions";
 
-import { ReactComponent as ImportIcon } from "icons/import.svg";
+import { ReactComponent as ImportIcon } from "../../icons/import.svg";
 
 const ImportTemplate = () => {
   const dispatch = useDispatch();

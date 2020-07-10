@@ -1,7 +1,7 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import SelectControl from "../controls/SelectControl";
-import useWidgetSettings from "hooks/useWidgetSettings";
+import useWidgetSettings from "../../../hooks/useWidgetSettings";
 
 const Alignments = () => {
   const [textAlign, setTextAlign] = useWidgetSettings("styles.textAlign", "left");

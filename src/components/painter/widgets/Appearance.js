@@ -4,7 +4,7 @@ import { Form } from "react-bootstrap";
 import RangeControl from "../controls/RangeControl";
 import ColorPicker from "../controls/ColorPicker";
 
-import useWidgetSettings from "hooks/useWidgetSettings";
+import useWidgetSettings from "../../../hooks/useWidgetSettings";
 
 const Appearance = () => {
   const [fontSize, setFontSize] = useWidgetSettings("styles.fontSize", 1);

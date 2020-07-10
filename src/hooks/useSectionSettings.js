@@ -1,6 +1,6 @@
 import mutate from "dot-prop-immutable";
 import { useSelector, useDispatch } from "react-redux";
-import { changeSection } from "store/sections/actions";
+import { changeSection } from "../store/sections/actions";
 
 const useSectionSettings = (property, defaultValue) => {
   const dispatch = useDispatch();

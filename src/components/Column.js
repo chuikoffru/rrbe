@@ -4,12 +4,12 @@ import { useDispatch } from "react-redux";
 import { contextMenu } from "react-contexify";
 import classNames from "classnames";
 
-import { changeColumns } from "store/sections/actions";
-import { swap } from "helpers/arrays";
-import { ItemTypes } from "helpers/itemTypes";
+import { changeColumns } from "../store/sections/actions";
+import { swap } from "../helpers/arrays";
+import { ItemTypes } from "../helpers/itemTypes";
 import LoadableWidget from "./LoadableWidget";
 
-import "scss/columns.scss";
+import "../scss/columns.scss";
 import { selectSection } from "../store/sections/actions";
 
 const Column = ({ rows, md, columnIndex, sectionIndex, accept, onDrop }) => {

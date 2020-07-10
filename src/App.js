@@ -4,19 +4,19 @@ import { HTML5Backend } from "react-dnd-html5-backend";
 import { useSelector, useDispatch } from "react-redux";
 import { Button } from "react-bootstrap";
 
-import { toggleWidgets } from "store/app/actions";
+import { toggleWidgets } from "./store/app/actions";
 
-import Preview from "components/Preview";
-import Widgets from "components/Widgets";
-import Settings from "components/Settings";
-import Bottom from "components/bottom";
-import Resizer from "components/Resizer";
+import Preview from "./components/Preview";
+import Widgets from "./components/Widgets";
+import Settings from "./components/Settings";
+import Bottom from "./components/bottom";
+import Resizer from "./components/Resizer";
 
-import { ReactComponent as WidgetsIcon } from "icons/menu.svg";
-import { ReactComponent as MenuIcon } from "icons/open-menu.svg";
+import { ReactComponent as WidgetsIcon } from "./icons/menu.svg";
+import { ReactComponent as MenuIcon } from "./icons/open-menu.svg";
 
 import "./app.scss";
-import "scss/print.scss";
+import "./scss/print.scss";
 
 function App() {
   const dispatch = useDispatch();

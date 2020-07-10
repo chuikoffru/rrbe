@@ -2,7 +2,7 @@ import React from "react";
 
 import RangeControl from "./painter/controls/RangeControl";
 import ColumnWidthSettings from "./ColumnWidthSettings";
-import useColumnsSettings from "hooks/useColumnsSettings";
+import useColumnsSettings from "../hooks/useColumnsSettings";
 
 const ColumnSettings = () => {
   const [columns, setColumns] = useColumnsSettings("columns", 1);

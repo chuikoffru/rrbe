@@ -1,16 +1,15 @@
 import React from "react";
 import { ToggleButtonGroup, ToggleButton } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
 
-import { ItemTypes } from "helpers/itemTypes";
+import { ItemTypes } from "../helpers/itemTypes";
+import { switchSettingsTab } from "../store/app/actions";
 
 import GlobalSettings from "./settings/GlobalSettings";
-
 import SectionSettings from "./SectionSettings";
 import WidgetSettings from "./WidgetSettings";
 
-import "scss/settings.scss";
-import { useSelector, useDispatch } from "react-redux";
-import { switchSettingsTab } from "../store/app/actions";
+import "../scss/settings.scss";
 
 const Settings = () => {
   const dispatch = useDispatch();

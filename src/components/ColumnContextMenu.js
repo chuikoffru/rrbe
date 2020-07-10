@@ -2,9 +2,8 @@ import React from "react";
 import { Menu, Item } from "react-contexify";
 import { useDispatch, useSelector } from "react-redux";
 
-import { ItemTypes } from "helpers/itemTypes";
-
-import { MENU_PASTE_WIDGET } from "store/types";
+import { MENU_PASTE_WIDGET } from "../store/types";
+import { ItemTypes } from "../helpers/itemTypes";
 import { pasteWidget } from "../store/sections/actions";
 
 const ColumnContextMenu = () => {

@@ -1,6 +1,6 @@
 import React, { useCallback } from "react";
 import { Form } from "react-bootstrap";
-import useWidgetSettings from "hooks/useWidgetSettings";
+import useWidgetSettings from "../../hooks/useWidgetSettings";
 
 export const defaultParams = {
   widgetName: "Image",
@@ -23,12 +23,7 @@ const ButtonSettings = () => {
     <Form>
       <Form.Group>
         <Form.Label>Надпись на кнопке</Form.Label>
-        <Form.Control
-          name="alt"
-          type="text"
-          value={settings.title}
-          onChange={onChange}
-        />
+        <Form.Control name="alt" type="text" value={settings.title} onChange={onChange} />
       </Form.Group>
     </Form>
   );

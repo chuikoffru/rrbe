@@ -1,6 +1,6 @@
 import React, { useCallback, useLayoutEffect } from "react";
 import { Accordion, Card } from "react-bootstrap";
-import useColumnsSettings from "hooks/useColumnsSettings";
+import useColumnsSettings from "../hooks/useColumnsSettings";
 import RangeControl from "./painter/controls/RangeControl";
 
 const ColumnWidthSettings = ({ columns }) => {
