@@ -12,26 +12,37 @@ import "tinymce/plugins/code";
 import "tinymce/skins/ui/oxide/skin.min.css";
 import "tinymce/skins/ui/oxide/content.inline.min.css";
 
-const WysiwygInlineControl = ({ value, onChange, disabled = false }) => {
+const WysiwygInlineControl = ({ value, onChange }) => {
   const [text, setText] = useState(value);
+  const [editable, setEditable] = useState(false);
 
   return (
-    <Editor
-      value={text}
-      onEditorChange={(content) => setText(content)}
-      onBlur={() => onChange(text)}
-      inline={true}
-      disabled={disabled}
-      init={{
-        removed_menuitems: "newdocument",
-        table_toolbar: "",
-        menubar: true,
-        plugins: ["autolink insertdatetime table code"],
-        toolbar: `formatselect | bold italic | 
-    alignleft aligncenter alignright alignjustify | bullist numlist outdent indent |
-    removeformat code | undo redo`,
+    <div
+      draggable
+      onDoubleClick={() => setEditable(true)}
+      onDragStart={(e) => {
+        if (editable) {
+          e.stopPropagation();
+          e.preventDefault();
+        }
       }}
-    />
+    >
+      <Editor
+        value={text}
+        onEditorChange={(content) => setText(content)}
+        onBlur={() => onChange(text)}
+        inline={true}
+        disabled={!editable}
+        init={{
+          menubar: false,
+          contextmenu: false,
+          plugins: ["autolink insertdatetime table code"],
+          toolbar: `styleselect table insertdatetime | bold italic underline | align | forecolor | bullist numlist | outdent indent |
+           undo redo | removeformat code`,
+          table_toolbar: "",
+        }}
+      />
+    </div>
   );
 };
 

@@ -21,13 +21,15 @@ const ImportTemplate = () => {
     const req = await axios("https://regagro.herokuapp.com/templates?_limit=1&name=" + name);
     // Выключаем спиннер
     setLoading(false);
-    //console.log("req", req.data[0]);
-    // Записываем данные в стор
-    dispatch(importStructure(req.data[0].store));
-    // Делаем первую секцию активной
-    dispatch(selectSection(0));
-    // Скрываем модальное окно
-    setShow(false);
+    //console.log("req", req);
+    if (req.data[0]) {
+      // Записываем данные в стор
+      dispatch(importStructure(req.data[0].store));
+      // Делаем первую секцию активной
+      dispatch(selectSection(0));
+      // Скрываем модальное окно
+      setShow(false);
+    }
   }, [dispatch, name]);
 
   return (
