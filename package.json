@@ -75,31 +75,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.4",
-    "@babel/core": "^7.10.4",
-    "@babel/plugin-proposal-optional-chaining": "^7.10.4",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-react": "^7.10.4",
-    "@rollup/plugin-alias": "^3.1.1",
-    "@rollup/plugin-babel": "^5.0.4",
-    "@rollup/plugin-commonjs": "^13.0.0",
-    "@rollup/plugin-image": "^2.0.5",
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^8.1.0",
-    "@rollup/plugin-url": "^5.0.1",
-    "@svgr/rollup": "^5.4.0",
     "@types/tinymce": "^4.5.24",
-    "babel-loader": "^8.1.0",
-    "babel-plugin-module-resolver": "^4.0.0",
-    "babel-plugin-syntax-dynamic-import": "^6.18.0",
-    "node-sass": "^4.14.1",
-    "rollup": "^2.20.0",
-    "rollup-plugin-auto-external": "^2.0.0",
-    "rollup-plugin-includepaths": "^0.2.3",
-    "rollup-plugin-node-builtins": "^2.1.2",
-    "rollup-plugin-node-globals": "^1.4.0",
-    "rollup-plugin-peer-deps-external": "^2.2.3",
-    "rollup-plugin-postcss": "^3.1.2"
+    "node-sass": "^4.14.1"
   }
 }
