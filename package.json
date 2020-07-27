@@ -54,10 +54,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "pack-widget": "babel src --out-dir dist/build --copy-files",
-    "pack": "rollup -c",
-    "publish": "cd dist && npm version patch && npm publish"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"

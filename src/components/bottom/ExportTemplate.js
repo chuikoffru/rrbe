@@ -21,6 +21,7 @@ import "highlight.js/scss/monokai.scss";
 
 const Export = () => {
   const sections = useSelector((state) => state.sections.present.sections);
+  const templateId = useSelector((state) => state.app.templateId);
   const [show, setShow] = useState(false);
   const [showPrintPanel, setShowPrintPanel] = useState(false);
   const [name, setName] = useState("");
@@ -40,13 +41,13 @@ const Export = () => {
 
   const saveTemplate = useCallback(async () => {
     setLoading(true);
-    await axios.post("https://regagro.herokuapp.com/templates", {
+    await axios.post(`http://altrp.nz/admin/ajax/reports/${templateId}`, {
       name,
       store: sections,
       html,
     });
     setLoading(false);
-  }, [html, sections, name]);
+  }, [templateId, name, sections, html]);
 
   const handleChange = useCallback((e) => setName(e.target.value), []);
 

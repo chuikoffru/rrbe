@@ -9,11 +9,14 @@ import {
 
 import { ItemTypes } from "../../helpers/itemTypes";
 
+const url = new URL(window.location.href);
+
 const initialState = {
   showWidgets: false,
   loading: false,
   alert: null,
   settingsTab: ItemTypes.GLOBAL,
+  templateId: url.searchParams.get("id"),
 };
 
 export const appReducer = (state = initialState, action) => {
